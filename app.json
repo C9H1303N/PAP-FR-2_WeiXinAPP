@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/Mainpage/Mainpage",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/Mainpage/Mainpage"
+    
+    "pages/Dongtai/Dongtai",
+    "pages/Message/Message",
+    "pages/Mine/Mine"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,30 +16,32 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar":{
+    "color": "#000000",
+    "selectedColor": "#778899",
     "list":[
       {
-        "pagePath":"pages/home/home",
+        "pagePath":"pages/Mainpage/Mainpage",
         "text":"首页",
-        "iconPath":"images/fir.png",
-        "selectedIconPath":"images/fir.png"
+        "iconPath":"images/bottomnavi_mainpageunselect.png",
+        "selectedIconPath":"images/bottomnavi_mainpageselected.png"
       },
       {
-        "pagePath":"pages/list/list",
-        "text":"活动",
-        "iconPath":"images/act.png",
-        "selectedIconPath":"images/act.png"
+        "pagePath":"pages/Dongtai/Dongtai",
+        "text":"动态",
+        "iconPath":"images/bottomnavi_dongtaiunselect.png",
+        "selectedIconPath":"images/bottomnavi_dongtaiselected.png"
       },
       {
-        "pagePath":"pages/parnter/parnter",
-        "text":"伙伴",
-        "iconPath":"images/partner.png",
-        "selectedIconPath":"images/partner.png"
+        "pagePath":"pages/Message/Message",
+        "text":"消息",
+        "iconPath":"images/bottomnavi_messageunselected.png",
+        "selectedIconPath":"images/bottomnavi_messageselected.png"
       },
       {
-        "pagePath":"pages/more/more",
-        "text":"更多",
-        "iconPath":"images/more.png",
-        "selectedIconPath":"images/more.png"
+        "pagePath":"pages/Mine/Mine",
+        "text":"我的",
+        "iconPath":"images/bottomnavi_mineunselect.png",
+        "selectedIconPath":"images/bottomnavi_mineselected.png"
       }
     ]
   }

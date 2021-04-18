@@ -16,7 +16,7 @@
 		"scopeDataCheck": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.16.1",
+	"libVersion": "2.16.0",
 	"appid": "wx9cb4e4d8097d6e19",
 	"projectname": "PAP-FR_2",
 	"debugOptions": {
