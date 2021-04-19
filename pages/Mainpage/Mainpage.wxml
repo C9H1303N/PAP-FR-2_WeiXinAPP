@@ -1,2 +1,24 @@
 <!--pages/Mainpage.wxml-->
-<text>pages/Mainpage.wxml</text>
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <scroll-view scroll-x scroll-with-animation class="tab-view" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{tabbar}}" wx:key="{{index}}" class="tab-bar-item {{currentTab==index ? 'active' : ''}}"
+      data-current="{{index}}" catchtap="swichNav">
+      <text class="tab-bar-title">{{item}}</text>
+    </view>
+  </scroll-view>
+  <!-- 内容 -->
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+    style="height:{{winHeight}}px">
+    <swiper-item wx:for="{{tabbar}}" wx:key="*this">
+      <scroll-view scroll-y class="scoll-y">
+        <block wx:if="{{index==0}}">
+          <include src="./Recommend.wxml" />
+        </block>
+        <block wx:elif="{{index==1}}">
+          <include src="./Rank.wxml" />
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

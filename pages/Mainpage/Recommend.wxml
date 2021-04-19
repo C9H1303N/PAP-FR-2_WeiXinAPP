@@ -1,0 +1,11 @@
+<!--pages/Mainpage/Recommend.wxml-->
+
+<view class='page_row'>
+        <view style="flex:1"class="search">
+          <input type="text" class = "search_ar" name="searchWord" placeholder="搜索关键词"  value="{{searchWord}}" confirm-type="search" bindinput="searchWordInput"/>
+        </view>
+        <view class="cont" style="width:80px">
+            <image style="width:68px" src="/images/Mainpage_search.png" class="searchImage"></image>
+            <navigator hover-class="none" class="sousuo" url="../Search/Search?searchWord={{searchWord}}" bindtap="search">搜索</navigator>  
+        </view>
+</view>

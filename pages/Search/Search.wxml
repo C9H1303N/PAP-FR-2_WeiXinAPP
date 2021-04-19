@@ -1,0 +1,2 @@
+<!--pages/Search/Search.wxml-->
+<text>{{searchWord}}</text>
