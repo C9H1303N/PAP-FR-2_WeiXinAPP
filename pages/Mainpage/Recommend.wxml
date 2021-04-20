@@ -1,11 +1,52 @@
 <!--pages/Mainpage/Recommend.wxml-->
-
-<view class='page_row'>
-        <view style="flex:1"class="search">
-          <input type="text" class = "search_ar" name="searchWord" placeholder="搜索关键词"  value="{{searchWord}}" confirm-type="search" bindinput="searchWordInput"/>
-        </view>
-        <view class="cont" style="width:80px">
-            <image style="width:68px" src="/images/Mainpage_search.png" class="searchImage"></image>
-            <navigator hover-class="none" class="sousuo" url="../Search/Search?searchWord={{searchWord}}" bindtap="search">搜索</navigator>  
-        </view>
+<view>
+  <view class='page_row'>
+    <view style="flex:1"class="search">
+        <input type="text" class = "search_ar" name="searchWord" placeholder="搜索关键词"  value="{{searchWord}}" confirm-type="search" bindinput="searchWordInput" bindconfirm="search"/>
+    </view>
+    <view class="cont" style="width:80px">
+        <image style="width:68px" src="/images/Mainpage_search.png" class="searchImage"></image>
+        <button hover-class="none" class="sousuo" bindtap="search">
+        <view class="sousuo_text">搜索</view>
+        </button>  
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <text class="recommend">专题推荐</text>
+  <view class="button-container">
+    <button style="flex:1;" class="AI" bindtap="AItap">
+      <image mode="widthFix" src="/images/Mainpage_AI.png" class="AI_img"></image>
+      <view class="AI_text">人工智能</view>
+    </button>
+    <button style="flex:1;" class="bio" bindtap="biotap">
+      <image mode="widthFix" src="/images/Mainpage_bio.png" class="bio_img"></image>
+      <view class="bio_text">生命科学</view>
+    </button>
+    <button style="flex:1;" class="ET" bindtap="ETtap">
+      <image mode="widthFix" src="/images/Mainpage_ET.png" class="ET_img"></image>
+      <view class="ET_text">电子技术</view>
+    </button>
+    <button style="flex:1;" class="ph" bindtap="phtap">
+      <image mode="widthFix" src="/images/Mainpage_ph.png" class="ph_img"></image>
+      <view class="ph_text">哲学</view>
+    </button>
+  </view>
+  <view class="button-container1">
+    <button style="flex:1;" class="EET" bindtap="EETtap">
+      <image mode="widthFix" src="/images/Mainpage_EET.png" class="EET_img"></image>
+      <view class="EET_text">工程设计</view>
+    </button>
+    <button style="flex:1;" class="selfdriving" bindtap="selfdrivingtap">
+      <image mode="widthFix" src="/images/Mainpage_selfdriving.png" class="selfdriving_img"></image>
+      <view class="selfdriving_text">自动驾驶</view>
+    </button>
+    <button style="flex:1;" class="medical" bindtap="medicaltap">
+      <image mode="widthFix" src="/images/Mainpage_medical.png" class="medical_img"></image>
+      <view class="medical_text">智慧医疗</view>
+    </button>
+    <button style="flex:1;" class="leadingmaterial" bindtap="leadingmaterialtap">
+      <image mode="widthFix" src="/images/Mainpage_leadingmaterial.png" class="leadingmaterial_img"></image>
+      <view class="leadingmaterial_text">前沿材料</view>
+    </button>
+  </view>
 </view>

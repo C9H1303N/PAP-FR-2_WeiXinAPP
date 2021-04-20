@@ -36,15 +36,23 @@ page{
   z-index: 2;
 }
 .sousuo {
-  border: white;
   margin-top: 15rpx;
   margin-left: 45rpx;
   position: absolute;
   height: 55rpx;
   width: 120rpx;
   z-index: 3;
-  text-align: center;
-  color: #FFFFFF;
+  background-color: transparent;
+  padding-top: 0%;
+}
+.sousuo_text{
+  margin-top: -12rpx;
+  margin-left: 3rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+.sousuo::after{
+  border: none;
 }
 .page_row{
   display: flex;
@@ -56,8 +64,8 @@ page{
   height: 80rpx;
 }
 .container {
-  /* height: 100%;
-  width: 100%; */
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -84,13 +92,11 @@ page{
 .tab-view {
   width: 100%;
   height: 100rpx;
-  overflow: hidden;
-  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99;
-  background: #fff;
+  background: #f2f2fa;
   white-space: nowrap;
 }
 
@@ -132,4 +138,191 @@ page{
 .tab-content {
   height: 100%;
   width: 100%;
+  margin-top: -80rpx;
+}
+.divLine{
+  margin-top: 20rpx;
+  background: #D3D3D3;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 5rpx;
+  margin-bottom: 25rpx;
+ }
+.recommend{
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-left: 20rpx;
+  box-sizing: border-box;
+}
+.button-container{
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  height: 170rpx;
+  margin: 20rpx;
+  background: #f2f2fa;
+  overflow: hidden;
+}
+.AI{
+  background: #f2f2fa;
+  position: relative;
+}
+.AI::after{
+  border: none;
+ }
+.bio{
+  background: #f2f2fa;
+}
+.bio::after{
+  border: none;
+}
+.ET{
+  background: #f2f2fa;
+}
+.ET::after{
+  border: none;
+}
+.ph{
+  background: #f2f2fa;
+}
+.ph::after{
+  border: none;
+}
+.AI_img{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.AI_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -5rpx;
+  align-content: center;
+}
+.bio_img{
+  height: 100%;
+  width: 100%;
+}
+.bio_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -5rpx;
+  align-content: center;
+}
+.ET_img{
+  height: 100%;
+  width: 100%;
+}
+.ET_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  align-content: center;
+}
+.ph_img{
+  height: 100%;
+  width: 100%;
+}
+.ph_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -10rpx;
+  align-content: center;
+}
+.button-container1{
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+  height: 170rpx;
+  margin: 20rpx;
+  background: #f2f2fa;
+  overflow: hidden;
+}
+.EET{
+  background: #f2f2fa;
+  position: relative;
+}
+.EET::after{
+  border: none;
+ }
+.EET_img{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.EET_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -5rpx;
+  align-content: center;
+}
+.selfdriving{
+  background: #f2f2fa;
+  position: relative;
+}
+.selfdriving::after{
+  border: none;
+ }
+.selfdriving_img{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.selfdriving_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -5rpx;
+  align-content: center;
+}
+.medical{
+  background: #f2f2fa;
+  position: relative;
+}
+.medical::after{
+  border: none;
+ }
+.medical_img{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.medical_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -5rpx;
+  align-content: center;
+}
+.leadingmaterial{
+  background: #f2f2fa;
+  position: relative;
+}
+.leadingmaterial::after{
+  border: none;
+ }
+.leadingmaterial_img{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.leadingmaterial_text{
+  font-size: small;
+  color: #808080;
+  z-index: 2;
+  margin-top: -35rpx;
+  margin-left: -5rpx;
+  align-content: center;
 }

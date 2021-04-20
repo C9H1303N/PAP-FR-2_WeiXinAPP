@@ -7,7 +7,10 @@
     "pages/Mine/Mine",
     "pages/Search/Search",
     "pages/Mainpage/Recommend",
-    "pages/Mainpage/Rank"
+    "pages/Mainpage/Rank",
+    "pages/posts/post",
+    "pages/posts/post-item",
+    "pages/posts/post-detail/post-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

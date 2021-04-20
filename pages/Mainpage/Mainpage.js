@@ -30,8 +30,18 @@ Page({
         title: '请输入关键词'
       })
     }
+    else {
+      wx.navigateTo({
+        url: '/pages/Search/Search?searchWord=' + word,
+      })
+    }
     this.setData({
       searchWord: ""
+    })
+  },
+  AItap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search',
     })
   },
   /**
@@ -94,9 +104,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      searchWord: ""
-    })
+
   },
 
   /**

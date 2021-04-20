@@ -9,8 +9,8 @@
   </scroll-view>
   <!-- 内容 -->
   <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
-    style="height:{{winHeight}}px">
-    <swiper-item wx:for="{{tabbar}}" wx:key="*this">
+    style="height:{{winHeight}}px;">
+    <swiper-item wx:for="{{tabbar}}" wx:key="index">
       <scroll-view scroll-y class="scoll-y">
         <block wx:if="{{index==0}}">
           <include src="./Recommend.wxml" />
@@ -20,5 +20,5 @@
         </block>
       </scroll-view>
     </swiper-item>
-  </swiper>
+  </swiper> 
 </view>
