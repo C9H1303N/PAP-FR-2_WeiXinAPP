@@ -1,2 +1,21 @@
 <!--pages/posts/post-detail/post-detail.wxml-->
-<text>pages/posts/post-detail/post-detail.wxml</text>
+<!-- wxml文件编码原则：
+  先静后动，先样式再数据 -->
+<view class='container'>
+  <image class='head-imagee' src='{{postData.headImgSrc}}'></image>
+  <view class='author-date'>
+    <image class='avatar' src='{{postData.img.avatar}}'></image>
+    <text class='author'>{{postData.author}}</text>
+    <text class='const-text'>发表于</text>
+    <text class='date'>{{postData.date}}</text>
+  </view>
+  <text class='title'>{{postData.title}}</text>
+  <view class='tool'>
+    <view class='cicle-img'>
+      <image src='/images/Mainpage_collection.png'></image>
+      <image class='share-img' src='/images/Mainpage_like.png'></image>
+    </view>
+    <view class='horizon'></view>
+  </view>
+  <text class='detail'>{{postData.content}}</text>
+</view>

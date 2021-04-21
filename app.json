@@ -9,7 +9,8 @@
     "pages/Mainpage/Recommend",
     "pages/Mainpage/Rank",
     "pages/posts/post",
-    "pages/posts/post-item",
+    
+    "pages/posts/post-item/post-item",
     "pages/posts/post-detail/post-detail"
   ],
   "window": {

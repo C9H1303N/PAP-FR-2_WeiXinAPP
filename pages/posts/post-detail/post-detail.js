@@ -1,4 +1,5 @@
 // pages/posts/post-detail/post-detail.js
+var postsData = require('../../../data/posts-data.js')
 Page({
 
   /**
@@ -12,7 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var postId = options.id;
+    // 拿到数据文件对应id的数据元素
+    var postData = postsData.postList[postId];
+    // console.log(postData)
+    // 数据绑定
+    this.setData(
+      // 替换发现前端的数据
+      {
+        postData: postData
+      }
+    );
   },
 
   /**

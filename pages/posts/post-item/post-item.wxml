@@ -1,2 +1,22 @@
 <!--pages/posts/post-item.wxml-->
-<text>pages/posts/post-item.wxml</text>
+<template name='postItem'>
+  <view class='post-container'>
+    <image style="width:230rpx;" src='{{img.avatar}}' class='post-author' mode="scaleToFill" ></image>
+    <view style="flex:1;" class="info-container">
+      <view class='post-title'>{{title}}</view>
+      <view class="authorship">原作者：{{authorship}}</view>
+      <view class='post-author-date'>
+        <text  class="author">{{author}}</text>
+        <text  class='post-date'>{{date}}</text>
+      </view>
+      <view class='post-like'>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_look.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>{{reading}}</text>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_comment.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>{{collection}}</text>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_like.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>{{like}}</text>
+      </view>
+    </view>
+  </view>
+</template>

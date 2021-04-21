@@ -1,5 +1,6 @@
 // pages/Mainpage.js
 var app = getApp()
+var postsData = require('../../data/posts-data.js')
 Page({
 
   /**
@@ -44,6 +45,14 @@ Page({
       url: '/pages/Search/Search',
     })
   },
+  onPostTap: function(event){
+    // 获取新闻的postId
+    var postId = event.currentTarget.dataset.postid;
+    // 跳转到子页面，新闻详情界面
+    wx.navigateTo({
+      url: '/pages/posts/post-detail/post-detail?id='+postId,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -59,6 +68,12 @@ Page({
         });
       }
     });
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: postsData.postList
+      }
+    );
   },
   // 滚动切换标签样式
   switchTab: function (e) {

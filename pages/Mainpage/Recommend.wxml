@@ -49,4 +49,19 @@
       <view class="leadingmaterial_text">前沿材料</view>
     </button>
   </view>
+  
+  <text class="recommend">精选解读</text>
+  <view>
+  <import src="/pages/posts/post-item/post-item.wxml" />
+  <view>
+  <block wx:for="{{posts_key}}" wx:for-item='item'>
+    <!-- 添加一个view标签，用于附着点击事件 -->
+　　<!-- datapostId为自定义属性，自定义属性以data-开头，后边自己起名，用来储存文章的id -->
+    <view catchtap='onPostTap' data-postId = "{{item.postId}}">
+      <!-- template -->
+      <template is='postItem' data="{{...item}}" />
+    </view>
+  </block>
+  </view>
+  </view>
 </view>
