@@ -2,7 +2,7 @@
 <!-- wxml文件编码原则：
   先静后动，先样式再数据 -->
 <view class='container'>
-  <image class='head-imagee' src='{{postData.headImgSrc}}'></image>
+  <image class='head-imagee' src='{{postData.img.imgSrc}}'></image>
   <view class='author-date'>
     <image class='avatar' src='{{postData.img.avatar}}'></image>
     <text class='author'>{{postData.author}}</text>
