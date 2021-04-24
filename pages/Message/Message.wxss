@@ -1,1 +1,30 @@
 /* pages/Message/Message.wxss */
+.search_frame{
+  background-color: #778899;
+  height: 100rpx;
+  padding-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+.search_word{
+  border-radius: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 120rpx;
+  height: 80rpx;
+  padding-left: 30rpx;
+  background-color: #fff;
+}
+.search_input{
+  align-content: center;
+  height: 100%;
+  width: 100%;
+}
+.add{
+  width: 55rpx;
+  height: 55rpx;
+  margin-left: -100rpx;
+  margin-top: 10rpx;
+}
+.plus{
+  margin-top: 3rpx;
+}
