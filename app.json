@@ -1,15 +1,14 @@
 {
   "pages": [
+    "pages/Search/Search",
     "pages/Mainpage/Mainpage",
     "pages/index/index",
     "pages/Dongtai/Dongtai",
     "pages/Message/Message",
     "pages/Mine/Mine",
-    "pages/Search/Search",
     "pages/Mainpage/Recommend",
     "pages/Mainpage/Rank",
     "pages/posts/post",
-    
     "pages/posts/post-item/post-item",
     "pages/posts/post-detail/post-detail"
   ],
