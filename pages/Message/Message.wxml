@@ -1,2 +1,13 @@
 <!--pages/Message/Message.wxml-->
-<text>pages/Message/Message.wxml</text>
+<view>
+<view class="search_frame">
+  <view style="width:600rpx" class="search_word">
+    <input class="search_input" placeholder="搜索消息">
+    </input>
+  </view>
+  <image src="/images/Message_add.png" class="add">
+    <button class="plus">
+    </button>
+  </image>
+</view>
+</view>
