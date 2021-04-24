@@ -12,12 +12,6 @@
         <view class="sousuo_text">搜索</view>
         </button>  
     </view>
-    <view class="back">
-      <image style="width:68px" src="/images/Mainpage_search.png" class="searchImage"></image>
-        <button hover-class="none" class="back_to_front" bindtap="search">
-        <view class="sousuo_text">搜索</view>
-        </button>  
-    </view>
   <!-- 顶部导航栏 -->
   <scroll-view scroll-x scroll-with-animation class="tab-view" scroll-left="{{scrollLeft}}">
     <view wx:for="{{tabbar}}" wx:key="{{index}}" class="tab-bar-item {{currentTab==index ? 'active' : ''}}"

@@ -24,6 +24,11 @@ Page({
       searchWord: e.detail.value
     })
   },
+  back_main:function(e) {
+    wx.navigateTo({
+      url: 'pages/Mainpage/Mainpage',
+    })
+  },
   search: function(e){
     let word = this.data.searchWord
     if (word == ''){
