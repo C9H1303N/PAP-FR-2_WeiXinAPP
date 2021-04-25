@@ -15,7 +15,14 @@ Page({
   onLoad: function (options) {
     var postId = options.id;
     // 拿到数据文件对应id的数据元素
-    var postData = postsData.postList[postId];
+    var postList = postsData.postList;
+    var postData;
+    for(var i = 0; ;i++){
+      if(postList[i].postId == postId){
+        postData = postList[i];
+        break;
+      }
+    }
     // console.log(postData)
     // 数据绑定
     this.setData(
