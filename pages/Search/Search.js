@@ -17,7 +17,46 @@ Page({
     searchWord: "",
     old_searchword: ""
   },
-
+  onReady: function() {
+    let that = this;
+    //  高度自适应
+    wx.getSystemInfo({
+      success: function (res) {
+        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
+        // console.log('==顶部高度==',calc)
+        that.setData({
+          winHeight: calc,
+        });
+      }
+    });
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: postsData.postList,
+        old_searchword: this.data.searchWord
+      }
+    );
+  },
+  onLoad: function (options) {
+    let that = this;
+    //  高度自适应
+    wx.getSystemInfo({
+      success: function (res) {
+        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
+        // console.log('==顶部高度==',calc)
+        that.setData({
+          winHeight: calc,
+        });
+      }
+    });
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: postsData.postList,
+        old_searchword: options.searchWord
+      }
+    );
+  },
   navbarTap: function(e){
     this.setData({
       currentTab: e.currentTarget.dataset.idx
@@ -41,9 +80,24 @@ Page({
       })
     }
     else {
-      wx.navigateTo({
-        url: '/pages/Search/Search?searchWord=' + word,
-      })
+      let that = this;
+    //  高度自适应
+    wx.getSystemInfo({
+      success: function (res) {
+        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
+        // console.log('==顶部高度==',calc)
+        that.setData({
+          winHeight: calc,
+        });
+      }
+    });
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: postsData.postList,
+        old_searchword: this.data.searchWord
+      }
+    );
     }
     this.setData({
       searchWord: ""
@@ -65,44 +119,71 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let that = this;
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
-        // console.log('==顶部高度==',calc)
-        that.setData({
-          winHeight: calc,
-        });
-      }
-    });
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: postsData.postList,
-        old_searchword: options.searchWord
-      }
-    );
-  },
-  // 滚动切换标签样式
-  switchTab: function (e) {
-    let that = this;
-    // console.log("滚动切换标签",e)
-    that.setData({
-      currentTab: e.detail.current
-    });
-    that.checkCor();
-  },
+  
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
     let cur = e.currentTarget.dataset.current;
+    console.log(cur)
     if (this.data.currentTab == cur) {
       return false;
     } else {
       this.setData({
         currentTab: cur
       })
+      if (cur == 0) {
+        this.setData(
+          {
+            posts_key: postsData.postList,
+          }
+        );
+      }
+      else if (cur == 1) { //发布时间排序
+          var have_list = postsData.postList
+          have_list.sort(function(a,b) {
+              var a_times=a.date.split(".")
+              var b_times=b.date.split(".")
+              //console.log(a_times)
+              //console.log(b_times)
+              if(Number(a_times[0]) == Number(b_times[0])) {
+                if(Number(a_times[1]) == Number(b_times[1])) {
+                  return Number(b_times[2])-Number(a_times[2])
+                }
+                else {
+                  return Number(b_times[1])-Number(a_times[1])
+                }
+              }
+              else {
+                return Number(b_times[0])-Number(a_times[0])
+              }
+          });
+          this.setData(
+            {
+              posts_key: have_list,
+            }
+          );
+      }
+      else if (cur == 2) { //浏览数量排序
+        var have_list = postsData.postList
+        have_list.sort(function(a,b) {
+          return b.reading-a.reading
+        });
+        this.setData(
+          {
+            posts_key: have_list,
+          }
+        );
+      }
+      else if (cur == 3) { //点赞数量
+        var have_list = postsData.postList
+        have_list.sort(function(a,b) {
+          return b.like-a.like
+        });
+        this.setData(
+          {
+            posts_key: have_list,
+          }
+        );
+      }
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -117,6 +198,16 @@ Page({
         scrollLeft: 0
       })
     }
+  },
+
+  // 滚动切换标签样式
+  switchTab: function (e) {
+    let that = this;
+    // console.log("滚动切换标签",e)
+    that.setData({
+      currentTab: e.detail.current
+    });
+    that.checkCor();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
