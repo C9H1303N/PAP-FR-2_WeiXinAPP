@@ -5,38 +5,42 @@ page{
   height: 100%;
   background: #f2f2fa;
 }
-
+.search_wrapper {
+  position: fixed;
+}
 .search_up {
+  margin-left: -220rpx;
   margin-top: -200rpx;
-  width: 100%;
-  height: 150rpx;
+  width: 250%;
+  height: 100rpx;
   background-color: #5d7599;  
 }
 
 .search{
-  margin-top: -120rpx;
+  margin-top: -90rpx;
   margin-left: -200rpx;
   height: 80rpx;
 }
 .search_ar{
   border-radius: 80rpx;
-  background-color: #ffffff;
-  margin-right: 0rpx;
-  width: 130%;
+  margin-left: 20rpx;
+  margin-right: 120rpx;
   height: 80rpx;
+  padding-left: 30rpx;
+  width: 100%;
+  background-color: #fff;
 }
 .search_ar input{
   border-radius: 5px;
-  margin-left: 10rpx;
+  align-content: center;
+  height: 100%;
   width: 100%;
-  height: 80rpx;
 }
 .cont {
-  margin-top: -160rpx;
-  margin-left: 500rpx;
+  margin-top: -80rpx;
+  margin-left: 350rpx;
   margin-right: 20rpx;
-  position: absolute;
-  z-index: 1;
+  position: fixed;
   height: 80rpx;
 }
 .searchImage {
@@ -44,7 +48,6 @@ page{
   line-height: 120%;
   height: 70rpx;
   position: absolute;
-  z-index: 2;
 }
 .sousuo {
   margin-top: 15rpx;
@@ -52,11 +55,11 @@ page{
   position: absolute;
   height: 55rpx;
   width: 120rpx;
-  z-index: 3;
   background-color: transparent;
   padding-top: 0%;
 }
 .sousuo_text{
+  position: fixed;
   margin-top: -12rpx;
   margin-left: 3rpx;
   font-size: 30rpx;
@@ -102,7 +105,7 @@ page{
 
 .tab-view {
   width: 100%;
-  margin-top: 300rpx;
+  margin-top: 100rpx;
   height: 100rpx;
   position: fixed;
   top: 0;
@@ -142,133 +145,6 @@ page{
 }
 
 /* *******topbar******* end*/
-
-.scoll-y {
-  height: 100%;
-  overflow: scroll;
-}
-.block1{
-  height: 101%;
-}
-
-.tab-content {
-  width: 100%;
-  margin-top: -80rpx;
-  margin-bottom: -250rpx;
-}
-.divLine{
-  margin-top: 20rpx;
-  background: #D3D3D3;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  height: 5rpx;
-  margin-bottom: 25rpx;
- }
-.recommend{
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-left: 20rpx;
-  box-sizing: border-box;
-}
-.button-container{
-  display: flex;
-  /*row 横向  column 列表  */
-  flex-direction: row;
-  height: 170rpx;
-  margin: 20rpx;
-  background: #f2f2fa;
-  overflow: hidden;
-}
-.button-container1{
-  display: flex;
-  /*row 横向  column 列表  */
-  flex-direction: row;
-  height: 170rpx;
-  margin: 20rpx;
-  background: #f2f2fa;
-  overflow: hidden;
-}
-.EET{
-  background: #f2f2fa;
-  position: relative;
-}
-.EET::after{
-  border: none;
- }
-.EET_img{
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-}
-.EET_text{
-  font-size: small;
-  color: #808080;
-  z-index: 2;
-  margin-top: -35rpx;
-  margin-left: -5rpx;
-  align-content: center;
-}
-.selfdriving{
-  background: #f2f2fa;
-  position: relative;
-}
-.selfdriving::after{
-  border: none;
- }
-.selfdriving_img{
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-}
-.selfdriving_text{
-  font-size: small;
-  color: #808080;
-  z-index: 2;
-  margin-top: -35rpx;
-  margin-left: -5rpx;
-  align-content: center;
-}
-.medical{
-  background: #f2f2fa;
-  position: relative;
-}
-.medical::after{
-  border: none;
- }
-.medical_img{
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-}
-.medical_text{
-  font-size: small;
-  color: #808080;
-  z-index: 2;
-  margin-top: -35rpx;
-  margin-left: -5rpx;
-  align-content: center;
-}
-.leadingmaterial{
-  background: #f2f2fa;
-  position: relative;
-}
-.leadingmaterial::after{
-  border: none;
- }
-.leadingmaterial_img{
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-}
-.leadingmaterial_text{
-  font-size: small;
-  color: #808080;
-  z-index: 2;
-  margin-top: -35rpx;
-  margin-left: -5rpx;
-  align-content: center;
-}
 
 /* 论文卡片*/
 .post-container{
@@ -331,4 +207,8 @@ page{
 .post-like-font{
   color: #808080;
   text-align: justify;
+}
+.recommend {
+  margin-top: -180rpx;
+  margin-left: 20rpx;
 }

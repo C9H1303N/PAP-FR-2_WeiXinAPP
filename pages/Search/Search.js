@@ -7,13 +7,17 @@ Page({
    * 页面的初始数据
    */
 
+  
+
   data: {
-    tabbar: ['推荐','榜单'],
+    tabbar: ['默认排序','发布时间','浏览数量','点赞数量'],
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    searchWord: ""
+    searchWord: "",
+    old_searchword: ""
   },
+
   navbarTap: function(e){
     this.setData({
       currentTab: e.currentTarget.dataset.idx
@@ -61,7 +65,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
     let that = this;
     //  高度自适应
     wx.getSystemInfo({
@@ -69,14 +73,15 @@ Page({
         let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
         // console.log('==顶部高度==',calc)
         that.setData({
-          winHeight: calc
+          winHeight: calc,
         });
       }
     });
     this.setData(
       // 替换发现前端的数据
       {
-        posts_key: postsData.postList
+        posts_key: postsData.postList,
+        old_searchword: options.searchWord
       }
     );
   },

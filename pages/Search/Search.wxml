@@ -1,18 +1,20 @@
 <!--pages/Search/Search.wxml-->
 <!--pages/Mainpage.wxml-->
 <view class="container">
-  <view class="search_up">
+  <view class="search_wrapper">
+<view class="search_up">
   </view>
   <view style="flex:1"class="search">
         <input type="text" class = "search_ar" name="searchWord" placeholder="搜索关键词"  value="{{searchWord}}" confirm-type="search" bindinput="searchWordInput" bindconfirm="search"/>
     </view>
     <view class="cont" style="width:80px">
-        <image style="width:68px" src="/images/Mainpage_search.png" class="searchImage"></image>
         <button hover-class="none" class="sousuo" bindtap="search">
         <view class="sousuo_text">搜索</view>
         </button>  
     </view>
-  <!-- 顶部导航栏 -->
+  </view>
+  
+  <!-- 中部导航栏 -->
   <scroll-view scroll-x scroll-with-animation class="tab-view" scroll-left="{{scrollLeft}}">
     <view wx:for="{{tabbar}}" wx:key="{{index}}" class="tab-bar-item {{currentTab==index ? 'active' : ''}}"
       data-current="{{index}}" catchtap="swichNav">
@@ -20,5 +22,17 @@
     </view>
   </scroll-view>
 </view>
-
-<text>{{searchWord}}</text>
+<text class="recommend">关键词搜索:{{old_searchword}}</text>
+  <view>
+  <import src="/pages/posts/post-item/post-item.wxml" />
+  <view>
+  <block wx:for="{{posts_key}}" wx:for-item='item'>
+    <!-- 添加一个view标签，用于附着点击事件 -->
+　　<!-- datapostId为自定义属性，自定义属性以data-开头，后边自己起名，用来储存文章的id -->
+    <view catchtap='onPostTap' data-postId = "{{item.postId}}">
+      <!-- template -->
+      <template is='postItem' data="{{...item}}" />
+    </view>
+  </block>
+  </view>
+  </view>

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/Search/Search",
     "pages/Mainpage/Mainpage",
+    "pages/Search/Search",
     "pages/index/index",
     "pages/Dongtai/Dongtai",
     "pages/Message/Message",
