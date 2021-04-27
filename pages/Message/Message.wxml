@@ -25,4 +25,17 @@
       <text class="button_text">回复我的</text>
     </button>
   </view>
+  <view class="postlist">
+  <import src="/pages/Message/Message-item/Message-item.wxml" />
+  <view>
+  <block wx:for="{{posts_key}}" wx:for-item='item'>
+    <!-- 添加一个view标签，用于附着点击事件 -->
+　　<!-- datapostId为自定义属性，自定义属性以data-开头，后边自己起名，用来储存文章的id -->
+    <view catchtap='onPostTap' data-postId = "{{item.postId}}">
+      <!-- template -->
+      <template is='postItem' data="{{...item}}" />
+    </view>
+  </block>
+  </view>
+  </view>
 </view>

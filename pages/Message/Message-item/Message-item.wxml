@@ -1,0 +1,13 @@
+<!--pages/Message/Message-item/Message-item.wxml-->
+<template name='postItem'>
+  <view class='post-container'>
+    <image style="width:100rpx;" src='{{img.avatar}}' class='post-author' mode="scaleToFill" ></image>
+    <view style="flex:1;" class="info-container">
+      <view class='post-author-date'>
+        <view style="width:420rpx;" class='author'>{{author}}</view>
+        <text class='post-date'>{{date}}</text>
+      </view>
+      <view class="content">{{content}}</view>
+    </view>
+  </view>
+</template>

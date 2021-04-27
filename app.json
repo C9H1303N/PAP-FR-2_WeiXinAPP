@@ -10,7 +10,8 @@
     "pages/Mainpage/Rank",
     "pages/posts/post",
     "pages/posts/post-item/post-item",
-    "pages/posts/post-detail/post-detail"
+    "pages/posts/post-detail/post-detail",
+    "pages/Message/Message-item/Message-item"
   ],
   "window": {
     "backgroundTextStyle": "light",
