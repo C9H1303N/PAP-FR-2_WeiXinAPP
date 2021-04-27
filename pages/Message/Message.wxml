@@ -1,13 +1,28 @@
 <!--pages/Message/Message.wxml-->
-<view>
-<view class="search_frame">
-  <view style="width:600rpx" class="search_word">
-    <input class="search_input" placeholder="搜索消息">
-    </input>
+<view class="container" style="height:{{winHeight}}px;">
+  <view class="search_frame">
+    <view style="width:600rpx" class="search_word">
+      <input class="search_input" placeholder="搜索消息"></input>
+    </view>
+    <image src="/images/Message_add.png" class="add">
+      <button class="plus"></button>
+    </image>
   </view>
-  <image src="/images/Message_add.png" class="add">
-    <button class="plus">
+  <view class="message_buttons">
+    <button class="Mbutton">
+      <image src="/images/Message_like.png" class="button_img"></image>
+      <image src="/images/Message_button.png" class="img"></image>
+      <text class="button_text">赞我的</text>
     </button>
-  </image>
-</view>
+    <button class="Mbutton">
+      <image src="/images/Message_at.png" class="button_img"></image>
+      <image src="/images/Message_button.png" class="img"></image>
+      <text class="button_text">@我</text>
+    </button>
+    <button class="Mbutton">
+      <image src="/images/Message_reply.png" class="button_img"></image>
+      <image src="/images/Message_button.png" class="img"></image>
+      <text class="button_text">回复我的</text>
+    </button>
+  </view>
 </view>

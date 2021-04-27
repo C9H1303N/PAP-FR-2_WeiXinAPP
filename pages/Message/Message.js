@@ -5,14 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    winHeight: "" //窗口高度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    //  高度自适应
+    wx.getSystemInfo({
+      success: function (res) {
+        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
+        // console.log('==顶部高度==',calc)
+        that.setData({
+          winHeight: calc
+        });
+      }
+    });
   },
 
   /**
