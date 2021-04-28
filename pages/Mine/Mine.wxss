@@ -1,1 +1,116 @@
 /* pages/Mine/Mine.wxss */
+
+.contain01{
+    height: 56vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  #778899;
+}
+
+.user_image{
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 50%;
+    justify-content: space-between;
+}
+
+.temp{
+    height: 75rpx;
+}
+
+.temp01{
+    height: 30rpx;
+}
+
+.jiacu{
+    font-weight: 680;
+    text-align: center;
+}
+
+.bianji{
+    height: 35rpx;
+    width: 35rpx;
+    
+}
+
+.user_info{
+    height:200rpx;
+    width: 660rpx;
+    background-color: white;
+    border-radius: 0.3cm;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    
+}
+
+.user_info01{
+    height: 70rpx;
+    width: 660rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.user_info02{
+    height: 60rpx;
+    width: 660rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.user_info03{
+    height: 60rpx;
+    width: 660rpx;
+    display: flex;
+    justify-content: center;
+    color:gray;
+    font-size: 5;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.35cm;
+}
+
+.number01{
+    color:gray;
+}
+
+.shezhi_photo{
+    height: 70rpx;
+    width: 70rpx;
+    display: flex;
+}
+
+.shezhi{
+    hight:70rpx;
+    width:100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.contain02{
+    display:flex;
+}
+
+.jiedu{
+    height: 70rpx;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jiedu01{
+    font-weight: 700;
+    color:#778899;
+}
+
+.jiedu02{
+    color:gray;
+}
+
+.contain03{
+    display: flex;
+    height: 50vh;
+    flex-direction: column;
+}

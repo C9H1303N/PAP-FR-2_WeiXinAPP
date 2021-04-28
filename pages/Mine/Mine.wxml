@@ -1,2 +1,41 @@
-<!--pages/Mine/Mine.wxml-->
-<text>pages/Mine/Mine.wxml</text>
+<view class="contain01">
+    <!-- <image class="backGround" src="/images/Images_Mine/banner.png">
+    </image> -->
+    <view class = "shezhi">
+    <image class = "shezhi_photo" src="/images/Images_Mine/设置@4x-8.png"></image>
+    </view>
+    <view class="temp"></view>
+    <image src="{{user_photo}}" class="user_image"></image>
+    <view class="temp01"></view>
+    <view class = "user_info">
+        <view class = "user_info01">
+            <text class="jiacu" decode="{{true}}"> {{user_name}} &nbsp;&nbsp;&nbsp;</text>
+            <image src="/images/Images_Mine/编辑Logo@4x-8.png" class = "bianji"></image>
+        </view>
+        <view class="user_info02">
+            <text class="number01">{{guanzhu_sum}} </text>
+            <text decode="{{true}}">&nbsp; 关注 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+            <text class = "number01">  {{fensi_sum}} </text>
+            <text decode="{{true}}"> &nbsp; 粉丝</text>
+        </view>
+        <view class="user_info03">
+            <text>{{person_view}}</text>
+        </view>
+    </view>
+</view>
+<view class="contain02">
+    <view class = "jiedu">
+        <text class = "jiedu01">发表解读</text>
+    </view>
+    <view class = "jiedu">
+        <text class = "jiedu02">我的评论</text>
+    </view>
+    <view class = "jiedu">
+        <text class = "jiedu02">我的收藏</text>
+    </view>
+    <view class = "jiedu">
+        <text class = "jiedu02">历史记录</text>
+    </view>
+</view>
+
+

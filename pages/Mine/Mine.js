@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user_photo:'/images/Images_Mine/student_he.jfif',
+    user_name: '大家好我是何同学',
+    guanzhu_sum:'105',
+    fensi_sum:'305w',
+    person_view:'热衷于前沿数码领域'
   },
 
   /**
