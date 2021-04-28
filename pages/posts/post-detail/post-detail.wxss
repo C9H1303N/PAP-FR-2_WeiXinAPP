@@ -96,9 +96,9 @@
  
 .detail{
   color: #666;
-  margin-left: 30rpx;
+  margin-left: 50rpx;
   margin-top: 20rpx;
-  margin-right: 30rpx;
+  margin-right: 50rpx;
   line-height: 44rpx;
   letter-spacing: 2px;
 }

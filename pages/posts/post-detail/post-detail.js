@@ -6,13 +6,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    like: 0,
+    collection: 0
   },
-
+  liking: function(e) {
+    let that = this
+    this.setData({
+      like: 1
+    })
+    console.log(this.data.like)
+  },
+  unliking: function(e) {
+    let that = this
+    this.setData({
+      like: 0
+    })
+    console.log(this.data.like)
+  },
+  collecting: function(e) {
+    let that = this
+    this.setData({
+      collection: 1
+    })
+    console.log(this.data.collection)
+  },
+  uncollecting: function(e) {
+    let that = this
+    this.setData({
+      collection: 0
+    })
+    console.log(this.data.collection)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //后期需要后端传
     var postId = options.id;
     // 拿到数据文件对应id的数据元素
     var postList = postsData.postList;

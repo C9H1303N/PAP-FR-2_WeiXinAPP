@@ -17,6 +17,7 @@ Page({
     searchWord: "",
     old_searchword: ""
   },
+
   onReady: function() {
     let that = this;
     //  高度自适应

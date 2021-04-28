@@ -2,7 +2,8 @@
 <!-- wxml文件编码原则：
   先静后动，先样式再数据 -->
 <view class='container'>
-  <image class='head-imagee' src='{{postData.img.imgSrc}}'></image>
+  <image src="/images/watch_back.png"></image>
+  <!--<image class='head-imagee' src='{{postData.img.imgSrc}}'></image>-->
   <view class='author-date'>
     <image class='avatar' src='{{postData.img.avatar}}'></image>
     <text class='author'>{{postData.author}}</text>
@@ -12,10 +13,27 @@
   <text class='title'>{{postData.title}}</text>
   <view class='tool'>
     <view class='cicle-img'>
-      <image src='/images/Mainpage_collection.png'></image>
-      <image class='share-img' src='/images/Mainpage_like.png'></image>
+      <view wx:if="{{like==0}}">
+        <view class="like" catchtap='liking'>      
+          <image src='/images/Mainpage_like.png'></image>
+        </view>
+      </view>
+      <view wx:if="{{like==1}}">
+        <view class="like" catchtap='unliking'>
+          <image src='/images/Message_like.png'></image>
+        </view>
+      </view>
+      <view wx:if="{{collection==0}}">
+        <view class="like" catchtap='collecting'>      
+          <image class='share-img' src='/images/Mainpage_collection.png'></image>
+        </view>
+      </view>
+      <view wx:if="{{collection==1}}">
+        <view class="like" catchtap='uncollecting'>
+          <image class='share-img' src='/images/Mainpage_collection.png'></image>
+        </view>
+      </view>
     </view>
-    <view class='horizon'></view>
   </view>
   <text class='detail'>{{postData.content}}</text>
 </view>
