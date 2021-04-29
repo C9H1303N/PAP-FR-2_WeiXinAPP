@@ -23,12 +23,12 @@
         </view>
       </view>
       <view wx:if="{{collection==0}}">
-        <view class="like" catchtap='collecting'>      
+        <view class="collect" catchtap='collecting'>      
           <image class='share-img' src='/images/Mainpage_collection.png'></image>
         </view>
       </view>
       <view wx:if="{{collection==1}}">
-        <view class="like" catchtap='uncollecting'>
+        <view class="collect" catchtap='uncollecting'>
           <image class='share-img' src='/images/Mainpage_collection.png'></image>
         </view>
       </view>

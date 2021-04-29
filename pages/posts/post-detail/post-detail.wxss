@@ -102,3 +102,7 @@
   line-height: 44rpx;
   letter-spacing: 2px;
 }
+
+.collect {
+  
+}
