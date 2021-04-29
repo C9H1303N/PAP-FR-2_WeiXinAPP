@@ -23,7 +23,7 @@ var local_database  = [{
   authorship: 'cxk',
   reading: '256',
   collection: '151',
-  content: 'oooooooooooooooooooooooooooooooooo。',
+  content: 'ooooo ooooo oooooo ooooooo oooooo oooo。',
   like: "121",
   // 嵌套
   img: {

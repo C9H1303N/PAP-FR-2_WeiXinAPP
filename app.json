@@ -11,7 +11,9 @@
     "pages/posts/post",
     "pages/posts/post-item/post-item",
     "pages/posts/post-detail/post-detail",
-    "pages/Message/Message-item/Message-item"
+    "pages/Message/Message-item/Message-item",
+    "pages/Login/Login",
+    "pages/Register/Register"
   ],
   "window": {
     "backgroundTextStyle": "light",
