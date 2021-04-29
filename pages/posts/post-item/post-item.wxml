@@ -4,10 +4,10 @@
     <image style="width:230rpx;" src='{{img.avatar}}' class='post-author' mode="scaleToFill" ></image>
     <view style="flex:1;" class="info-container">
       <view class='post-title'>{{title}}</view>
-      <view class="authorship">原作者：{{authorship}}</view>
+      <view class="authorship">原作者：{{created_by.username}}</view>
       <view class='post-author-date'>
         <text  class="author">{{author}}</text>
-        <text  class='post-date'>{{date}}</text>
+        <text  class='post-date'>{{published_year}}</text>
       </view>
       <view class='post-like'>
         <image style="flex:1;" class='post-image' src='/images/Mainpage_look.png' mode="aspectFit"></image>

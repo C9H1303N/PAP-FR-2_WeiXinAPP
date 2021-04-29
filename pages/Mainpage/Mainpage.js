@@ -84,6 +84,7 @@ Page({
     // 获取新闻的postId
     var postId = event.currentTarget.dataset.postid;
     // 跳转到子页面，新闻详情界面
+    console.log(postId)
     wx.navigateTo({
       url: '/pages/posts/post-detail/post-detail?id='+postId,
     })
@@ -100,19 +101,18 @@ Page({
       },
       method: 'GET',
       success (res) {
-        //console.log(res.data)
-        this.setData(
+        console.log(res.data.papers)
+        postsData = res.data.papers
+        that.setData(
           // 替换发现前端的数据
           {
             posts_key: res.data.papers
           }
         );
-        /*
         wx.setStorage({
-          data: res.data,
           key: 'paper',
+          data: res.data.papers
         })
-        */
       }
     })
     //  高度自适应

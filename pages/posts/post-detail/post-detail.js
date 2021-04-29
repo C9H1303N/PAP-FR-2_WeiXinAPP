@@ -1,5 +1,5 @@
 // pages/posts/post-detail/post-detail.js
-var postsData = require('../../../data/posts-data.js')
+var postsData
 Page({
 
   /**
@@ -11,16 +11,26 @@ Page({
     collection: 0,
     maxLength: 100, // 收起时最大显示文字长度
     ellipsis: false, // 是否收缩
-    contentShow: ''
+    contentShow: '',
+    detailData: ''
   },
 
   ellipsis: function () {
-    console.log(this.post_id)
+    //console.log(this.post_id)
     var ellipsis = !this.data.ellipsis;
-    var contentShow = postsData.postList[this.post_id].content;
+    var contentShow;
+    console.log(postsData)
+    for(var i = 0; i < postsData.length; i++){
+      if(postsData[i].id == this.post_id){
+        data = postsData[i];
+        contentShow = postsData[i].abstract;
+        break;
+      }
+    }
+    console.log(data)
     var maxLength = this.data.maxLength;
     // 如果内容长度少于10，则不截取;否则当处于收起状态，截取7个文字并加上省略号
-    console.log(contentShow.length)
+    //console.log(contentShow.length)
     contentShow = (contentShow.length > maxLength && ellipsis) ? contentShow.substring(0, maxLength - 3) + "..." : contentShow;
     this.setData({
       contentShow: contentShow,
@@ -63,24 +73,19 @@ Page({
     //后期需要后端传
     this.post_id = options.id;
     var postId = options.id;
-    console.log(postId)
+    //console.log(postId)
     // 拿到数据文件对应id的数据元素
-    var postList = postsData.postList;
-    var postData;
-    for(var i = 0; ;i++){
-      if(postList[i].postId == postId){
-        postData = postList[i];
+    postsData = wx.getStorageSync('paper')
+    for(var i = 0; i < postsData.length; i++){
+      if(postsData[i].id == this.post_id){
+        this.setData({
+          detailData: postsData[i]
+        })
         break;
       }
     }
-    // console.log(postData)
+    console.log(detailData)
     // 数据绑定
-    this.setData(
-      // 替换发现前端的数据
-      {
-        postData: postData
-      }
-    );
     this.ellipsis();
   },
 
