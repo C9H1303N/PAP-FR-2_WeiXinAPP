@@ -45,9 +45,11 @@
 }
  
 .author{
+  width: 80%;
   font-size: 30rpx;
   font-weight: 300;
-  margin-left: 20rpx;
+  margin-left: 5rpx;
+  margin-right: 20rpx;
   vertical-align: middle;
   color: #666;
 }
@@ -113,9 +115,9 @@
 
 .detail{
   color: #666;
-  margin-left: 50rpx;
+  margin-left: 20rpx;
   margin-top: 20rpx;
-  margin-right: 50rpx;
+  margin-right: 20rpx;
   line-height: 44rpx;
   letter-spacing: 2px;
   display: -webkit-box;
