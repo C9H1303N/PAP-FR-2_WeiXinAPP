@@ -8,31 +8,63 @@
     <text class='date'>{{postData.date}}</text>
   </view>
   <text class='title'>{{postData.title}}</text>
-  <view class='tool'>
-    <view class='cicle-img'>
-      <view wx:if="{{like==0}}">
+  <view class="padding-xl radius shadow bg-white" style="width: 100%; margin-top: 15rpx; margin-bottom: 40rpx" >
+    <text class="paper_info">论文信息\n</text>
+    <text>\n</text>
+    <text class='author'>题目：test</text>
+    <text>\n</text>
+    <text class='author'>作者：test   </text>
+    <text class='author'>发表年限：test</text>
+    <text>\n</text>
+    <text class='author'>论文链接：www.baidu.com</text>
+    <text>\n</text>
+    <text class='author'>相关标签：</text>
+    <view class="cu-tag">默认</view>
+    <view class="cu-tag">默认</view>
+    <view class="cu-tag">默认</view>
+    <view class="cu-tag">默认</view>
+    <view class="cu-tag">默认</view>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text class='paper_info'>论文摘要：</text>   
+    <text>\n</text>
+    <text class='detail'>{{postData.content}}</text>
+  </view>
+  <view class="padding-xl radius shadow bg-white" >
+  <text class="paper_info">论文解读</text>
+  <text>\n</text>
+  <text class='detail'>{{contentShow}}</text>
+  <text class='ellipsis_text' hidden='{{postData.content.length<=maxLength}}'  bindtap='ellipsis'>{{ellipsis?"展开":"收起"}}</text>
+  <view class="flex solid-bottom padding justify-center">
+      <view class="bg-white padding-sm margin-xs radius">
+        <view wx:if="{{like==0}}">
         <view class="like" catchtap='liking'>      
-          <image src='/images/Mainpage_like.png'></image>
+          <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_like.png' class="nmsl"></image></button>
         </view>
       </view>
       <view wx:if="{{like==1}}">
-        <view class="like" catchtap='unliking'>
-          <image src='/images/Message_like.png'></image>
+        <view class="like" catchtap='unliking'>    
+          <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Message_like.png' class="nmsl"></image></button>
         </view>
       </view>
-      <view wx:if="{{collection==0}}">
+      </view>
+      <view class="bg-white padding-sm margin-xs radius">
+        <view wx:if="{{collection==0}}">
         <view class="collect" catchtap='collecting'>      
-          <image class='share-img' src='/images/Mainpage_collection.png'></image>
+          <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_collection.png' class="nmsl"></image></button>
         </view>
       </view>
       <view wx:if="{{collection==1}}">
         <view class="collect" catchtap='uncollecting'>
-          <image class='share-img' src='/images/Mainpage_collection.png'></image>
+          <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/click_collect.png' class="nmsl"></image></button>
         </view>
       </view>
+      </view>
+      <view class="bg-white padding-sm margin-xs radius">
+        <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_comment.png' class="nmsl"></image></button>
+      </view>
     </view>
-  </view>
-  <view class="padding-xl radius shadow bg-white" sytle="padding-xl: 5px;">
-  <text class='detail'>{{postData.content}}</text>
+
   </view>
 </view>

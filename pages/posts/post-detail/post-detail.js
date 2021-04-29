@@ -6,9 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
+    post_id: 0,
     like: 0,
-    collection: 0
+    collection: 0,
+    maxLength: 100, // 收起时最大显示文字长度
+    ellipsis: false, // 是否收缩
+    contentShow: ''
   },
+
+  ellipsis: function () {
+    console.log(this.post_id)
+    var ellipsis = !this.data.ellipsis;
+    var contentShow = postsData.postList[this.post_id].content;
+    var maxLength = this.data.maxLength;
+    // 如果内容长度少于10，则不截取;否则当处于收起状态，截取7个文字并加上省略号
+    console.log(contentShow.length)
+    contentShow = (contentShow.length > maxLength && ellipsis) ? contentShow.substring(0, maxLength - 3) + "..." : contentShow;
+    this.setData({
+      contentShow: contentShow,
+      ellipsis: ellipsis
+    })
+  },
+
   liking: function(e) {
     let that = this
     this.setData({
@@ -42,7 +61,9 @@ Page({
    */
   onLoad: function (options) {
     //后期需要后端传
+    this.post_id = options.id;
     var postId = options.id;
+    console.log(postId)
     // 拿到数据文件对应id的数据元素
     var postList = postsData.postList;
     var postData;
@@ -60,6 +81,7 @@ Page({
         postData: postData
       }
     );
+    this.ellipsis();
   },
 
   /**

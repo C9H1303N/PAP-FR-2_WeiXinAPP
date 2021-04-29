@@ -6,6 +6,16 @@
   margin-top: -200rpx;
 }
  
+.nmsl {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.paper_info {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .head-imagee {
   width: 100%;
   height: 460rpx;
@@ -94,6 +104,12 @@
   z-index: -99;
 }
  
+.ellipsis_text{
+  width: 100%;
+  font: 16px;
+  text-align: center
+}
+
 .detail{
   color: #666;
   margin-left: 50rpx;
@@ -101,8 +117,8 @@
   margin-right: 50rpx;
   line-height: 44rpx;
   letter-spacing: 2px;
-}
-
-.collect {
-  
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
