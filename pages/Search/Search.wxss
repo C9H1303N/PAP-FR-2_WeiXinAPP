@@ -7,12 +7,14 @@ page{
 }
 .search_wrapper {
   position: fixed;
+  z-index: 6;
 }
 .search_up {
   margin-left: -220rpx;
   margin-top: -200rpx;
-  width: 250%;
+  width: 300%;
   height: 100rpx;
+  margin-left: -250rpx;
   background-color: #5d7599;  
 }
 
@@ -42,6 +44,7 @@ page{
   margin-right: 20rpx;
   position: fixed;
   height: 80rpx;
+  z-index: 5;
 }
 .searchImage {
   margin-left: 38rpx;
