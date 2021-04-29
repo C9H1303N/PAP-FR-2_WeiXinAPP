@@ -82,10 +82,19 @@
 }
 
 .shezhi{
-    hight:70rpx;
+    height:70rpx;
     width:100%;
     display: flex;
     flex-direction: row-reverse;
+    background-color:  #778899;
+}
+
+.shezhi02{
+    background-color:  #778899;
+}
+
+.shezhi_button{
+    background-color:  #778899;
 }
 
 .contain02{
@@ -101,7 +110,9 @@
 }
 
 .jiedu01{
+    height: 70rpx;
     font-weight: 700;
+    display: flex;
     color:#778899;
 }
 
@@ -114,3 +125,69 @@
     height: 50vh;
     flex-direction: column;
 }
+
+.button01{
+    height: 70rpx;
+    display: flex;
+}
+
+/* *******topbar******* begin*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
+  
+  .tab-view::before {
+    content: '';
+    position: relative;
+    border-bottom: 1rpx solid #eaeef1;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  
+  .tab-view {
+    width: 100%;
+    margin-top: 610rpx;
+    height: 100rpx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: #f2f2fa;
+    white-space: nowrap;
+  }
+  
+  .tab-bar-item {
+    padding: 0;
+    height: 100rpx;
+    min-width: 80rpx;
+    line-height: 100rpx;
+    margin: 0 28rpx;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .tab-bar-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    color: #000;
+    font-weight: 400;
+  }
+  
+  .active {
+    border-bottom: 6rpx solid #778899;
+  }
+  
+  .active .tab-bar-title {
+    color: #778899 !important;
+    font-size: 36rpx;
+    font-weight: bold;
+  }
+
+  /* *******topbar******* end*/
