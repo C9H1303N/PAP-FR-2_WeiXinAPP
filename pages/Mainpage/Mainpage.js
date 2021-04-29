@@ -100,11 +100,19 @@ Page({
       },
       method: 'GET',
       success (res) {
-        console.log(res.data)
+        //console.log(res.data)
+        this.setData(
+          // 替换发现前端的数据
+          {
+            posts_key: res.data.papers
+          }
+        );
+        /*
         wx.setStorage({
           data: res.data,
           key: 'paper',
         })
+        */
       }
     })
     //  高度自适应
@@ -117,6 +125,7 @@ Page({
         });
       }
     });
+    /*
     wx.getStorage({
       key: 'paper',
       success: function(res) {
@@ -131,6 +140,7 @@ Page({
         console.log(this.posts_key)
       }
     })
+    */
   },
   // 滚动切换标签样式
   switchTab: function (e) {
