@@ -95,6 +95,9 @@ Page({
     let that = this;
     postsData = wx.request({
       url: 'http://114.115.215.200:8080/api/paper/page/1',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
       method: 'GET',
       success (res) {
         console.log(res.data)

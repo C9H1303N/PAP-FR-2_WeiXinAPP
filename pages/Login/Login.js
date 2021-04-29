@@ -1,10 +1,9 @@
 
 const app = getApp()
- 
 Page({
   data: {
-    username: '',
-    password: ''
+    username: "",
+    password: ""
   },
   //事件处理函数
   bindViewTap: function() {
@@ -46,31 +45,22 @@ Page({
       })
     } else {
       wx.request({
-        url: app.globalData.globalReqUrl +'/login/login', // 仅为示例，并非真实的接口地址
-        method: 'post',
+        url: 'http://114.115.215.200:8080/api/token-auth', 
+        method: 'POST',
         data: {
           username: that.data.username,
           password: that.data.password
         },
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' // 默认值
-        },
         success(res) {
-          if (res.data.code == "OK") {
-            var unitName = res.data.data.User.unitName;
-            var unitId = res.data.data.User.unitId;
-            wx.setStorageSync('unitId', unitId);
-            wx.setStorageSync('unitName', unitName);
-            wx.switchTab({
-              url: '../overviewData/realTimeData'
-            })
-          } else {
-            wx.showToast({
-              title: res.data.message,
-              icon: 'none',
-              duration: 2000
-            })
-          }
+          var data = res.data
+          app.globalData.token = data.access_token
+          console.log(app.globalData.token)
+          wx.switchTab({
+            url: '/pages/Mainpage/Mainpage',
+          })
+        },
+        fail(res){
+
         }
       })
     }
