@@ -1,6 +1,4 @@
 <!--pages/posts/post-detail/post-detail.wxml-->
-<!-- wxml文件编码原则：
-  先静后动，先样式再数据 -->
 <view class='container'>
   <!--<image class='head-imagee' src='{{postData.img.imgSrc}}'></image>-->
   <view class='author-date'>

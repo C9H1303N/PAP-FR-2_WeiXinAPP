@@ -7,12 +7,13 @@
 }
 .search_frame{
   background-color: #5d7599;
-  height: 100rpx;
+  height: 140rpx;
   padding-top: 30rpx;
   display: flex;
   flex-direction: row;
   width: 100%;
   position: fixed;
+  z-index: 5;
 }
 .search_word{
   border-radius: 80rpx;
