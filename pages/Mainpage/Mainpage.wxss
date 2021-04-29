@@ -61,7 +61,7 @@ page{
   border-radius: 50rpx;
   margin-right: 12rpx;
   margin-left: 12rpx;
-  height: 80rpx;
+  height: 85rpx;
 }
 .container {
   height: 100%;
