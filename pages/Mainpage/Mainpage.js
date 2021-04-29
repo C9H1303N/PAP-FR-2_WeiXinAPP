@@ -42,7 +42,7 @@ Page({
   },
   AItap: function(e){
     wx.navigateTo({
-      url: '/pages/Search/Search',
+      url: '/pages/Search/Search?searchWord=AI',
     })
   },
   onPostTap: function(event){
