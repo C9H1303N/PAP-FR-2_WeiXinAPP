@@ -1,2 +1,29 @@
 <!--pages/Login/Login.wxml-->
-<text>pages/Login/Login.wxml</text>
+<view class="container" style="background: #ffffff"> 
+ 
+
+ <image src="/images/banner4x.png" style="width: 100%; height: 80%"></image> 
+
+ <view class="login-from" style="background: #ffffff"> 
+ 
+ <!--账号-->
+ <view class="inputView" style="background: #ffffff"> 
+  <image class="nameImage" src="/images/usernamelogo.png"></image> 
+  <label class="loginLab">账号</label> 
+  <input class="inputText" placeholder="请输入账号" bindinput="usernameInput" maxlength='10'/> 
+ </view> 
+ <view class="line"></view> 
+ 
+ <!--密码-->
+ <view class="inputView"> 
+  <image class="keyImage" src="/images/passwordlogo.png"></image> 
+  <label class="loginLab">密码</label> 
+  <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" maxlength='20'/> 
+ </view> 
+ 
+ <!--按钮-->
+ <view class="loginBtnView"> 
+  <button class="loginBtn" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="login" >登录</button> 
+ </view> 
+ </view> 
+</view>
