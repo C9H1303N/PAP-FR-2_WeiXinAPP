@@ -53,7 +53,7 @@ page{
   text-align: right; 
   margin-right: 22px; 
   margin-top: 11px;
-  color: #cccccc; 
+  color: #2c2727; 
   font-size: 14px
  } 
  .line { 

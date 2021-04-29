@@ -101,6 +101,10 @@ Page({
       method: 'GET',
       success (res) {
         console.log(res.data)
+        wx.setStorage({
+          data: res.data,
+          key: 'paper',
+        })
       }
     })
     //  高度自适应
@@ -113,12 +117,20 @@ Page({
         });
       }
     });
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: postsData.postList
+    wx.getStorage({
+      key: 'paper',
+      success: function(res) {
+        console.log(res)
+        this.setData(
+          // 替换发现前端的数据
+          {
+            posts_key: res.papers
+          }
+        );
+        
+        console.log(this.posts_key)
       }
-    );
+    })
   },
   // 滚动切换标签样式
   switchTab: function (e) {
