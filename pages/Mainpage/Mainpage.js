@@ -1,6 +1,6 @@
 // pages/Mainpage.js
 var app = getApp()
-var postsData = require('../../data/posts-data.js')
+var postsData
 Page({
 
   /**
@@ -93,6 +93,13 @@ Page({
    */
   onLoad: function () {
     let that = this;
+    postsData = wx.request({
+      url: 'http://114.115.215.200:8080/api/paper/page/1',
+      method: 'GET',
+      success (res) {
+        console.log(res.data)
+      }
+    })
     //  高度自适应
     wx.getSystemInfo({
       success: function (res) {
