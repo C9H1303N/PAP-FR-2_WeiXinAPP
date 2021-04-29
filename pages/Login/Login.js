@@ -54,10 +54,17 @@ Page({
         success(res) {
           var data = res.data
           app.globalData.token = data.access_token
-          console.log(app.globalData.token)
-          wx.switchTab({
-            url: '/pages/Mainpage/Mainpage',
-          })
+          console.log(data.code)
+          if(data.code == undefined){
+              wx.switchTab({
+              url: '/pages/Mainpage/Mainpage',
+            })
+          }
+          else{
+            wx.showToast({
+              title: '用户名或密码错误！',
+            })
+          }
         },
         fail(res){
 

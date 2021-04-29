@@ -2,7 +2,11 @@
     <!-- <image class="backGround" src="/images/Images_Mine/banner.png">
     </image> -->
     <view class = "shezhi">
+    <view class = "shezhi02">
+    <button class = "shezhi_button" bindtap="jump_shezhi">
     <image class = "shezhi_photo" src="/images/Images_Mine/设置@4x-8.png"></image>
+    </button>
+    </view>
     </view>
     <view class="temp"></view>
     <image src="{{user_photo}}" class="user_image"></image>
@@ -23,19 +27,22 @@
         </view>
     </view>
 </view>
-<view class="contain02">
-    <view class = "jiedu">
-        <text class = "jiedu01">发表解读</text>
-    </view>
-    <view class = "jiedu">
-        <text class = "jiedu02">我的评论</text>
-    </view>
-    <view class = "jiedu">
-        <text class = "jiedu02">我的收藏</text>
-    </view>
-    <view class = "jiedu">
-        <text class = "jiedu02">历史记录</text>
-    </view>
-</view>
 
+<scroll-view scroll-x scroll-with-animation class="tab-view" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{tabbar}}" wx:key="{{index}}" class="tab-bar-item {{currentTab==index ? 'active' : ''}}"
+      data-current="{{index}}" catchtap="swichNav">
+      <text class="tab-bar-title">{{item}}</text>
+    </view>
+</scroll-view>
+
+<view class = "contain03">
+  <import src="/pages/posts/post-item/post-item.wxml" />
+  <view>
+  <block wx:for="{{posts_key}}" wx:for-item='item'>
+    <view catchtap='onPostTap' data-postId = "{{item.postId}}">
+      <template is='postItem' data="{{...item}}" />
+    </view>
+  </block>
+  </view>
+</view>
 
