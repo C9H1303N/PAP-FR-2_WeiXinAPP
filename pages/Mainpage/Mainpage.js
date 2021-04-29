@@ -42,7 +42,42 @@ Page({
   },
   AItap: function(e){
     wx.navigateTo({
-      url: '/pages/Search/Search?searchWord=AI',
+      url: '/pages/Search/Search?searchWord=人工智能',
+    })
+  },
+  biotap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=生命科学',
+    })
+  },
+  ETtap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=电子技术',
+    })
+  },
+  phtap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=哲学',
+    })
+  },
+  EETtap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=工程设计',
+    })
+  },
+  selfdrivingtap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=自动驾驶',
+    })
+  },
+  medicaltap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=智慧医疗',
+    })
+  },
+  leadingmaterialtap: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search?searchWord=前沿材料',
     })
   },
   onPostTap: function(event){
