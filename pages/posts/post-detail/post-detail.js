@@ -84,7 +84,7 @@ Page({
         break;
       }
     }
-    console.log(detailData)
+    //console.log(detailData)
     // 数据绑定
     this.ellipsis();
   },
