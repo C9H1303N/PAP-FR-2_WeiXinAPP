@@ -1,43 +1,42 @@
 <!--pages/posts/post-detail/post-detail.wxml-->
 <view class='container'>
   <!--<image class='head-imagee' src='{{postData.img.imgSrc}}'></image>-->
-  <view class='author-date'>
+  <!-- <view class='author-date'>
     <image class='avatar' src='{{postData.img.avatar}}'></image>
-  </view>
-  <text class='title'>{{detailData.title}}</text>
+  </view> -->
+  <text class='title'>{{detailData.paper.title}}</text>
   <view class="padding-xl radius shadow bg-white" style="width: 100%; margin-top: 15rpx; margin-bottom: 40rpx" >
     <text class="paper_info">论文信息\n</text>
     <text>\n</text>
-    <text class='author'>发表用户：zcx2018</text>
-    <text class='author'>发表年限：{{detailData.published_year}}</text>
+    <text class='author'>发表用户：{{detailData.paper.created_by.username}}</text>
+    <text class='author'>发表年限：{{detailData.paper.published_year}}</text>
     <text>\n</text>
     <text class='author'>论文链接：</text>
     <text>\n</text>
-    <text style="word-break:break-all;">{{detailData.source}}</text>
+    <text style="word-break:break-all;">{{detailData.paper.source}}</text>
     <text>\n</text>
     <text class='author'>相关标签：</text>
     <text>\n</text>
-    <view class="cu-tag">test2</view>
-    <view class="cu-tag">identification</view>
-    <view class="cu-tag">3D</view>
-    <view class="cu-tag">RGB</view>
-    
-    <text>\n</text>
+    <view  style="display: flex;">
+      <view wx:for='{{detailData.paper.tags}}' wx:for-item="value" style="margin:10rpx">
+        <view class="cu-tag">{{value.name}}</view>
+      </view>
+    </view>
     <text class='author'>原作者：</text>
     <text>\n</text>
-    <text class='cu-tag'>{{detailData.author}}</text>
+    <text>{{detailData.paper.author}}</text>
     <text>\n</text>
     <text>\n</text>
     <text>\n</text>
     <text class='paper_info'>论文摘要：</text>   
     <text>\n</text>
-    <rich-text class='detail' nodes="{{detailData.abstract}}"></rich-text>
+    <rich-text class='detail' nodes="{{detailData.paper.abstract}}"></rich-text>
   </view>
   <view class="padding-xl radius shadow bg-white" >
   <text class="paper_info">论文解读</text>
   <text>\n</text>
   <text class='detail'>{{contentShow}}</text>
-  <text class='ellipsis_text' hidden='{{postData.content.length<=maxLength}}'  bindtap='ellipsis'>{{ellipsis?"展开":"收起"}}</text>
+  <text class='ellipsis_text' hidden='{{detailData.content.length<=maxLength}}'  bindtap='ellipsis'>{{ellipsis?"展开":"收起"}}</text>
   <view class="flex solid-bottom padding justify-center">
       <view class="bg-white padding-sm margin-xs radius">
         <view wx:if="{{like==0}}">

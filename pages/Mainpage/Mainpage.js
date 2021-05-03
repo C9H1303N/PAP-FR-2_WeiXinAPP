@@ -1,6 +1,7 @@
 // pages/Mainpage.js
 var app = getApp()
 var postsData
+var i = 1
 Page({
 
   /**
@@ -94,24 +95,24 @@ Page({
    */
   onLoad: function () {
     let that = this;
-    postsData = wx.request({
-      url: 'http://114.115.215.200:8080/api/paper/page/1',
+    wx.request({
+      url: 'http://114.115.215.200:8080/api/interpretation/page/' + i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
       method: 'GET',
       success (res) {
-        console.log(res.data.papers)
-        postsData = res.data.papers
+        console.log(res.data.interpretations)
+        postsData = res.data.interpretations
         that.setData(
           // 替换发现前端的数据
           {
-            posts_key: res.data.papers
+            posts_key: postsData
           }
         );
         wx.setStorage({
           key: 'paper',
-          data: res.data.papers
+          data: postsData
         })
       }
     })
@@ -141,6 +142,30 @@ Page({
       }
     })
     */
+  },
+  onReachBottom: function() {
+    i = i + 1;
+    wx.request({
+      url: 'http://114.115.215.200:8080/api/paper/page/' + i,
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+        console.log(res.data.papers)
+        postsData = postsData.concat(res.data.papers) 
+        that.setData(
+          // 替换发现前端的数据
+          {
+            posts_key: postsData
+          }
+        );
+        wx.setStorage({
+          key: 'paper',
+          data: postsData
+        })
+      }
+    })
   },
   // 滚动切换标签样式
   switchTab: function (e) {

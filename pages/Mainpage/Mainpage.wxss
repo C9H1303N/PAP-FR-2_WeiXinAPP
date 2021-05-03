@@ -354,8 +354,16 @@ page{
   height: 200rpx;
 }
 .post-title{
+  width: 400rpx;
   font-size: 30rpx;
   font-weight: bolder;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break:break-all;
+}
+.authorship{
+  width: 400rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
