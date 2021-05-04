@@ -1,4 +1,9 @@
-// pages/Mine/Mine.js
+var app = getApp()
+var postsData = require('../../data/posts-data.js')
+var person = require('../../data/user_sum.js')
+var My_jiedu = require('../../data/my_jiedu.js')
+var My_collection = require('../../data/mu_collection.js')
+
 Page({
 
   /**
@@ -13,7 +18,91 @@ Page({
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    tabbar: ['默认排序','发布时间','浏览数量','点赞数量']
+    tabbar: ['发表解读','我的评论','我的收藏','历史记录'],
+    searchWord: "",
+    old_searchword: ""
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+
+    // 对用户变量的更新
+    var people = person.postList01;
+    var temp_person;
+    this.setData(
+      {
+        temp_person: people[1]
+      }
+    );
+
+
+    let that = this;
+    //  高度自适应
+
+
+
+    wx.getSystemInfo({
+      success: function (res) {
+        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
+        // console.log('==顶部高度==',calc)
+        that.setData({
+          winHeight: calc,
+        });
+      }
+    });
+
+
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: My_jiedu.postList02,
+        old_searchword: this.data.searchWord
+      }
+    );
+
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let that = this;
+    //  高度自适应
+    wx.getSystemInfo({
+      success: function (res) {
+        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
+        // console.log('==顶部高度==',calc)
+        that.setData({
+          winHeight: calc,
+        });
+      }
+    });
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: My_jiedu.postList02,
+        old_searchword: options.searchWord
+      }
+    );
+  },
+
+  // 会是因为这个函数的原因吗 ？
+  navbarTap: function(e){
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx
+    })
+  },
+
+  onPostTap: function(event){
+    // 获取新闻的postId
+    var postId = event.currentTarget.dataset.postid;
+    // 跳转到子页面，新闻详情界面
+    wx.navigateTo({
+      url: '/pages/posts/post-detail/post-detail?id='+postId,
+    })
   },
 
   jump_shezhi: function(e){
@@ -26,15 +115,17 @@ Page({
     let cur = e.currentTarget.dataset.current;
     console.log(cur)
     if (this.data.currentTab == cur) {
+      
       return false;
-    } else {
+    } 
+    else {
       this.setData({
         currentTab: cur
       })
       if (cur == 0) {
         this.setData(
           {
-            posts_key: postsData.postList,
+            posts_key: My_jiedu.postList02,
           }
         );
       }
@@ -60,17 +151,18 @@ Page({
           this.setData(
             {
               posts_key: have_list,
+            
             }
           );
       }
-      else if (cur == 2) { //浏览数量排序
-        var have_list = postsData.postList
-        have_list.sort(function(a,b) {
-          return b.reading-a.reading
-        });
+      else if (cur == 2) { //我的收藏页面
+        // var have_list = postsData.postList
+        // have_list.sort(function(a,b) {
+        //   return b.reading-a.reading
+        // });
         this.setData(
           {
-            posts_key: have_list,
+            posts_key: My_collection.postList03,
           }
         );
       }
@@ -88,19 +180,37 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onPostTap: function(event){
+    // 获取新闻的postId
+    var postId = event.currentTarget.dataset.postid;
+    // 跳转到子页面，新闻详情界面
+    wx.navigateTo({
+      url: '/pages/posts/post-detail/post-detail?id='+postId,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  checkCor: function () {
+    let that = this;
+    if (that.data.currentTab > 3) {
+      that.setData({
+        scrollLeft: 300
+      })
+    } else {
+      that.setData({
+        scrollLeft: 0
+      })
+    }
   },
+
+  switchTab: function (e) {
+    let that = this;
+    // console.log("滚动切换标签",e)
+    that.setData({
+      currentTab: e.detail.current
+    });
+    that.checkCor();
+  },
+
 
   /**
    * 生命周期函数--监听页面显示

@@ -1,3 +1,7 @@
 .TC{
     background-color: #778899;
 }
+
+.temp{
+    height: 750rpx;
+}

@@ -9,21 +9,21 @@
     </view>
     </view>
     <view class="temp"></view>
-    <image src="{{user_photo}}" class="user_image"></image>
+    <image src="{{temp_person.user_photo}}" class="user_image"></image>
     <view class="temp01"></view>
     <view class = "user_info">
         <view class = "user_info01">
-            <text class="jiacu" decode="{{true}}"> {{user_name}} &nbsp;&nbsp;&nbsp;</text>
-            <image src="/images/Images_Mine/编辑Logo@4x-8.png" class = "bianji"></image>
+            <text class="jiacu" decode="{{true}}"> {{temp_person.user_name}} &nbsp;&nbsp;&nbsp;</text>
+            <!-- <image src="/images/Images_Mine/编辑Logo@4x-8.png" class = "bianji"></image> -->
         </view>
         <view class="user_info02">
-            <text class="number01">{{guanzhu_sum}} </text>
+            <text class="number01">{{temp_person.guanzhu_sum}} </text>
             <text decode="{{true}}">&nbsp; 关注 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
-            <text class = "number01">  {{fensi_sum}} </text>
+            <text class = "number01">  {{temp_person.fensi_sum}} </text>
             <text decode="{{true}}"> &nbsp; 粉丝</text>
         </view>
         <view class="user_info03">
-            <text>{{person_view}}</text>
+            <text>{{temp_person.person_view}}</text>
         </view>
     </view>
 </view>
@@ -35,14 +35,18 @@
     </view>
 </scroll-view>
 
-<view class = "contain03">
+<view class="temp01"></view>
+
+<view>
   <import src="/pages/posts/post-item/post-item.wxml" />
   <view>
   <block wx:for="{{posts_key}}" wx:for-item='item'>
+    <view class="temp01"></view>
     <view catchtap='onPostTap' data-postId = "{{item.postId}}">
       <template is='postItem' data="{{...item}}" />
     </view>
   </block>
   </view>
+  <view class = "temp01"></view>
 </view>
 

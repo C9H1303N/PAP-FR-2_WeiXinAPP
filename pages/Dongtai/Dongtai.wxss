@@ -1,1 +1,202 @@
-/* pages/Dongtai/Dongtai.wxss */
+.contain01{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  #778899;
+}
+
+.text01{
+    color: white;
+    font-size: large;
+}
+
+.temp01{
+    height: 30rpx;
+}
+
+.temp001{
+  height: 15rpx;
+}
+
+.zhuanAndshou{
+  display: flex;
+}
+
+.zhuan{
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.shou{
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.temp_zs01{
+  width: 100rpx;
+}
+
+.temp_zs02{
+  width: 200rpx;
+}
+
+.temp_a01{
+  height: 10rpx;
+}
+
+.user_info{
+    height:200rpx;
+    width: 660rpx;
+    background-color: white;
+    border-radius: 0.3cm;
+    display: flex;
+    flex-direction: column;
+}
+
+.text02{
+    font-weight: 600;
+}
+
+.image_list{
+    display: flex;
+}
+
+.user_image{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    justify-content: space-between;
+}
+
+.temp02{
+    width: 0.5cm;
+}
+
+.temp03{
+    height: 20rpx;
+}
+
+/* 动态卡片*/
+
+
+.dongtai_main{
+  display: flex;
+    /*row 横向  column 列表  */
+    /* margin-left: 20rpx;
+    margin-right: 20rpx; */
+    /* margin-top: -20rpx; */
+  background: #fbfbfb;
+  /* height: 320rpx; */
+  width: 100%;
+  Border-bottom: 5rpx solid #b1b7bd;
+
+}
+
+.text_nicheng{
+  color:#2067ad;
+  font-weight: 550;
+}
+
+.text_fenxiang{
+  color:gray;
+}
+
+.text_pinglun{
+  color:rgb(182, 179, 179);
+  font-size: 0.4cm;
+}
+
+.touxiang{
+  width: 100rpx;
+}
+
+.touxiang01{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.temp_dong01{
+  width: 30%;
+}
+
+.post-container{
+    display: flex;
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    /* margin-top: -20rpx; */
+    border: 5rpx solid #808080;
+    border-radius: 20rpx;
+    background: #f1eded;
+    height: 230rpx;
+    width: 600rpx;
+    
+  }
+  .info-container{
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin-right: 20rpx;
+  }
+  .post-author{
+    margin: 30rpx;
+    height: 160rpx;
+    width: 300rpx;
+  }
+  .post-title{
+    font-size: 30rpx;
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .post-author-date{
+    display: flex;
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    margin-top: 30rpx;
+    margin-bottom: 10rpx;
+    width: 100%;
+  }
+  .post-like{
+    display: flex;
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    height: 80rpx;
+    overflow: hidden;
+  }
+  .post-image{
+    height: 60%;
+    width: 20%;
+  }
+  .author{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+  }
+  .post-date{
+    text-align: right;
+    width: 50%;
+  }
+  .post-like-font{
+    color: #808080;
+    text-align: justify;
+  }
+  .recommend {
+    margin-top: -180rpx;
+    margin-left: 20rpx;
+  }
+
+  /*  */
+
+  .contain02{
+      height: 70vh;
+  }
+
+  .card01{
+      height: 30vh;
+  }
+  
+

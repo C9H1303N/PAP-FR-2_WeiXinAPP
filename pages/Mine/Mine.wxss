@@ -42,7 +42,6 @@
     display: flex;
     flex-direction: column;
     justify-content:center;
-    
 }
 
 .user_info01{
@@ -142,7 +141,7 @@
     content: '';
     position: relative;
     border-bottom: 1rpx solid #eaeef1;
-    -webkit-transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5); 
     transform: scaleY(0.5);
     bottom: 0;
     right: 0;
@@ -151,11 +150,11 @@
   
   .tab-view {
     width: 100%;
-    margin-top: 610rpx;
+    /* margin-top: 610rpx; */
     height: 100rpx;
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* position: fixed; */
+    /* top: 0;
+    left: 0; */
     z-index: 99;
     background: #f2f2fa;
     white-space: nowrap;
@@ -191,3 +190,68 @@
   }
 
   /* *******topbar******* end*/
+
+  /* 论文卡片*/
+  .post-container{
+    display: flex;
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    margin-top: -20rpx;
+    border: 5rpx solid #808080;
+    border-radius: 20rpx;
+    background: #fbfbfb;
+    height: 260rpx;
+  }
+  .info-container{
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin-right: 20rpx;
+  }
+  .post-author{
+    margin: 30rpx;
+    height: 200rpx;
+  }
+  .post-title{
+    font-size: 30rpx;
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .post-author-date{
+    display: flex;
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    margin-top: 30rpx;
+    margin-bottom: 10rpx;
+    width: 100%;
+  }
+  .post-like{
+    display: flex;
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    height: 80rpx;
+    overflow: hidden;
+  }
+  .post-image{
+    height: 60%;
+    width: 20%;
+  }
+  .author{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+  }
+  .post-date{
+    text-align: right;
+    width: 50%;
+  }
+  .post-like-font{
+    color: #808080;
+    text-align: justify;
+  }
+  
+  

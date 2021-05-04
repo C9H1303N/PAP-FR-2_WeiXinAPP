@@ -1,3 +1,5 @@
-<button class = "TC">
+
+<view class = "temp"></view>
+<button class = "TC" plain="true">
 <text>退出登录</text>
 </button>

@@ -1,0 +1,58 @@
+<template name='post_pinglun_Item'>
+  <view class = "temp01"></view>
+  <view class = "dongtai_main">
+  <view class = 'touxiang'>
+      <image src = '{{touxiang}}' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
+  </view>
+
+  <view>
+  <view class="temp001"></view>
+  <view>
+      <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
+      <text class="text_nicheng">{{pinglun_name}}</text>
+      <text class="text_fenxiang" decode="{{true}}">&nbsp;&nbsp;&nbsp;分享了解读</text>
+  </view>
+  <view class="temp_a01"></view>
+  <view>
+      <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
+      <text class="text_pinglun">{{pinglun}}</text>
+  </view>
+  <view class="temp_a01"></view>
+
+
+  <view class='post-container'>
+    <image style="width:230rpx;" src='{{img.avatar}}' class='post-author' mode="scaleToFill" ></image>
+    <view style="flex:1;" class="info-container">
+      <view class='post-title'>{{title}}</view>
+      <view class="authorship">原作者：{{authorship}}</view>
+      <view class='post-author-date'>
+        <text  class="author">{{author}}</text>
+        <text  class='post-date'>{{date}}</text>
+      </view>
+      <view class='post-like'>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_look.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>{{reading}}</text>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_comment.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>{{collection}}</text>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_like.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>{{like}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="temp_a01"></view>
+  <view class="temp_a01"></view>
+  <view class="zhuanAndshou">
+      <view class="temp_zs01"></view>
+      <image src = "/images/Images_Mine/转发@4x-8.png" class="zhuan"></image>
+      <text>转发</text>
+      <view class = "temp_zs02"></view>
+      <image src = "/images/Images_Mine/收藏@4x-8.png" class="shou"></image>
+      <text>收藏</text>
+  </view>
+
+  <view class="temp_a01"></view>
+
+  </view>
+  </view>
+</template>
