@@ -129,11 +129,6 @@ Page({
       searchWord: ""
     })
   },
-  AItap: function(e){
-    wx.navigateTo({
-      url: '/pages/Search/Search',
-    })
-  },
   onPostTap: function(event){
     // 获取新闻的postId
     var postId = event.currentTarget.dataset.postid;
@@ -146,7 +141,39 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  
+  loadmore: function(){
+    this.data.i = this.data.i + 1;
+    let that = this;
+    let word = this.data.old_searchword
+    wx.request({
+      url: 'http://114.115.215.200:8080/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + word + '&interpretation=true',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+        console.log(res.data)
+        if(Math.ceil(res.data.total_res/5) >= that.data.i){
+          postsData = postsData.concat(res.data.res) 
+        wx.setStorage({
+          key: 'paper1',
+          data: postsData
+        })
+        that.setData(
+      // 替换发现前端的数据
+          {
+          posts_key: postsData
+          }
+        );
+        }
+        else {
+          wx.showToast({
+            title: '没有更多了！',
+          })
+        }
+      }
+    });
+  },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
     let cur = e.currentTarget.dataset.current;

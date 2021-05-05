@@ -1,5 +1,4 @@
 <!--pages/Search/Search.wxml-->
-<!--pages/Mainpage.wxml-->
 <view class="container">
   <view class="search_wrapper">
 <view class="search_up">
@@ -34,5 +33,6 @@
       <template is='postItem' data="{{...item}}" />
     </view>
   </block>
+  <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
   </view>

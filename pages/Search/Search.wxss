@@ -215,3 +215,24 @@ page{
   margin-top: -180rpx;
   margin-left: 20rpx;
 }
+.loadmore{
+  background-color: #f2f2fa;
+}
+.loadmore::after{
+  border: none;
+}
+.authorship{
+  width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.post-title{
+  width: 400rpx;
+  font-size: 30rpx;
+  font-weight: bolder;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break:break-all;
+}
