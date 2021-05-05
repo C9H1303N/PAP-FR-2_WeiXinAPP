@@ -401,3 +401,9 @@ page{
   color: #808080;
   text-align: justify;
 }
+.loadmore{
+  background-color: #f2f2fa;
+}
+.loadmore::after{
+  border: none;
+}

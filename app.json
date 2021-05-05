@@ -13,7 +13,8 @@
     "pages/posts/post-item/post-item",
     "pages/posts/post-detail/post-detail",
     "pages/Message/Message-item/Message-item",
-    "pages/Register/Register"
+    "pages/Register/Register",
+    "pages/Search/Search_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

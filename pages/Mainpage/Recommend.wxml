@@ -62,6 +62,7 @@
       <template is='postItem' data="{{...item}}" />
     </view>
   </block>
+  <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
   </view>
 </view>

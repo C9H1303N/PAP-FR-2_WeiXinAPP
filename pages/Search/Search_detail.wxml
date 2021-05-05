@@ -1,4 +1,4 @@
-<!--pages/posts/post-detail/post-detail.wxml-->
+<!--pages/Search/Search_detail.wxml-->
 <view class='container'>
   <!--<image class='head-imagee' src='{{postData.img.imgSrc}}'></image>-->
   <!-- <view class='author-date'>

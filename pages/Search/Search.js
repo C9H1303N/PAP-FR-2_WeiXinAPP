@@ -1,6 +1,6 @@
 // pages/Search/Search.js
 var app = getApp()
-var postsData = require('../../data/posts-data.js')
+var postsData
 Page({
 
   /**
@@ -15,7 +15,8 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     searchWord: "",
-    old_searchword: ""
+    old_searchword: "",
+    i: 1
   },
 
   onReady: function() {
@@ -33,7 +34,6 @@ Page({
     this.setData(
       // 替换发现前端的数据
       {
-        posts_key: postsData.postList,
         old_searchword: this.data.searchWord
       }
     );
@@ -50,13 +50,30 @@ Page({
         });
       }
     });
-    this.setData(
+    wx.request({
+      url: 'http://114.115.215.200:8080/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + options.searchWord + '&interpretation=true',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+        console.log(res.data)
+        postsData = res.data.res
+        wx.setStorage({
+          key: 'paper1',
+          data: postsData
+        })
+        that.setData(
       // 替换发现前端的数据
-      {
-        posts_key: postsData.postList,
-        old_searchword: options.searchWord
+          {
+          posts_key: postsData,
+          old_searchword: options.searchWord
+          }
+        );
       }
-    );
+    });
+    console.log(postsData)
+    console.log(this.data.posts_key)
   },
   navbarTap: function(e){
     this.setData({
@@ -83,22 +100,30 @@ Page({
     else {
       let that = this;
     //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
-        // console.log('==顶部高度==',calc)
-        that.setData({
-          winHeight: calc,
-        });
-      }
-    });
-    this.setData(
+      this.data.i = 1;
+      wx.request({
+      url: 'http://114.115.215.200:8080/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + word + '&interpretation=true',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+        console.log(res.data)
+        postsData = res.data.res
+        wx.setStorage({
+          key: 'paper1',
+          data: postsData
+        })
+        that.setData(
       // 替换发现前端的数据
-      {
-        posts_key: postsData.postList,
-        old_searchword: this.data.searchWord
+         {
+          posts_key: postsData,
+          old_searchword: word
+        }
+        );
       }
-    );
+      })
+      
     }
     this.setData({
       searchWord: ""
@@ -112,9 +137,10 @@ Page({
   onPostTap: function(event){
     // 获取新闻的postId
     var postId = event.currentTarget.dataset.postid;
+    console.log(postId)
     // 跳转到子页面，新闻详情界面
     wx.navigateTo({
-      url: '/pages/posts/post-detail/post-detail?id='+postId,
+      url: '/pages/Search/Search_detail?id='+postId,
     })
   },
   /**

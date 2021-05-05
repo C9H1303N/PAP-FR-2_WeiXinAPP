@@ -13,7 +13,8 @@ Page({
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    searchWord: ""
+    searchWord: "",
+    i: 1
   },
   navbarTap: function(e){
     this.setData({
@@ -96,7 +97,7 @@ Page({
   onLoad: function () {
     let that = this;
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/page/' + i,
+      url: 'http://114.115.215.200:8080/api/interpretation/page/' + that.data.i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -126,43 +127,41 @@ Page({
         });
       }
     });
-    /*
-    wx.getStorage({
-      key: 'paper',
-      success: function(res) {
-        console.log(res)
-        this.setData(
-          // 替换发现前端的数据
-          {
-            posts_key: res.papers
-          }
-        );
-        
-        console.log(this.posts_key)
-      }
-    })
-    */
+    
   },
-  onReachBottom: function() {
-    i = i + 1;
+  loadmore: function() {
+    this.data.i = this.data.i + 1;
+    var that = this;
     wx.request({
-      url: 'http://114.115.215.200:8080/api/paper/page/' + i,
+      url: 'http://114.115.215.200:8080/api/interpretation/page/' + that.data.i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
       method: 'GET',
       success (res) {
-        console.log(res.data.papers)
-        postsData = postsData.concat(res.data.papers) 
-        that.setData(
+        console.log(res.data)
+        if(res.data.page_total >= that.data.i){
+          postsData = postsData.concat(res.data.interpretations) 
+          that.setData(
           // 替换发现前端的数据
-          {
+            {
             posts_key: postsData
-          }
-        );
-        wx.setStorage({
-          key: 'paper',
-          data: postsData
+            }
+          );
+          wx.setStorage({
+            key: 'paper',
+            data: postsData
+          })
+        }
+        else{
+          wx.showToast({
+            title: '没有更多了！',
+          })
+        }
+      },
+      fail(res) {
+        wx.showToast({
+          title: '网络连接错误！',
         })
       }
     })
