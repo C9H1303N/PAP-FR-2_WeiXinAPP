@@ -212,8 +212,8 @@ page{
   text-align: justify;
 }
 .recommend {
-  margin-top: -180rpx;
-  margin-left: 20rpx;
+  margin-top: 0rpx;
+  margin-left: 0rpx;
 }
 .loadmore{
   background-color: #f2f2fa;

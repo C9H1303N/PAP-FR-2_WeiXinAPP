@@ -62,5 +62,11 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    exit: function() {
+        wx.reLaunch({
+            url: '/pages/Login/Login',
+        })
     }
+
 })

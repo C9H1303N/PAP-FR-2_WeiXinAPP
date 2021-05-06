@@ -71,8 +71,11 @@ Page({
     //console.log(postsData)
     for(var i = 0; i < postsData.length; i++){
       if(postsData[i].id == this.post_id){
+        console.log(postsData[i])
         this.setData({
-          detailData: postsData[i]
+          detailData: postsData[i],
+          like: postsData[i].is_like,
+          collection: postsData[i].is_collect
         })
         break;
       }

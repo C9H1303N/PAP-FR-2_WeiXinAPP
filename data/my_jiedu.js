@@ -1,12 +1,12 @@
 var local_database02  = [
   {
     date: "2021.05.03",
-    title: '冰冰是我老婆',
-    author: '我的心都是冰冰的',
+    title: 'dddd',
+    author: 'dddd',
     authorship: 'wywbb',
     reading: '0',
     collection: '0',
-    content: '冰冰是我老婆',
+    content: 'ddd',
     like: "0",
     // 嵌套
     img: {
@@ -19,8 +19,8 @@ var local_database02  = [
   
   {
     date: "2014.2.9",
-    title: '冰冰笑起来太甜啦！！！',
-    author: '我的心都是冰冰的',
+    title: 'dddd',
+    author: 'ddd',
     authorship: 'wywbb',
     reading: '0',
     collection: '0',
@@ -35,8 +35,8 @@ var local_database02  = [
   },
   {
     date: "2020.1.9",
-    title: '冰冰真的好好看',
-    author: '我的心都是冰冰的',
+    title: 'dddd',
+    author: 'ddd',
     authorship: 'wywbb',
     reading: '0',
     collection: '0',

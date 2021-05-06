@@ -187,20 +187,22 @@ Page({
       if (cur == 0) {
         this.setData(
           {
-            posts_key: postsData.postList,
+            posts_key: postsData,
           }
         );
       }
       else if (cur == 1) { //发布时间排序
-          var have_list = postsData.postList
+          console.log(postsData)
+          var have_list = postsData
           have_list.sort(function(a,b) {
-              var a_times=a.date.split(".")
-              var b_times=b.date.split(".")
-              //console.log(a_times)
-              //console.log(b_times)
+              console.log(a.created_at)
+              var a_times=a.created_at.split("-")
+              var b_times=b.created_at.split("-")
+              console.log(a_times)
+              console.log(b_times)
               if(Number(a_times[0]) == Number(b_times[0])) {
                 if(Number(a_times[1]) == Number(b_times[1])) {
-                  return Number(b_times[2])-Number(a_times[2])
+                  return -1
                 }
                 else {
                   return Number(b_times[1])-Number(a_times[1])
@@ -209,6 +211,7 @@ Page({
               else {
                 return Number(b_times[0])-Number(a_times[0])
               }
+
           });
           this.setData(
             {
@@ -216,10 +219,10 @@ Page({
             }
           );
       }
-      else if (cur == 2) { //浏览数量排序
-        var have_list = postsData.postList
+      else if (cur == 2) { //收藏数量排序
+        var have_list = postsData
         have_list.sort(function(a,b) {
-          return b.reading-a.reading
+          return b.collect_num-a.collect_num
         });
         this.setData(
           {
@@ -228,9 +231,10 @@ Page({
         );
       }
       else if (cur == 3) { //点赞数量
-        var have_list = postsData.postList
+        var have_list = postsData
+        console.log(have_list)
         have_list.sort(function(a,b) {
-          return b.like-a.like
+          return b.like_num-a.like_num
         });
         this.setData(
           {

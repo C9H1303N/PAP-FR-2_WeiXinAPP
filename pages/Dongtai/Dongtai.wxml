@@ -5,6 +5,7 @@
     <view class="temp01"></view>
     <view class = "user_info">
         <view>
+            <text>当前版本暂未实现此功能，请期待beta版本\n</text>
             <text decode="{{true}}" class="text02">&nbsp;&nbsp;他们更新了动态</text>
         </view>
         <view class="temp03"></view>

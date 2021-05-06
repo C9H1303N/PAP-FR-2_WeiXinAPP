@@ -1,5 +1,5 @@
 
 <view class = "temp"></view>
-<button class = "TC" plain="true">
+<button class = "TC" plain="true" bindtap="exit">
 <text>退出登录</text>
 </button>

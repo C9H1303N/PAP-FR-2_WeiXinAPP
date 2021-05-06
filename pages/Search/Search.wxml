@@ -20,9 +20,8 @@
       <text class="tab-bar-title">{{item}}</text>
     </view>
   </scroll-view>
-</view>
-<text class="recommend">关键词搜索:{{old_searchword}}</text>
-  <view>
+
+  <text class="recommend">关键词搜索:{{old_searchword}}</text>
   <import src="/pages/posts/post-item/post-item.wxml" />
   <view>
   <block wx:for="{{posts_key}}" wx:for-item='item'>
@@ -35,4 +34,5 @@
   </block>
   <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
-  </view>
+</view>
+

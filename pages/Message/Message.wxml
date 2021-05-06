@@ -1,8 +1,9 @@
 <!--pages/Message/Message.wxml-->
 <view class="container" style="height:{{winHeight}}px;">
+  
   <view class="search_frame">
     <view style="width:600rpx" class="search_word">
-      <input class="search_input" placeholder="搜索消息"></input>
+      <input class="search_input" placeholder="当前版本暂未实现此功能，请期待beta版本"></input>
     </view>
     <image src="/images/Message_add.png" class="add">
       <button class="plus"></button>
@@ -25,6 +26,7 @@
       <text class="button_text">回复我的</text>
     </button>
   </view>
+  
   <view class="postlist">
   <import src="/pages/Message/Message-item/Message-item.wxml" />
   <view>

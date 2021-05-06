@@ -11,10 +11,10 @@ var local_database01 = [
     {
         userId: 2,
         user_photo:'/images/Images_Mine/user_photo.jpg',
-        user_name:'我的心都是冰冰的',
+        user_name:'test_user',
         guanzhu_sum:'100000',
         fensi_sum:'0',
-        person_view:'冰冰是我老婆',
+        person_view:'当前版本暂未实现此功能，请期待beta版本',
     }
 
 ]
