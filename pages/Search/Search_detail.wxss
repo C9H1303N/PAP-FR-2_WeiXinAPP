@@ -1,4 +1,4 @@
-/* pages/Search/Search_detail.wxss */
+/* pages/posts/post-detail/post-detail.wxss */
 .container {
   display: flex;
   flex-direction: column;
@@ -115,13 +115,17 @@
 
 .detail{
   color: #666;
-  margin-left: 50rpx;
-  margin-top: 30rpx;
-  margin-right: 50rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
   line-height: 44rpx;
   letter-spacing: 2px;
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-box-orient:vertical;
   overflow:hidden;
+}
+
+.what_number {
+  align-content: center;
 }

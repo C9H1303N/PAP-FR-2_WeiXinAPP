@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_photo:'/images/Images_Mine/student_he.jfif',
+    user_photo:'/images/Images_Mine/default.png',
     user_name: '大家好我是何同学',
     guanzhu_sum:'105',
     fensi_sum:'305w',
@@ -80,13 +80,28 @@ Page({
         });
       }
     });
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: My_jiedu.postList02,
-        old_searchword: options.searchWord
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/user/profile',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+        console.log(res.data)
+        that.setData(
+          // 替换发现前端的数据
+          {
+            posts_key: My_jiedu.postList02,
+            user_name: res.data.username,
+            fensi_sum: res.data.total_fan,
+            guanzhu_sum: res.data.total_post,
+            person_view: res.data.email
+          }
+        );
       }
-    );
+    });
+
+    
   },
 
   // 会是因为这个函数的原因吗 ？

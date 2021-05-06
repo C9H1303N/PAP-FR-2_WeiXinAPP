@@ -1,5 +1,6 @@
-// pages/Search/Search_detail.js
+// pages/posts/post-detail/post-detail.js
 var postsData
+var app = getApp()
 Page({
 
   /**
@@ -10,12 +11,13 @@ Page({
     like: 0,
     collection: 0,
     maxLength: 100, // 收起时最大显示文字长度
-    //ellipsis: false, // 是否收缩
+    ellipsis: false, // 是否收缩
     contentShow: '',
-    detailData: ''
+    detailData: '',
+    like_num: 0,
+    collect_num: 0
   },
 
-  /*
   ellipsis: function () {
     //console.log(this.post_id)
     var ellipsis = !this.data.ellipsis;
@@ -30,33 +32,86 @@ Page({
       ellipsis: ellipsis
     })
   },
-  */
 
   liking: function(e) {
     let that = this
+    var id = this.data.detailData.id
+    var sb = this.data.like_num
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/like',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {   
+      }
+    });
+    sb = sb + 1
     this.setData({
-      like: 1
+      like: 1,
+      like_num: sb
     })
-    console.log(this.data.like)
+    console.log(this.data.like_num)
   },
   unliking: function(e) {
     let that = this
+    var id = this.data.detailData.id
+    var sb = this.data.like_num
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/like',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+      }
+    });
+    sb=sb-1
     this.setData({
-      like: 0
+      like: 0,
+      like_num: sb
     })
     console.log(this.data.like)
   },
   collecting: function(e) {
     let that = this
+    var id = this.data.detailData.id
+    var sb = this.data.collect_num
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/collect',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+      }
+    });
+    sb=sb+1
+    this.data.collect_num = this.data.collect_num+1
     this.setData({
-      collection: 1
+      collection: 1,
+      collect_num: sb
     })
     console.log(this.data.collection)
   },
   uncollecting: function(e) {
     let that = this
+    var id = this.data.detailData.id
+    var sb = this.data.collect_num
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/collect',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+      }
+    });
+    sb=sb+1
+    this.data.collect_num = this.data.collect_num-1
     this.setData({
-      collection: 0
+      collection: 0,
+      collect_num: sb
     })
     console.log(this.data.collection)
   },
@@ -73,15 +128,26 @@ Page({
     //console.log(postsData)
     for(var i = 0; i < postsData.length; i++){
       if(postsData[i].id == this.post_id){
-        console.log(postsData[i])
+        var likk = 0
+        var coll = 0
+        if (postsData[i].is_like) {
+          likk = 1
+        }
+        if (postsData[i].is_collect) {
+          coll = 1
+        }
         this.setData({
           detailData: postsData[i],
-          like: postsData[i].is_like,
-          collection: postsData[i].is_collect
+          like_num: postsData[i].like_num,
+          collect_num: postsData[i].collect_num,
+          like: likk,
+          collection: coll
         })
         break;
       }
     }
+    console.log("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
+    console.log(this.data.detailData)
     // 数据绑定
   },
 

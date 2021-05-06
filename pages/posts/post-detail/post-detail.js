@@ -38,7 +38,7 @@ Page({
     var id = this.data.detailData.id
     var sb = this.data.like_num
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/'+id+'/like',
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/like',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -58,7 +58,7 @@ Page({
     var id = this.data.detailData.id
     var sb = this.data.like_num
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/'+id+'/like',
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/like',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -78,7 +78,7 @@ Page({
     var id = this.data.detailData.id
     var sb = this.data.collect_num
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/'+id+'/collect',
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/collect',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -99,7 +99,7 @@ Page({
     var id = this.data.detailData.id
     var sb = this.data.collect_num
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/'+id+'/collect',
+      url: 'https://pap2.zixfy.com/api/interpretation/'+id+'/collect',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
