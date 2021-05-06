@@ -51,7 +51,7 @@ Page({
       }
     });
     wx.request({
-      url: 'http://114.115.215.200:8080/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + options.searchWord + '&interpretation=true',
+      url: 'https://pap2.zixfy.com/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + options.searchWord + '&interpretation=true',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -102,7 +102,7 @@ Page({
     //  高度自适应
       this.data.i = 1;
       wx.request({
-      url: 'http://114.115.215.200:8080/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + word + '&interpretation=true',
+      url: 'https://pap2.zixfy.com/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + word + '&interpretation=true',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -146,7 +146,7 @@ Page({
     let that = this;
     let word = this.data.old_searchword
     wx.request({
-      url: 'http://114.115.215.200:8080/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + word + '&interpretation=true',
+      url: 'https://pap2.zixfy.com/api/search/page/' + that.data.i + '?pindx=' + that.data.i + '&keywords=' + word + '&interpretation=true',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
