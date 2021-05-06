@@ -31,11 +31,11 @@
     <text class='paper_info'>论文摘要：</text>   
     <text>\n</text>
     <rich-text class='detail' nodes="{{detailData.paper.abstract}}"></rich-text>
+    <text class="paper_info">论文解读</text>
+    <text>\n</text>
+    <rich-text class='detail' nodes="{{detailData.content}}"></rich-text>
   </view>
   <view class="padding-xl radius shadow bg-white" style="margin-left: 50rpx; margin-right: 50rpx;">
-  <text class="paper_info">论文解读</text>
-  <text>\n</text>
-  <rich-text class='detail' nodes="{{detailData.content}}"></rich-text>
   <view class="flex solid-bottom padding justify-center">
       <view class="bg-white padding-sm margin-xs radius">
         <view wx:if="{{like==0}}">

@@ -125,3 +125,7 @@
   -webkit-box-orient:vertical;
   overflow:hidden;
 }
+
+.what_number {
+  align-content: center;
+}

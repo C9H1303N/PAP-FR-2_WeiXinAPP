@@ -10,11 +10,12 @@ Page({
     like: 0,
     collection: 0,
     maxLength: 100, // 收起时最大显示文字长度
-    ellipsis: false, // 是否收缩
+    //ellipsis: false, // 是否收缩
     contentShow: '',
     detailData: ''
   },
 
+  /*
   ellipsis: function () {
     //console.log(this.post_id)
     var ellipsis = !this.data.ellipsis;
@@ -29,6 +30,7 @@ Page({
       ellipsis: ellipsis
     })
   },
+  */
 
   liking: function(e) {
     let that = this
@@ -81,7 +83,6 @@ Page({
       }
     }
     // 数据绑定
-    this.ellipsis();
   },
 
   /**
