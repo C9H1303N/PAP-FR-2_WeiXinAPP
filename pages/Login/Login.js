@@ -45,7 +45,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'http://114.115.215.200:8080/api/token-auth', 
+        url: 'https://pap2.zixfy.com/api/token-auth', 
         method: 'POST',
         data: {
           username: that.data.username,

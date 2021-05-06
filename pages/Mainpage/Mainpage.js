@@ -97,7 +97,7 @@ Page({
   onLoad: function () {
     let that = this;
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/page/' + that.data.i,
+      url: 'https://pap2.zixfy.com/api/interpretation/page/' + that.data.i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -133,7 +133,7 @@ Page({
     this.data.i = this.data.i + 1;
     var that = this;
     wx.request({
-      url: 'http://114.115.215.200:8080/api/interpretation/page/' + that.data.i,
+      url: 'https://pap2.zixfy.com/api/interpretation/page/' + that.data.i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
