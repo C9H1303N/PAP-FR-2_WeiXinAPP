@@ -10,12 +10,12 @@
         <text  class='post-date'>{{paper.published_year}}</text>
       </view>
       <view class='post-like'>
-        <image style="flex:1;" class='post-image' src='/images/Mainpage_look.png' mode="aspectFit"></image>
-        <text style="flex:1;" class='post-like-font'>{{reading}}</text>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_collection.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font' >{{collect_num}}</text>
         <image style="flex:1;" class='post-image' src='/images/Mainpage_comment.png' mode="aspectFit"></image>
-        <text style="flex:1;" class='post-like-font'>{{collection}}</text>
+        <text style="flex:1;" class='post-like-font' >{{collection}}</text>
         <image style="flex:1;" class='post-image' src='/images/Mainpage_like.png' mode="aspectFit"></image>
-        <text style="flex:1;" class='post-like-font'>{{like}}</text>
+        <text style="flex:1;" class='post-like-font' >{{like_num}}</text>
       </view>
     </view>
   </view>
