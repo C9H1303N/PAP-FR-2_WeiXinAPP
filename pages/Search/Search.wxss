@@ -217,6 +217,7 @@ page{
 }
 .loadmore{
   background-color: #f2f2fa;
+  margin-top: 10rpx;
 }
 .loadmore::after{
   border: none;

@@ -23,7 +23,7 @@
 
   <text class="recommend">关键词搜索:{{old_searchword}}</text>
   <import src="/pages/posts/post-item/post-item.wxml" />
-  <view>
+  <view style="flex:1;">
   <block wx:for="{{posts_key}}" wx:for-item='item'>
     <!-- 添加一个view标签，用于附着点击事件 -->
 　　<!-- datapostId为自定义属性，自定义属性以data-开头，后边自己起名，用来储存文章的id -->
