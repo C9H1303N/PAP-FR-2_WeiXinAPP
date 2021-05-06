@@ -6,6 +6,7 @@
 
  <view class="login-from" style="background: #ffffff"> 
  
+
  <!--账号-->
  <view class="inputView" style="background: #ffffff"> 
   <image class="nameImage" src="/images/usernamelogo.png"></image> 
@@ -25,5 +26,6 @@
  <view class="loginBtnView"> 
   <button class="loginBtn" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="login" >登录</button> 
  </view> 
+ <text style="margin-left: 60rpx;">测试阶段，请前往网页端实现注册</text>
  </view> 
 </view>
