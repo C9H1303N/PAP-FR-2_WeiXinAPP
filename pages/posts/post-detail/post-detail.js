@@ -107,7 +107,7 @@ Page({
       success (res) {
       }
     });
-    sb=sb+1
+    sb=sb-1
     this.data.collect_num = this.data.collect_num-1
     this.setData({
       collection: 0,
