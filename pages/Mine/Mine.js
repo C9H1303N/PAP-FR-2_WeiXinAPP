@@ -10,17 +10,23 @@ Page({
    * 页面的初始数据
    */
   data: {
+    user_id: '',
     user_photo:'/images/Images_Mine/default.png',
-    user_name: '大家好我是何同学',
-    guanzhu_sum:'105',
-    fensi_sum:'305w',
-    person_view:'热衷于前沿数码领域',
+    user_name: '',
+    guanzhu_sum:'',
+    fensi_sum:'',
+    person_view:'',
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     tabbar: ['我的发布','我的收藏','关注列表','粉丝列表'],
     searchWord: "",
-    old_searchword: ""
+    old_searchword: "",
+    now_name: "postItem",
+    mine_fabu_num: 1,
+    mine_collect_num: 1,
+    mine_subs_num: 1,
+    mine_fans_num: 1,
   },
 
   /**
@@ -70,7 +76,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    var idd = '';
     //  高度自适应
+  
     wx.getSystemInfo({
       success: function (res) {
         let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
@@ -87,21 +95,88 @@ Page({
       },
       method: 'GET',
       success (res) {  
+        console.log(res.data.id)
+        idd = res.data.id
+        that.setData(
+          // 替换发现前端的数据
+          {
+            user_name: res.data.username,
+            fensi_sum: res.data.total_fan,
+            guanzhu_sum: res.data.total_post,
+            person_view: res.data.email,
+          }
+        );
+      }
+    });
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/post/'+app.globalData.userid+'?pindx=' + this.data.mine_fabu_num,
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+        console.log("posts::::::::")
         console.log(res.data)
         that.setData(
           // 替换发现前端的数据
           {
-            posts_key: My_jiedu.postList02,
-            user_name: res.data.username,
-            fensi_sum: res.data.total_fan,
-            guanzhu_sum: res.data.total_post,
-            person_view: res.data.email
+            fabu_key: res.data.posts,
+            posts_key: res.data.posts
           }
         );
       }
     });
 
-    
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/favorites/'+app.globalData.userid+'?pindx=' + this.data.mine_collect_num,
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+        console.log(res.data)
+        that.setData(
+          // 替换发现前端的数据
+          {
+            collect_key: res.data.posts
+          }
+        );
+      }
+    });
+
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/follower/'+app.globalData.userid+'?page=' + this.data.mine_subs_num+"&page_size=9",
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+        console.log(res.data)
+        that.setData(
+          // 替换发现前端的数据
+          {
+            follower_key: res.data.models
+          }
+        );
+      }
+    });
+
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/fan/'+app.globalData.userid+'?page=' + this.data.mine_fans_num+"&page_size=9",
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+        console.log(res.data)
+        that.setData(
+          // 替换发现前端的数据
+          {
+            fan_key: res.data.models,
+          }
+        );
+      }
+    });
   },
 
   // 会是因为这个函数的原因吗 ？
@@ -127,68 +202,46 @@ Page({
   },
 
   swichNav: function (e) {
+    
+    console.log(this.data.collect_key)
     let cur = e.currentTarget.dataset.current;
     console.log(cur)
     if (this.data.currentTab == cur) {
-      
       return false;
     } 
     else {
       this.setData({
         currentTab: cur
       })
-      if (cur == 0) {
+      if (cur == 0) { //我的发布
         this.setData(
           {
-            posts_key: My_jiedu.postList02,
+            posts_key: this.data.fabu_key,
+            now_name: "postItem"
           }
         );
       }
-      else if (cur == 1) { //发布时间排序
-          var have_list = postsData.postList
-          have_list.sort(function(a,b) {
-              var a_times=a.date.split(".")
-              var b_times=b.date.split(".")
-              //console.log(a_times)
-              //console.log(b_times)
-              if(Number(a_times[0]) == Number(b_times[0])) {
-                if(Number(a_times[1]) == Number(b_times[1])) {
-                  return Number(b_times[2])-Number(a_times[2])
-                }
-                else {
-                  return Number(b_times[1])-Number(a_times[1])
-                }
-              }
-              else {
-                return Number(b_times[0])-Number(a_times[0])
-              }
-          });
+      else if (cur == 1) { //我的收藏
           this.setData(
             {
-              posts_key: have_list,
-            
+              posts_key: this.data.collect_key,
+              now_name: "postItem"
             }
           );
       }
-      else if (cur == 2) { //我的收藏页面
-        // var have_list = postsData.postList
-        // have_list.sort(function(a,b) {
-        //   return b.reading-a.reading
-        // });
+      else if (cur == 2) { //关注列表
         this.setData(
           {
-            posts_key: My_collection.postList03,
+            posts_key: this.data.follower_key,
+            now_name: "postPerson"
           }
         );
       }
-      else if (cur == 3) { //点赞数量
-        var have_list = postsData.postList
-        have_list.sort(function(a,b) {
-          return b.like-a.like
-        });
+      else if (cur == 3) { //粉丝列表
         this.setData(
           {
-            posts_key: have_list,
+            posts_key: this.data.fan_key,
+            now_name: "postPerson"
           }
         );
       }
@@ -226,6 +279,125 @@ Page({
     that.checkCor();
   },
 
+  loadmore: function(){
+    if (this.data.currentTab == 0) {
+      this.data.mine_fabu_num = this.data.mine_fabu_num + 1;
+      let that = this;
+      let fabus = this.data.fabu_key
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/post/'+app.globalData.userid+'?pindx=' + this.data.mine_fabu_num,
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+          if(Math.ceil(res.data.total_count/5) >= that.data.mine_fabu_num){
+            fabus = fabus.concat(res.data.posts) 
+            that.setData(
+          // 替换发现前端的数据
+              {
+                posts_key: fabus,
+                fabu_key: fabus
+              }
+            );
+            }
+            else {
+              wx.showToast({
+                title: '没有更多了！',
+              })
+            }
+          }
+      });
+    }
+    else if (this.data.currentTab == 1) {
+      this.data.mine_collect_num = this.data.mine_collect_num + 1;
+      let that = this;
+      let collect = this.data.collect_key
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/favorites/'+app.globalData.userid+'?pindx=' + this.data.mine_collect_num,
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+          if(Math.ceil(res.data.total_count/5) >= that.data.mine_collect_num){
+            collect = collect.concat(res.data.posts) 
+            that.setData(
+          // 替换发现前端的数据
+              {
+                posts_key: collect,
+                fabu_key: collect
+              }
+            );
+            }
+            else {
+              wx.showToast({
+                title: '没有更多了！',
+              })
+            }
+          }
+      });
+    }
+    else if (this.data.currentTab == 2) {
+      this.data.mine_subs_num = this.data.mine_subs_num + 1;
+      let that = this;
+      let subs = this.data.follower_key
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/follower/'+app.globalData.userid+'?page=' + this.data.mine_subs_num+"&page_size=9",
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+          if(Math.ceil(res.data.models_all/5) >= that.data.mine_subs_num){
+            subs = subs.concat(res.data.models) 
+            that.setData(
+          // 替换发现前端的数据
+              {
+                posts_key: subs,
+                followers_key: subs
+              }
+            );
+            }
+            else {
+              wx.showToast({
+                title: '没有更多了！',
+              })
+            }
+          }
+      });
+    }
+    else if (this.data.currentTab == 3) {
+      this.data.mine_fans_num = this.data.mine_fans_num + 1;
+      let that = this;
+      let subs = this.data.fans_key
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/fan/'+app.globalData.userid+'?page=' + this.data.mine_fans_num+"&page_size=9",
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+          if(Math.ceil(res.data.models_all/5) >= that.data.mine_fans_num){
+            subs = subs.concat(res.data.models) 
+            that.setData(
+          // 替换发现前端的数据
+              {
+                posts_key: subs,
+                fan_key: subs
+              }
+            );
+            }
+            else {
+              wx.showToast({
+                title: '没有更多了！',
+              })
+            }
+          }
+      });
+    }
+
+  },
 
   /**
    * 生命周期函数--监听页面显示

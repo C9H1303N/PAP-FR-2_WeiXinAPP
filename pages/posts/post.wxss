@@ -9,6 +9,7 @@
   background: #fbfbfb;
   height: 280rpx;
 }
+
 .post-author-date{
   margin-top: 10rpx;
 }

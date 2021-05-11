@@ -97,6 +97,17 @@ Page({
   onLoad: function () {
     let that = this;
     wx.request({
+      url: 'https://pap2.zixfy.com/api/user/profile',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+        console.log(res.data.id)
+        app.globalData.userid = res.data.id
+      }
+    });
+    wx.request({
       url: 'https://pap2.zixfy.com/api/interpretation/page/' + that.data.i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`

@@ -36,16 +36,17 @@
 </scroll-view>
 
 <view class="temp01"></view>
-
 <view>
   <import src="/pages/posts/post-item/post-item.wxml" />
+  <import src="/pages/posts/post-person/post-person.wxml" />
   <view>
   <block wx:for="{{posts_key}}" wx:for-item='item'>
     <view class="temp01"></view>
     <view catchtap='onPostTap' data-postId = "{{item.postId}}">
-      <template is='postItem' data="{{...item}}" />
+      <template is='{{now_name}}' data="{{...item}}" />
     </view>
   </block>
+  <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
   <view class = "temp01"></view>
 </view>
