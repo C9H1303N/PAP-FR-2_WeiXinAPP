@@ -18,7 +18,7 @@ Page({
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    tabbar: ['发表解读','我的评论','我的收藏','历史记录'],
+    tabbar: ['我的发布','我的收藏','关注列表','粉丝列表'],
     searchWord: "",
     old_searchword: ""
   },
