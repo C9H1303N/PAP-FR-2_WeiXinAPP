@@ -19,7 +19,7 @@ Page({
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    tabbar: ['我的发布','我的收藏','关注列表','粉丝列表'],
+    tabbar: ['TA的发布','TA的收藏','关注列表','粉丝列表'],
     searchWord: "",
     old_searchword: "",
     now_name: "postItem",
@@ -27,6 +27,7 @@ Page({
     mine_collect_num: 1,
     mine_subs_num: 1,
     mine_fans_num: 1,
+    id:''
   },
 
   /**
@@ -78,7 +79,7 @@ Page({
     let that = this;
     var idd = '';
     //  高度自适应
-  
+    this.data.id = options.id;
     wx.getSystemInfo({
       success: function (res) {
         let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
@@ -90,7 +91,7 @@ Page({
     });
     postsData = wx.getStorageSync('paper')
     wx.request({
-      url: 'https://pap2.zixfy.com/api/user/profile',
+      url: 'https://pap2.zixfy.com/api/user/profile?user_id=' + this.data.id,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -110,7 +111,7 @@ Page({
       }
     });
     wx.request({
-      url: 'https://pap2.zixfy.com/api/post/'+app.globalData.userid+'?pindx=' + this.data.mine_fabu_num,
+      url: 'https://pap2.zixfy.com/api/post/'+this.data.id+'?pindx=' + this.data.mine_fabu_num,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -129,7 +130,7 @@ Page({
     });
 
     wx.request({
-      url: 'https://pap2.zixfy.com/api/favorites/'+app.globalData.userid+'?pindx=' + this.data.mine_collect_num,
+      url: 'https://pap2.zixfy.com/api/favorites/'+this.data.id+'?pindx=' + this.data.mine_collect_num,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -146,7 +147,7 @@ Page({
     });
 
     wx.request({
-      url: 'https://pap2.zixfy.com/api/follower/'+app.globalData.userid+'?page=' + this.data.mine_subs_num+"&page_size=9",
+      url: 'https://pap2.zixfy.com/api/follower/'+this.data.id+'?page=' + this.data.mine_subs_num+"&page_size=9",
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -163,7 +164,7 @@ Page({
     });
 
     wx.request({
-      url: 'https://pap2.zixfy.com/api/fan/'+app.globalData.userid+'?page=' + this.data.mine_fans_num+"&page_size=9",
+      url: 'https://pap2.zixfy.com/api/fan/'+this.data.id+'?page=' + this.data.mine_fans_num+"&page_size=9",
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },

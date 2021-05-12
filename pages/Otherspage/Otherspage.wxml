@@ -3,9 +3,6 @@
     </image> -->
     <view class = "shezhi">
     <view class = "shezhi02">
-    <button class = "shezhi_button" bindtap="jump_shezhi">
-    <image class = "shezhi_photo" src="/images/Images_Mine/设置@4x-8.png"></image>
-    </button>
     </view>
     </view>
     <view class="temp"></view>

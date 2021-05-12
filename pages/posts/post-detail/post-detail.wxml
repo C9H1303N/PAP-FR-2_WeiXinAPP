@@ -8,7 +8,8 @@
   <view class="padding-xl radius shadow bg-white" style="width: 100%; margin-top: 15rpx; margin-bottom: 40rpx" >
     <text class="paper_info">论文信息\n</text>
     <text>\n</text>
-    <text class='author'>发表用户：{{detailData.paper.created_by.username}}</text>
+    <text class='author' bindtap="view_others">发表用户：<text >{{detailData.paper.created_by.username}}</text>
+    </text>
     <text class='author'>发表年限：{{detailData.paper.published_year}}</text>
     <text>\n</text>
     <text class='author'>论文链接：</text>

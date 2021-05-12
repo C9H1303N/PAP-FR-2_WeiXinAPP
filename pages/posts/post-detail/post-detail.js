@@ -115,19 +115,25 @@ Page({
     })
     console.log(this.data.collection)
   },
+  view_others:function(){
+    wx.navigateTo({
+      url: '/pages/Otherspage/Otherspage?id=' + this.data.detailData.paper.created_by.id,
+    })
+    console.log(this.data.detailData.paper.created_by.id)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     //后期需要后端传
-    this.post_id = options.id;
     var postId = options.id;
+    this.data.post_id = postId;
     //console.log(postId)
     // 拿到数据文件对应id的数据元素
     postsData = wx.getStorageSync('paper')
     //console.log(postsData)
     for(var i = 0; i < postsData.length; i++){
-      if(postsData[i].id == this.post_id){
+      if(postsData[i].id == postId){
         var likk = 0
         var coll = 0
         if (postsData[i].is_like) {
