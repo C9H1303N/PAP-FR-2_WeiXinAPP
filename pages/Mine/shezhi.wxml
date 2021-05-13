@@ -1,5 +1,32 @@
+<view style="background-color: #5d7599; height: 80rpx; align-content: center ">
+    <view style="width: 80%; margin-left: 10%; text-align:center; ">
+    <text style="font-size: 18px; align-content: center; color: #ffffff">修改个人信息</text>
+    </view>
+</view>
+<view style="padding-top: 100rpx">
+    <text class="title">修改密码</text>
+<view style="padding-top: 20rpx">
+<view class="inputView" > 
+  <label class="loginLab">原密码</label> 
+  <input class="inputText" password="true" placeholder="请输入原密码" bindinput="InputOldPass" maxlength='20' style="text-align:left; "/> 
+ </view> 
+ </view>
+ <view style="padding-top: 20rpx">
+ <view class="inputView" > 
+  <label class="loginLab">新密码</label> 
+  <input class="inputText" password="true" placeholder="请输入原密码" bindinput="InputNewPass" maxlength='20' style="text-align:left; "/> 
+ </view> 
+ 
+</view>
+<view style="padding-top: 20rpx">
+ <view class="inputView" > 
+  <label class="loginLab">确认密码</label> 
+  <input class="inputText" password="true" placeholder="请输入原密码" bindinput="InputCheckPass" maxlength='20' style="text-align:left; "/> 
+ </view> 
+</view>
 
-<view class = "temp"></view>
-<button class = "TC" plain="true" bindtap="exit">
-<text>退出登录</text>
-</button>
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-blue lg" bindtap="changepass">修改密码</button>
+  <button class="cu-btn bg-grey margin-tb-sm lg" bindtap="exit">退出登录</button>
+</view>
+</view>
