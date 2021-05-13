@@ -7,7 +7,7 @@
     </view>
     <view class="temp"></view>
     <image src="{{user_photo}}" class="user_image"></image>
-    <view class="temp01"></view>
+    <view class="temp01" style="margin-top: 30rpx"></view>
     <view class = "user_info">
         <view class = "user_info01">
             <text class="jiacu" decode="{{true}}"> {{user_name}} &nbsp;&nbsp;&nbsp;</text>
@@ -20,8 +20,11 @@
             <text decode="{{true}}"> &nbsp; 粉丝</text>
         </view>
         <view class="user_info03">
-            <text>{{person_view}}</text>
+            <text>{{person_view}}</text>  
         </view>
+        <vlew style="justify-content: center;">
+        <button class="cu-btn round line lg" style="width: 220rpx; height: 80rpx; margin-left: 220rpx" bindtap="follow_action">{{check_work}}</button>
+        </vlew>     
     </view>
 </view>
 

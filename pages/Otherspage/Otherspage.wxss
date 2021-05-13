@@ -35,7 +35,7 @@
 }
 
 .user_info{
-  height:200rpx;
+  height:300rpx;
   width: 660rpx;
   background-color: white;
   border-radius: 0.3cm;

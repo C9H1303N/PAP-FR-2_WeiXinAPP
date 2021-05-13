@@ -27,7 +27,8 @@ Page({
     mine_collect_num: 1,
     mine_subs_num: 1,
     mine_fans_num: 1,
-    id:''
+    id:'',
+    check_work: '关注'
   },
 
   /**
@@ -79,6 +80,8 @@ Page({
     let that = this;
     var idd = '';
     //  高度自适应
+    console.log("options:")
+    console.log(options)
     this.data.id = options.id;
     wx.getSystemInfo({
       success: function (res) {
@@ -97,8 +100,15 @@ Page({
       },
       method: 'GET',
       success (res) {  
-     //   console.log(res.data.id)
+        console.log(res.data)
         idd = res.data.id
+        var strr = ''
+        if(res.data.is_following) {
+          strr = '取消关注'
+        }
+        else {
+          strr = '关注'
+        }
         that.setData(
           // 替换发现前端的数据
           {
@@ -106,6 +116,7 @@ Page({
             fensi_sum: res.data.total_fan,
             guanzhu_sum: res.data.total_post,
             person_view: res.data.email,
+            check_work: strr
           }
         );
       }
@@ -265,6 +276,90 @@ Page({
           }
         );
       }
+    }
+  },
+
+  follow_action: function() {
+    
+    let that = this;
+    var idd = '';
+    if (this.data.check_work === '取消关注') {
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/user/' + this.data.id + '/unfollow',
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'POST',
+        success (res) {
+          console.log("success")
+        },
+      })
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/user/profile?user_id=' + this.data.id,
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+          console.log(res.data)
+          var strr = ''
+          if(res.data.is_following) {
+            strr = '取消关注'
+          }
+          else {
+            strr = '关注'
+          }
+          that.setData(
+            // 替换发现前端的数据
+            {
+              user_name: res.data.username,
+              fensi_sum: res.data.total_fan,
+              guanzhu_sum: res.data.total_post,
+              person_view: res.data.email,
+              check_work: strr
+            }
+          );
+        }
+      });
+    }
+    else {
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/user/' + this.data.id + '/follow',
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'POST',
+        success (res) {
+          console.log("success")
+        },
+      })
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/user/profile?user_id=' + this.data.id,
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+          console.log(res.data)
+          var strr = ''
+          if(res.data.is_following) {
+            strr = '取消关注'
+          }
+          else {
+            strr = '关注'
+          }
+          that.setData(
+            // 替换发现前端的数据
+            {
+              user_name: res.data.username,
+              fensi_sum: res.data.total_fan,
+              guanzhu_sum: res.data.total_post,
+              person_view: res.data.email,
+              check_work: strr
+            }
+          );
+        }
+      });
     }
   },
 
