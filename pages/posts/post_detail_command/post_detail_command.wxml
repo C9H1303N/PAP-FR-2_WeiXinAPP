@@ -1,0 +1,61 @@
+<template name='post_pinglun_Item'>
+  <view class = "temp01"></view>
+  <view class = "dongtai_main_line">
+  <view class = "wei_30"></view>
+  <view class = "dongtai_main">
+  <view class = 'touxiang'>
+      <image src = '{{touxiang}}' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
+  </view>
+
+  <view>
+  <view class="temp001"></view>
+  <view>
+      <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
+      <text class="text_nicheng">{{pinglun_name}}</text>
+      <text class="text_fenxiang" decode="{{true}}"> &nbsp;&nbsp; 评论于&nbsp;&nbsp;&nbsp;{{date}}</text> 
+  </view>
+
+  <view class="temp_a01"></view>
+  <view>
+      <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
+      <text class="text_pinglun">{{pinglun}}</text>
+  </view>
+  <view class="temp_a01"></view>
+
+  <view class="temp_a01"></view>
+  <view class="temp_a01"></view>
+  <view class="zhuanAndshou">
+      <view class="temp_zs01"></view>
+
+      <button class="cu-btn round" style="background-color: #ffffff">
+      <image src = "/images/Mainpage_comment.png" class="zhuan"></image>
+      </button>
+      <text decode="{{true}}">{{comment_num}}</text>
+
+      <!-- <view class = "temp_zs02"></view> -->
+
+      <view wx:if="{{liking==0}}" >
+      <view catchtap="liking_1">
+      <button class="cu-btn round" style="background-color: #ffffff" catchtap='liking_1'>
+      <image src = "/images/Mainpage_like.png" class="shou"></image>
+      </button>
+      </view>
+      </view>
+      
+      <view wx:if="{{liking==1}}">
+      <view catchtap="linking_2">
+      <button class="cu-btn round" style="background-color: #ffffff" >
+      <image src = "/images/Message_like.png" class="shou"></image>
+      </button>
+      </view>
+      </view>
+
+      <text decode="{{true}}">{{like}}</text>
+  </view>
+
+  <!-- <view class="temp_a01"></view> -->
+
+  </view>
+  </view>
+  </view>
+</template>

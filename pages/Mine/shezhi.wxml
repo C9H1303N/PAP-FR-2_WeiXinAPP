@@ -1,4 +1,5 @@
 <view style="background-color: #5d7599; height: 80rpx; align-content: center ">
+    <view class = "temp01"></view>
     <view style="width: 80%; margin-left: 10%; text-align:center; ">
     <text style="font-size: 18px; align-content: center; color: #ffffff">修改个人信息</text>
     </view>
