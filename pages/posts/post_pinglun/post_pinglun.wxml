@@ -21,19 +21,18 @@
 
 
   <view class='post-container'>
-    <image style="width:230rpx;" src='{{img.avatar}}' class='post-author' mode="scaleToFill" ></image>
     <view style="flex:1;" class="info-container">
-      <view class='post-title'>{{title}}</view>
-      <view class="authorship">原作者：{{authorship}}</view>
-      <view class='post-author-date'>
-        <text  class="author">{{author}}</text>
-        <text  class='post-date'>{{date}}</text>
+      <view class='post-title' style="margin-left: 50rpx; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">{{title}}</view>
+      <view class="authorship" style="margin-left: 50rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">原作者：{{authorship}}</view>
+      <view class='post-author-date' style="margin-top: 5rpx">
+        <text  class="author" style="margin-left: 50rpx">{{author}}</text>
+        <text  class='post-date' style="margin-right: 50rpx">{{date}}</text>
       </view>
-      <view class='post-like'>
-        <image style="flex:1;" class='post-image' src='/images/Mainpage_look.png' mode="aspectFit"></image>
-        <text style="flex:1;" class='post-like-font'>{{reading}}</text>
-        <image style="flex:1;" class='post-image' src='/images/Mainpage_comment.png' mode="aspectFit"></image>
+      <view class='post-like' style="margin-top: 3rpx; margin-left:50rpx;">
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_collection.png' mode="aspectFit"></image>
         <text style="flex:1;" class='post-like-font'>{{collection}}</text>
+        <image style="flex:1;" class='post-image' src='/images/Mainpage_comment.png' mode="aspectFit"></image>
+        <text style="flex:1;" class='post-like-font'>0</text>
         <image style="flex:1;" class='post-image' src='/images/Mainpage_like.png' mode="aspectFit"></image>
         <text style="flex:1;" class='post-like-font'>{{like}}</text>
       </view>
@@ -44,11 +43,11 @@
   <view class="temp_a01"></view>
   <view class="zhuanAndshou">
       <view class="temp_zs01"></view>
-      <image src = "/images/Images_Mine/转发@4x-8.png" class="zhuan"></image>
-      <text>转发</text>
+      <button class="cu-btn round" style="background-color: #ffffff"><image src = "/images/Mainpage_like.png" class="zhuan"></image>
+      <text style="margin-left:5rpx">点赞</text></button>
       <view class = "temp_zs02"></view>
-      <image src = "/images/Images_Mine/收藏@4x-8.png" class="shou"></image>
-      <text>收藏</text>
+      <button class="cu-btn round" style="background-color: #ffffff; margin-left: -100rpx"><image src = "/images/Mainpage_collection.png" class="shou"></image>
+      <text  style="margin-left:5rpx"> 收藏</text></button>
   </view>
 
   <view class="temp_a01"></view>

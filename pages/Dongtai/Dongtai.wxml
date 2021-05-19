@@ -3,23 +3,6 @@
     <view class="temp01"></view>
     <text class="text01">动态</text>
     <view class="temp01"></view>
-    <view class = "user_info">
-        <view>
-            <text>当前版本暂未实现此功能，请期待beta版本\n</text>
-            <text decode="{{true}}" class="text02">&nbsp;&nbsp;他们更新了动态</text>
-        </view>
-        <view class="temp03"></view>
-        <view class="image_list">
-            <view class = "temp02"></view>
-            <image src="{{posts_key[0].touxiang}}" class = "user_image"></image>
-            <view class = "temp02"></view>
-            <image src="{{posts_key[1].touxiang}}" class = "user_image"></image>
-            <view class = "temp02"></view>
-            <image src="{{posts_key[2].touxiang}}" class = "user_image"></image>
-            <view class = "temp02"></view>
-            <image src="{{posts_key[3].touxiang}}" class = "user_image"></image>
-        </view>
-    </view>
 </view>
 
 <view>

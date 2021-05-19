@@ -4,7 +4,7 @@ var local_database04  = [
       pinglun_name:'test_user1',
       pinglun:'test_view',
       date: "2021.05.03",
-      title: 'ttttttttt',
+      title: 'Disrupting Deepfakes: Adversarial Attacks Against Conditional Image Translation Networks and Facial Manipulation Systems',
       author: 'test_user1',
       authorship: 'wywbb',
       reading: '0',
