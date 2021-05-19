@@ -22,8 +22,8 @@
 
   <view class='post-container'>
     <view style="flex:1;" class="info-container">
-      <view class='post-title' style="margin-left: 50rpx; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">{{title}}</view>
-      <view class="authorship" style="margin-left: 50rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">原作者：{{authorship}}</view>
+      <view class='post-title' style="margin-left: 50rpx; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 500rpx;">{{title}}</view>
+      <view class="authorship" style="margin-left: 50rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 500rpx;">原作者：{{authorship}}</view>
       <view class='post-author-date' style="margin-top: 5rpx">
         <text  class="author" style="margin-left: 50rpx">{{author}}</text>
         <text  class='post-date' style="margin-right: 50rpx">{{date}}</text>

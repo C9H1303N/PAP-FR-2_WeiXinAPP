@@ -1,7 +1,6 @@
 // pages/Dongtai/Dongtai.js
 var app = getApp()
-var postsData = require('../../data/posts-data.js')
-var dongtaiData = require('../../data/pinglun-data.js')
+var postsData
 
 Page({
 
@@ -9,10 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    update_image01:'/images/Images_Mine/student_he.jfif',
-    update_image02:'/images/Images_Mine/user_photo.jpg',
-    update_image03:'/images/Images_Mine/student_he.jfif',
-    update_image04:'/images/Images_Mine/user_photo.jpg'
+    i: 0
   },
 
   onReady: function() {
@@ -47,6 +43,19 @@ Page({
         });
       }
     });
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/recent/page/'+app.globalData.userid,
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success(res) {
+        console.log(res.data)
+      }
+    })
+
+
+
     this.setData(
       // 替换发现前端的数据
       {
