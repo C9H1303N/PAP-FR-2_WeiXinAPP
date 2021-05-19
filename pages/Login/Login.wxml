@@ -10,7 +10,7 @@
  <!--账号-->
  <view class="inputView" style="background: #ffffff"> 
   <image class="nameImage" src="/images/usernamelogo.png"></image> 
-  <label class="loginLab">账号</label> 
+  <label class="loginLab">账户</label> 
   <input class="inputText" placeholder="请输入账号" bindinput="usernameInput" maxlength='10' style="text-align:left; "/> 
  </view> 
  <view class="line"></view> 
@@ -21,6 +21,18 @@
   <label class="loginLab">密码</label> 
   <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" maxlength='20' style="text-align:left; "/> 
  </view> 
+
+ <view>
+ <button bindtap="jump_zhuce">
+ <text>注册</text>
+ </button>
+ </view>
+
+ <view>
+ <button bindtap="jump_find_password">
+ <text>找回密码</text>
+ </button>
+ </view>
  
  <!--按钮-->
  <view class="loginBtnView"> 

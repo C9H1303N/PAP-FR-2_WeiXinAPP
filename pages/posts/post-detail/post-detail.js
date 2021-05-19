@@ -53,6 +53,7 @@ Page({
     })
     console.log(this.data.like_num)
   },
+  
   unliking: function(e) {
     let that = this
     var id = this.data.detailData.id
@@ -155,6 +156,12 @@ Page({
     console.log("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
     console.log(this.data.detailData)
     // 数据绑定
+  },
+
+  jump_pinglun: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search_detail_command',
+    })
   },
 
   /**

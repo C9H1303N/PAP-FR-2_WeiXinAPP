@@ -10,7 +10,9 @@ var local_database04  = [
       reading: '0',
       collection: '0',
       content: 'ajdkhsakdhsajdaksd',
-      like: "0",
+      like: 102,
+      liking : 0,
+      comment_num: 20,
       // 嵌套
       img: {
         imgSrc: '/images/Mainpage_ET.png',
@@ -30,7 +32,9 @@ var local_database04  = [
       authorship: 'wywbb',
       reading: '0',
       collection: '0',
-      like: "0",
+      like: 100,
+      liking : 0,
+      comment_num: 5,
       // 嵌套
       img: {
         imgSrc: '/images/Mainpage_ET.png',

@@ -151,6 +151,12 @@ Page({
     // 数据绑定
   },
 
+  jump_pinglun: function(e){
+    wx.navigateTo({
+      url: '/pages/Search/Search_detail_command',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

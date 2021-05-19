@@ -13,10 +13,12 @@
 
 .temp01{
     height: 30rpx;
+    background-color: white;
 }
 
 .temp001{
   height: 15rpx;
+  background-color: white;
 }
 
 .zhuanAndshou{

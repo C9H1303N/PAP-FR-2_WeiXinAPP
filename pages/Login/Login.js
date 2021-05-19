@@ -33,6 +33,18 @@ Page({
       password: e.detail.value
     })
   },
+
+  jump_find_password: function(e){
+    wx.navigateTo({
+      url: '/pages/Login/find_password',
+    })
+  },
+
+  jump_zhuce: function(e){
+    wx.navigateTo({
+      url: '/pages/Login/zhuce',
+    })
+  },
  
   // 登录处理
   login: function () {

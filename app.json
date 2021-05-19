@@ -15,7 +15,12 @@
     "pages/Message/Message-item/Message-item",
     "pages/Register/Register",
     "pages/Search/Search_detail",
-    "pages/posts/post-person/post-person"
+    "pages/posts/post-person/post-person",
+    "pages/Search/Search_detail_command",
+    "pages/posts/post-detail-command",
+    "pages/posts/post_detail_command/post_detail_command",
+    "pages/Login/find_password",
+    "pages/Login/zhuce"
   ],
   "window": {
     "backgroundTextStyle": "light",
