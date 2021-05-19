@@ -56,6 +56,10 @@ Page({
         duration: 2000
       })
     } else {
+      wx.switchTab({
+        url: '/pages/Mainpage/Mainpage',
+      })
+      /*
       wx.request({
         url: 'https://pap2.zixfy.com/api/token-auth', 
         method: 'POST',
@@ -82,6 +86,7 @@ Page({
 
         }
       })
+      */
     }
   }
 })

@@ -21,23 +21,16 @@
   <label class="loginLab">密码</label> 
   <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" maxlength='20' style="text-align:left; "/> 
  </view> 
-
- <view>
- <button bindtap="jump_zhuce">
- <text>注册</text>
- </button>
- </view>
-
- <view>
- <button bindtap="jump_find_password">
- <text>找回密码</text>
- </button>
- </view>
- 
  <!--按钮-->
- <view class="loginBtnView"> 
-  <button class="loginBtn" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="login" >登录</button> 
+ <view class="padding flex flex-direction"> 
+  <button class="cu-btn bg-blue lg" bindtap="login" style="font-size: 20px">登录</button> 
  </view> 
- <text style="margin-left: 60rpx;">测试阶段，请前往网页端实现注册</text>
+ <view class="padding flex flex-direction" style="margin-top: -50rpx"> 
+  <button class="cu-btn bg-grey margin-tb-sm lg" bindtap="jump_zhuce">
+ <text style="font-size: 20px">注册</text>
+ </button>
+ 
+ <text bindtap="jump_find_password" style="text-align:center; margin-top: 100rpx">忘记密码？</text>
+ </view> 
  </view> 
 </view>
