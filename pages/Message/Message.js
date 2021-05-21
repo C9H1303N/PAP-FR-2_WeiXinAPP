@@ -1,15 +1,23 @@
 // pages/Message/Message.js
 var app = getApp()
 var postsData = require('../../data/posts-data.js')
+const friends = require('../list/list-mock-data.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    winHeight: "" //窗口高度
+    winHeight: "", //窗口高度
+    friends: friends.list
   },
-
+  gotoChat(event) {
+    const currentUser = event.currentTarget.dataset.user;
+    wx.navigateTo({
+      url: '../chat/chat?nickname=' + currentUser.nickname
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -37,7 +37,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.11.0",
+  "libVersion": "2.17.0",
   "appid": "wx9cb4e4d8097d6e19",
   "projectname": "PAP-FR_2",
   "debugOptions": {
