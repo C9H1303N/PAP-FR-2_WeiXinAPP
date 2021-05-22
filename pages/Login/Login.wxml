@@ -11,7 +11,7 @@
  <view class="inputView" style="background: #ffffff"> 
   <image class="nameImage" src="/images/usernamelogo.png"></image> 
   <label class="loginLab">账户</label> 
-  <input class="inputText" placeholder="请输入账号" bindinput="usernameInput" maxlength='10' style="text-align:left; "/> 
+  <input class="inputText" placeholder="请输入账号" bindinput="usernameInput" maxlength='20' style="text-align:left; "/> 
  </view> 
  <view class="line"></view> 
  
