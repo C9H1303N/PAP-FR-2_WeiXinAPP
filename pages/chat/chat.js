@@ -32,14 +32,18 @@ Page({
   },
   connect() {
     wx.connectSocket({
-      url: 'ws://localhost:8080/chat/'
+      url: 'ws://pap2.zixfy.com/chat/'
     });
     wx.onSocketOpen(res => {
       this.setData({ socketOpen: true });
+      this.ingroup(app.globalData.userid);
     });
+    console.log(this.data.socketOpen);
     wx.onSocketMessage(res => {
+      console.log(res);
+      console.log(this.data.messages);
       const isFirstSend = this.data.isFirstSend;
-      var msggg = JSON.parse(res.data).msg.message
+      var msggg = JSON.parse(res.data).message.msg.message;
       let messages = this.data.messages;
       let lastId = messages.length;
       var sdsd = lastId+1
@@ -93,6 +97,17 @@ Page({
   onFocus() {
     this.setData({ scrollTop: 9999999 });
   },
+  ingroup(id){
+    console.log(id);
+    let tt = JSON.stringify({
+      user_id: id,
+      chat_list: [3],
+      code: 700
+    })
+     wx.sendSocketMessage({
+      data: tt
+    })
+  },
   // 发送消息
   send() {
     const socketOpen = this.data.socketOpen;
@@ -110,9 +125,13 @@ Page({
     }
     if (socketOpen) {
       var tt = JSON.stringify({
-        message: msg,
-        code: 600,
-        send_to: 1
+        sender_id: app.globalData.userid,
+        receiver_id: 3,
+        msg: {
+          message: msg,
+          time: '2021-5-22'
+        },
+        code: 600
       })
       console.log(tt)
       wx.sendSocketMessage({

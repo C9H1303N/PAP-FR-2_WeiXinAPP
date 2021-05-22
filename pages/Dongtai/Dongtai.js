@@ -51,7 +51,6 @@ Page({
       }
     );
 
-    /*
     wx.request({
       url: 'https://pap2.zixfy.com/api/recent/page/'+app.globalData.userid,
       header: {
@@ -62,9 +61,6 @@ Page({
         console.log(res.data)
       }
     })
-
-*/
-
    
   },
     

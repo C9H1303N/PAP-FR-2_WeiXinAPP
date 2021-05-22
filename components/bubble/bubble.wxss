@@ -6,7 +6,7 @@
 }
 .content {
   max-width: 55%;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   border-radius: 4px;
   padding: 6px 10px;
   word-break: break-all;
@@ -22,7 +22,7 @@
   width: 0;
   height: 0;
   border-width: 12rpx;
-  border-color: transparent #f0f0f0 transparent transparent;
+  border-color: transparent #ffffff transparent transparent;
   border-style: solid;
   position: absolute;
   right: -28rpx;

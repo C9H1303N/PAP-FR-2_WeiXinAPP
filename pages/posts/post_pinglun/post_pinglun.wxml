@@ -1,5 +1,4 @@
 <template name='post_pinglun_Item'>
-  <view class = "temp01"></view>
   <view class = "dongtai_main">
   <view class = 'touxiang'>
       <image src = '{{touxiang}}' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
@@ -9,14 +8,10 @@
   <view class="temp001"></view>
   <view>
       <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
-      <text class="text_nicheng">{{pinglun_name}}</text>
-      <text class="text_fenxiang" decode="{{true}}">&nbsp;&nbsp;&nbsp;分享了解读</text>
+      <text class="text_nicheng">{{author}}</text>
+      <text class="text_fenxiang" decode="{{true}}">&nbsp;&nbsp;&nbsp;发布了解读</text>
   </view>
   <view class="temp_a01"></view>
-  <view>
-      <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
-      <text class="text_pinglun">{{pinglun}}</text>
-  </view>
   <view class="temp_a01"></view>
 
 
@@ -40,16 +35,6 @@
   </view>
 
   <view class="temp_a01"></view>
-  <view class="temp_a01"></view>
-  <view class="zhuanAndshou">
-      <view class="temp_zs01"></view>
-      <button class="cu-btn round" style="background-color: #ffffff"><image src = "/images/Mainpage_like.png" class="zhuan"></image>
-      <text style="margin-left:5rpx">点赞</text></button>
-      <view class = "temp_zs02"></view>
-      <button class="cu-btn round" style="background-color: #ffffff; margin-left: -100rpx"><image src = "/images/Mainpage_collection.png" class="shou"></image>
-      <text  style="margin-left:5rpx"> 收藏</text></button>
-  </view>
-
   <view class="temp_a01"></view>
 
   </view>
