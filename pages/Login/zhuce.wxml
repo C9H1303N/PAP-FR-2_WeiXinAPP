@@ -10,39 +10,40 @@
 <view style="padding-top: 20rpx">
 <view class="inputView" > 
   <label class="loginLab">新建账户</label> 
-  <input class="inputText" password="true" placeholder="新建账户名" bindinput="InputOldPass" maxlength='20' style="text-align:left; "/> 
+  <input class="inputText" placeholder="新建账户名" bindinput="usernameInput" maxlength='20' style="text-align:left; "/> 
  </view> 
  </view>
  <view style="padding-top: 20rpx">
  <view class="inputView" > 
   <label class="loginLab">邮箱</label> 
-  <input class="inputText" password="true" placeholder="注册时使用的邮箱" bindinput="InputNewPass" maxlength='20' style="text-align:left; "/> 
+  <input class="inputText" placeholder="注册邮箱" bindinput="emailInput" maxlength='20' style="text-align:left; "/> 
+
  </view> 
  
 </view>
 <view style="padding-top: 20rpx">
  <view class="inputView" > 
   <label class="loginLab">密码</label> 
-  <input class="inputText" password="true" placeholder="请输入您的新密码" bindinput="InputCheckPass" maxlength='20' style="text-align:left; "/> 
+  <input class="inputText" password="true" placeholder="请输入您的密码" bindinput="passwordInput" maxlength='20' style="text-align:left; "/> 
  </view> 
 </view>
 
 <view style="padding-top: 20rpx">
  <view class="inputView" > 
   <label class="loginLab">确认密码</label> 
-  <input class="inputText" password="true" placeholder="请确认您的密码" bindinput="InputCheckPass" maxlength='20' style="text-align:left; "/> 
+  <input class="inputText" password="true" placeholder="请确认您的确认密码" bindinput="checkpassInput" maxlength='20' style="text-align:left; "/> 
  </view> 
 </view>
 
 <view style="padding-top: 20rpx">
  <view class="inputView" > 
   <label class="loginLab">验证码</label> 
-  <input class="inputText" password="true" placeholder="请输入验证码" bindinput="InputCheckPass" maxlength='20' style="text-align:left; "/> 
+  <input class="inputText" placeholder="请输入验证码" bindinput="vertifycodeInput" maxlength='20' style="text-align:left; "/> 
  </view> 
 </view>
 
 <view class="padding flex flex-direction">
-  <button class="cu-btn bg-blue lg" bindtap="changepass">发送确认邮件</button>
-  <button class="cu-btn bg-grey margin-tb-sm lg" bindtap="exit">确认注册</button>
+  <button class="cu-btn bg-grey lg" bindtap="vertify">发送验证码</button>
+  <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="register">确认注册</button>
 </view>
 </view>

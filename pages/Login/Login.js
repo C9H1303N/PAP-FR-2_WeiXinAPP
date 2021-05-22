@@ -79,7 +79,9 @@ Page({
           }
         },
         fail(res){
-
+          wx.showToast({
+            title: '连接错误',
+          })
         }
       })
     }
