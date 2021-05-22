@@ -1,6 +1,7 @@
 // pages/Dongtai/Dongtai.js
 var app = getApp()
-var postsData
+var postsData = require('../../data/posts-data.js')
+var dongtaiData = require('../../data/pinglun-data.js')
 
 Page({
 
@@ -43,6 +44,14 @@ Page({
         });
       }
     });
+    this.setData(
+      // 替换发现前端的数据
+      {
+        posts_key: dongtaiData.postList04,
+      }
+    );
+
+    /*
     wx.request({
       url: 'https://pap2.zixfy.com/api/recent/page/'+app.globalData.userid,
       header: {
@@ -54,14 +63,9 @@ Page({
       }
     })
 
+*/
 
-
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: dongtaiData.postList04,
-      }
-    );
+   
   },
     
   onPostTap: function(event){

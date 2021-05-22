@@ -24,7 +24,8 @@
           confirm-hold="{{ true }}"
           bindinput="onInput"
           bindconfirm="send"
-          bindfocus="onFocus" />
+          bindfocus="onFocus"
+          style="height: 80%" />
       </view>
       <view class="chat-input-other">
         <button bindtap="send" type="primary" style="width: 100rpx; height: 60rpx; font-size: 11px">send

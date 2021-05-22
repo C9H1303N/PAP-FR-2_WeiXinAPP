@@ -11,6 +11,8 @@
 }
 .chat-input-wrapper {
   width: 100%;
+  position:fixed; 
+  bottom:0; 
   display: flex; 
   padding: 16rpx 0;
   background-color: #f4f4f6;
