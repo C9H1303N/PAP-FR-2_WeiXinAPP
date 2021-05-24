@@ -1,4 +1,4 @@
-<!--pages/posts/post-detail/post-detail.wxml-->
+
 <view class='container'>
   <!--<image class='head-imagee' src='{{postData.img.imgSrc}}'></image>-->
   <!-- <view class='author-date'>
@@ -9,7 +9,8 @@
     <text class="paper_info">论文信息\n</text>
     <text class="paper_info">标题：{{detailData.paper.title}}</text>
     <text>\n</text>
-    <text class='author'>发表用户：{{detailData.paper.created_by.username}}</text>
+    <text class='author' bindtap="view_others">发表用户：<text >{{detailData.paper.created_by.username}}</text>
+    </text>
     <text class='author'>发表年限：{{detailData.paper.published_year}}</text>
     <text>\n</text>
     <text class='author'>论文链接：</text>
@@ -43,7 +44,7 @@
         <view class="like" catchtap='liking'>      
           <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_like.png' class="nmsl"></image></button>
         </view>
-      </view>
+         </view>
       <view wx:if="{{like==1}}">
         <view class="like" catchtap='unliking'>    
           <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Message_like.png' class="nmsl"></image></button>
@@ -65,7 +66,7 @@
       <text class="what_number">{{collect_num}}</text>
       </view>
       <view class="bg-white padding-sm margin-xs radius" style="text-align: center;" >
-        <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_comment.png' class="nmsl"        bindtap="jump_pinglun"></image></button>
+        <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_comment.png' class="nmsl" bindtap="jump_pinglun"></image></button>
         <text class="what_number">0</text>
       </view>
     </view>

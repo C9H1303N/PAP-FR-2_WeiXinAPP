@@ -9,10 +9,11 @@
   <import src="/pages/posts/post_pinglun/post_pinglun.wxml" />
   <view>
   <block wx:for="{{posts_key}}" wx:for-item='item'>
-    <view catchtap='onPostTap' data-postId = "{{item.postId}}">
+    <view catchtap='onPostTap' data-postId = "{{item.id}}">
       <template is='post_pinglun_Item' data="{{...item}}" />
     </view>
   </block>
+  <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
 </view>
 

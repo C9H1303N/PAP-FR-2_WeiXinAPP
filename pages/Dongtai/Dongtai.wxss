@@ -46,7 +46,13 @@
 .temp_a01{
   height: 10rpx;
 }
-
+.loadmore{
+  background-color: #f2f2fa;
+  margin-top: 10rpx;
+}
+.loadmore::after{
+  border: none;
+}
 .user_info{
     height:200rpx;
     width: 660rpx;

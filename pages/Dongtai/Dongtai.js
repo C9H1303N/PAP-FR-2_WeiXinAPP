@@ -1,35 +1,13 @@
 // pages/Dongtai/Dongtai.js
 var app = getApp()
-var postsData = require('../../data/posts-data.js')
-var dongtaiData = require('../../data/pinglun-data.js')
-
+var postsData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    i: 0
-  },
-
-  onReady: function() {
-    let that = this;
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
-        // console.log('==顶部高度==',calc)
-        that.setData({
-          winHeight: calc,
-        });
-      }
-    });
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: dongtaiData.postList04,
-      }
-    );
+    i: 1
   },
 
   onLoad: function (options) {
@@ -44,21 +22,32 @@ Page({
         });
       }
     });
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: dongtaiData.postList04,
-      }
-    );
-
     wx.request({
-      url: 'https://pap2.zixfy.com/api/recent/page/'+app.globalData.userid,
+      url: 'https://pap2.zixfy.com/api/recent/page/'+app.globalData.userid+'?pindx='+this.data.i,
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
       method: 'GET',
       success(res) {
+        var item
+        var list = new Array()
         console.log(res.data)
+        for(var t in res.data.recent) {
+          item = res.data.recent[t]
+          console.log(item)
+          if (item.type == 1) {
+            list.push(item)
+          }
+        }
+        postsData = list
+        console.log(postsData)
+        wx.setStorage({
+          key: 'paper2',
+          data: postsData
+        })
+        that.setData({
+          posts_key: postsData
+        })
       }
     })
    
@@ -67,9 +56,10 @@ Page({
   onPostTap: function(event){
     // 获取新闻的postId
     var postId = event.currentTarget.dataset.postid;
+    console.log(postId)
     // 跳转到子页面，新闻详情界面
     wx.navigateTo({
-      url: '/pages/posts/post-detail/post-detail?id='+postId,
+      url: '/pages/Dongtai/Detail/following-detail?id='+postId,
     })
   },
 
@@ -86,15 +76,40 @@ Page({
     }
   },
 
-  switchTab: function (e) {
+  loadmore: function(){
+    this.data.i = this.data.i + 1;
     let that = this;
-    // console.log("滚动切换标签",e)
-    that.setData({
-      currentTab: e.detail.current
-    });
-    that.checkCor();
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/recent/page/'+app.globalData.userid+'?pindx='+this.data.i,
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success(res) {
+        var item
+        var list = new Array()
+        console.log(res.data)
+        for(var t in res.data.recent) {
+          item = res.data.recent[t]
+          console.log(item)
+          if (item.type == 1) {
+            list.push(item)
+          }
+        }
+        //console.log(postsData)
+        //console.log(list)
+        postsData.push(...list)
+        //console.log(postsData)
+        wx.setStorage({
+          key: 'paper2',
+          data: postsData
+        })
+        that.setData({
+          posts_key: postsData
+        })
+      }
+    })
   },
-
 
   /**
    * 生命周期函数--监听页面显示

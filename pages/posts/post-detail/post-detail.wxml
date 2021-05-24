@@ -4,9 +4,10 @@
   <!-- <view class='author-date'>
     <image class='avatar' src='{{postData.img.avatar}}'></image>
   </view> -->
-  <text class='title'>{{detailData.paper.title}}</text>
+  <text class='title'>{{detailData.title}}</text>
   <view class="padding-xl radius shadow bg-white" style="width: 100%; margin-top: 15rpx; margin-bottom: 40rpx" >
     <text class="paper_info">论文信息\n</text>
+    <text class="paper_info">标题：{{detailData.paper.title}}</text>
     <text>\n</text>
     <text class='author' bindtap="view_others">发表用户：<text >{{detailData.paper.created_by.username}}</text>
     </text>

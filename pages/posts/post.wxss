@@ -11,7 +11,7 @@
 }
 
 .post-author-date{
-  margin-top: 10rpx;
+  margin-top: 0rpx;
 }
 .post-author{
   margin: 30rpx;

@@ -3,9 +3,10 @@
   <view class='post-container'>
     <image style="width:230rpx;" src='https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.zglww.net%2Fshtupian%2F2%2F2014934961229594.jpg&refer=http%3A%2F%2Fwww.zglww.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1622886292&t=75cec00556dd3b752570a5a6eb18b17a' class='post-author' mode="scaleToFill" ></image>
     <view style="flex:1; " class="info-container" >
-      <view class='post-title' style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">{{paper.title}}</view>
+      <view class='post-title' style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">论文：{{paper.title}}</view>
+      <view class='post-title' style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx; color:#98AFC7">{{title}}</view>
       <view class="authorship" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;width: 400rpx;">原作者：{{paper.author}}</view>
-      <view class='post-author-date'>
+      <view class='post-author-date' style="margin-top: -5rpx">
         <text  class="author" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break:break-all;">{{paper.created_by.username}}</text>
         <text  class='post-date'>{{paper.published_year}}</text>
       </view>
