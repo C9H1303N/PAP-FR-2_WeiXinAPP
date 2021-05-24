@@ -1,0 +1,19 @@
+<!--pages/comments/comments.wxml-->
+<template name='comment'>
+    <view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item">
+        <view class="cu-avatar round" style="background-image:url(/images/Images_Mine/default.png);"></view>
+        <view class="content">
+          <view class="text-grey">{{username}}</view>
+          <view class="text-gray text-content text-df">
+          </view>
+          <view class="text-black text-content text-df">
+            {{text}}
+          </view>
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-gray text-df">{{year}}年{{month}}月{{date}}日 {{hour}}:{{minute}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+</template>

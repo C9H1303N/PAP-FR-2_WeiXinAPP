@@ -70,6 +70,25 @@
         <text class="what_number">0</text>
       </view>
     </view>
-
+  </view>
+  <view class="padding-xl radius shadow bg-white" style="width: 100%; margin-top: 15rpx; margin-bottom: 40rpx" >
+    <text class="paper_info">相关评论</text>
+    <import src="/pages/comments/comments.wxml" />
+    <import src="/pages/comments/reply.wxml" />
+    <view style="flex:1;">
+      <block wx:for="{{comments_key}}" wx:for-item='item'>
+        <view>
+          <!-- template -->
+        <template is='comment' data="{{...item}}" />
+        <block wx:for="{{reply_map[item.id]}}" wx:for-item='item1'>
+        <view>
+          <!-- template -->
+        <template is='reply' data="{{...item1}}" />
+      </view>
+        </block>
+      </view>
+  </block>
+  <button class="loadmore" bindtap="loadmore">加载更多</button>
+  </view>
   </view>
 </view>

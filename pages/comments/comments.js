@@ -1,4 +1,4 @@
-// pages/posts/post-detail-command.js
+// pages/comments/comments.js
 Page({
 
   /**

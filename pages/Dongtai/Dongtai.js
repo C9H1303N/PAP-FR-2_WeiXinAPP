@@ -29,6 +29,7 @@ Page({
       },
       method: 'GET',
       success(res) {
+        console.log(res.data)
         var item
         var list = new Array()
         console.log(res.data)
@@ -36,6 +37,13 @@ Page({
           item = res.data.recent[t]
           console.log(item)
           if (item.type == 1) {
+            let date = new Date(item.created_at)
+            console.log(date)
+            item.year = date.getFullYear()
+            item.month = date.getMonth() + 1
+            item.date = date.getDate()
+            item.hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+            item.minute =  date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
             list.push(item)
           }
         }
@@ -93,6 +101,13 @@ Page({
           item = res.data.recent[t]
           console.log(item)
           if (item.type == 1) {
+            let date = new Date(item.created_at)
+            console.log(date)
+            item.year = date.getFullYear()
+            item.month = date.getMonth() + 1
+            item.date = date.getDate()
+            item.hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+            item.minute =  date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
             list.push(item)
           }
         }

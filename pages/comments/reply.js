@@ -1,15 +1,12 @@
-// pages/posts/post_detail_command/post_detail_command.js
+// pages/comments/reply.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+
   },
-
-  
-
 
   /**
    * 生命周期函数--监听页面加载

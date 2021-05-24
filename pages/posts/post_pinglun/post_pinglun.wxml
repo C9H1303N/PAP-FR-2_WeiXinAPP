@@ -9,7 +9,7 @@
   <view>
       <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
       <text class="text_nicheng">{{created_by.username}}</text>
-      <text class="text_fenxiang" decode="{{true}}">&nbsp;&nbsp;&nbsp;发布了解读</text>
+      <text class="text_fenxiang" decode="{{true}}">&nbsp;&nbsp;&nbsp;发布了解读 {{year}}年{{month}}月{{date}}日 {{hour}}:{{minute}}</text>
   </view>
   <view class="temp_a01"></view>
   <view class="temp_a01"></view>

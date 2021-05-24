@@ -16,13 +16,12 @@
     "pages/Register/Register",
     "pages/Search/Search_detail",
     "pages/posts/post-person/post-person",
-    "pages/Search/Search_detail_command",
-    "pages/posts/post-detail-command",
-    "pages/posts/post_detail_command/post_detail_command",
     "pages/Login/find_password",
     "pages/Login/zhuce",
     "pages/chat/chat",
-    "pages/Dongtai/Detail/following-detail"
+    "pages/Dongtai/Detail/following-detail",
+    "pages/comments/comments",
+    "pages/comments/reply"
   ],
   "window": {
     "backgroundTextStyle": "light",

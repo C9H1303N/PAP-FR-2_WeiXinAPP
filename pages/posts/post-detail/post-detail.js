@@ -15,7 +15,9 @@ Page({
     contentShow: '',
     detailData: '',
     like_num: 0,
-    collect_num: 0
+    collect_num: 0,
+    comment_i: 1,
+    page_num: 0
   },
 
   ellipsis: function () {
@@ -127,6 +129,7 @@ Page({
    */
   onLoad: function (options) {
     //后期需要后端传
+    let that = this
     var postId = options.id;
     this.data.post_id = postId;
     //console.log(postId)
@@ -153,9 +156,111 @@ Page({
         break;
       }
     }
-    console.log("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
-    console.log(this.data.detailData)
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/comment?micro_knowledge_id=' + postId + '&pindex=' + that.data.comment_i + '&psize=20',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {
+        var comment_list = res.data.comment_list
+        var father_comments = new Array()
+        var reply_map = {}
+        for (var comm in comment_list) {
+          var item = comment_list[comm]
+          let date = new Date(item.created_at)
+          console.log(date)
+          item.year = date.getFullYear()
+          item.month = date.getMonth() + 1
+          item.date = date.getDate()
+          item.hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+          item.minute =  date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+          if (item.parent_comment_id == undefined) {
+            father_comments.push(item)
+          }
+          else {
+            var id = item.parent_comment_id
+            if (reply_map[id] != undefined) {
+              var arr = reply_map[id]
+              arr.push(item)
+              reply_map[id] = arr
+            }
+            else {
+              var arr = new Array()
+              arr.push(item)
+              reply_map[id] = arr
+            }
+          }
+        }
+        that.setData({
+          comments_key: father_comments,
+          reply_map: reply_map,
+          page_num: res.data.page_count
+        })
+        console.log(father_comments)
+        console.log(reply_map)
+        
+      }
+    })
     // 数据绑定
+  },
+
+  loadmore: function() {
+    let that = this
+    this.data.comment_i = this.data.comment_i + 1
+    if (this.data.comment_i> this.data.page_num) {
+      wx.showToast({
+        title: '没有更多了！',
+      })
+    }
+    else {
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/comment?micro_knowledge_id=' + postId + '&pindex=' + that.data.comment_i + '&psize=20',
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {
+          var comment_list = res.data.comment_list
+          var father_comments = that.data.comments_key
+          var reply_map = that.data.reply_map
+          for (var comm in comment_list) {
+            var item = comment_list[comm]
+            let date = new Date(item.created_at)
+            console.log(date)
+            item.year = date.getFullYear()
+            item.month = date.getMonth() + 1
+            item.date = date.getDate()
+            item.hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+            item.minute =  date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+            if (item.parent_comment_id == undefined) {
+              father_comments.push(item)
+            }
+            else {
+              var id = item.parent_comment_id
+              if (reply_map[id] != undefined) {
+                var arr = reply_map[id]
+                arr.push(item)
+                reply_map[id] = arr
+              }
+              else {
+                var arr = new Array()
+                arr.push(item)
+                reply_map[id] = arr
+              }
+            }
+          }
+          that.setData({
+            comments_key: father_comments,
+            reply_map: reply_map
+          })
+          console.log(father_comments)
+          console.log(reply_map)
+          
+        }
+      })
+    }
+
   },
 
   jump_pinglun: function(e){

@@ -69,6 +69,17 @@
         <text class="what_number">0</text>
       </view>
     </view>
-
+  </view>
+  <view class="padding-xl radius shadow bg-white" style="width: 100%; margin-top: 15rpx; margin-bottom: 40rpx" >
+    <text class="paper_info">相关评论</text>
+    <import src="/pages/comments/comments.wxml" />
+    <view style="flex:1;">
+      <block wx:for="{{comments_key}}" wx:for-item='item'>
+        <view>
+          <!-- template -->
+        <template is='postItem' data="{{...item}}" />
+      </view>
+  </block>
+  </view>
   </view>
 </view>
