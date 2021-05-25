@@ -1,14 +1,14 @@
 <template name='post_pinglun_Item'>
   <view class = "dongtai_main">
   <view class = 'touxiang'>
-      <image src = '/images/Images_Mine/default.png' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
+      <image bindtap="view_comment_person" data-userid="{{created_by.id}}" src = '/images/Images_Mine/default.png' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
   </view>
 
   <view>
   <view class="temp001"></view>
   <view>
       <text decode="{{true}}">&nbsp;&nbsp;&nbsp;</text>
-      <text class="text_nicheng">{{created_by.username}}</text>
+      <text class="text_nicheng" bindtap="view_comment_person" data-userid="{{created_by.id}}">{{created_by.username}}</text>
       <text class="text_fenxiang" decode="{{true}}">&nbsp;&nbsp;&nbsp;发布了解读 {{year}}年{{month}}月{{date}}日 {{hour}}:{{minute}}</text>
   </view>
   <view class="temp_a01"></view>

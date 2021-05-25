@@ -118,11 +118,21 @@ Page({
       success (res) {  
        // console.log("posts::::::::")
       //  console.log(res.data)
+        var filter = new Array()
+        for (var t in res.data.posts) {
+          if (res.data.posts[t].type == 1) {
+            filter.push(res.data.posts[t])
+          }
+        }
+        wx.setStorage({
+          key: 'paper4',
+          data: filter
+        })
         that.setData(
           // 替换发现前端的数据
           {
-            fabu_key: res.data.posts,
-            posts_key: res.data.posts
+            fabu_key: filter,
+            posts_key: filter
           }
         );
       }
@@ -136,15 +146,24 @@ Page({
       method: 'GET',
       success (res) {  
      //   console.log(res.data)
+     var filter = new Array()
+     for (var t in res.data.posts) {
+       if (res.data.posts[t].type == 1) {
+         filter.push(res.data.posts[t])
+       }
+     }
+     wx.setStorage({
+      key: 'paper3',
+      data: filter
+    })
         that.setData(
           // 替换发现前端的数据
           {
-            collect_key: res.data.posts
+            collect_key: filter
           }
         );
       }
     });
-
     wx.request({
       url: 'https://pap2.zixfy.com/api/follower/'+app.globalData.userid+'?page=' + this.data.mine_subs_num+"&page_size=9",
       header: {
@@ -195,9 +214,16 @@ Page({
     console.log(this.data.posts_key)
     if(this.data.now_name == "postItem"){
       // 跳转到子页面，新闻详情界面
-      wx.navigateTo({
-        url: '/pages/posts/post-detail/post-detail?id='+postId,
-      })
+      if (this.data.currentTab == 0) {
+        wx.navigateTo({
+          url: '/pages/posts/post-detail/post-detail?id='+postId+'&page=4', //个人发布4、个人收藏3，动态2，search 1, 主页0,
+        })
+      }
+      else if (this.data.currentTab == 1) {
+        wx.navigateTo({
+          url: '/pages/posts/post-detail/post-detail?id='+postId+'&page=3', //个人发布4、个人收藏3，动态2，search 1, 主页0,
+        })
+      }
     }
     else{
       wx.navigateTo({
@@ -231,10 +257,6 @@ Page({
             now_name: "postItem"
           }
         );
-        wx.setStorage({
-          key: 'paper',
-          data: postsData.concat(this.data.posts_key)
-        })
       }
       else if (cur == 1) { //我的收藏
           this.setData(
@@ -243,10 +265,6 @@ Page({
               now_name: "postItem"
             }
           );
-          wx.setStorage({
-            key: 'paper',
-            data: postsData.concat(this.data.posts_key)
-          })
       }
       else if (cur == 2) { //关注列表
         this.setData(
@@ -302,7 +320,18 @@ Page({
         method: 'GET',
         success (res) {  
           if(Math.ceil(res.data.total_count/5) >= that.data.mine_fabu_num){
-            fabus = fabus.concat(res.data.posts) 
+            var filter = new Array()
+            for (var t in res.data.posts) {
+              if (res.data.posts[t].type == 1) {
+                filter.push(res.data.posts[t])
+              }
+            }
+            fabus = fabus.concat(filter) 
+            console.log(fabus)
+            wx.setStorage({
+              key: 'paper4',
+              data: fabus
+            })
             that.setData(
           // 替换发现前端的数据
               {
@@ -331,7 +360,17 @@ Page({
         method: 'GET',
         success (res) {  
           if(Math.ceil(res.data.total_count/5) >= that.data.mine_collect_num){
-            collect = collect.concat(res.data.posts) 
+            var filter = new Array()
+            for (var t in res.data.posts) {
+              if (res.data.posts[t].type == 1) {
+                filter.push(res.data.posts[t])
+              }
+            }
+            collect = collect.concat(filter) 
+            wx.setStorage({
+              key: 'paper3',
+              data: collect
+            })
             that.setData(
           // 替换发现前端的数据
               {

@@ -60,7 +60,7 @@ Page({
         console.log(res.data)
         postsData = res.data.res
         wx.setStorage({
-          key: 'paper1',
+          key: 'paper',
           data: postsData
         })
         that.setData(
@@ -135,7 +135,7 @@ Page({
     console.log(postId)
     // 跳转到子页面，新闻详情界面
     wx.navigateTo({
-      url: '/pages/Search/Search_detail?id='+postId,
+      url: '/pages/posts/post-detail/post-detail?id='+postId + '&page=1', //个人发布4， 个人收藏3，动态2，search 1, 主页0,
     })
   },
   /**

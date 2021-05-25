@@ -88,7 +88,7 @@ Page({
     // 跳转到子页面，新闻详情界面
     console.log(postId)
     wx.navigateTo({
-      url: '/pages/posts/post-detail/post-detail?id='+postId,
+      url: '/pages/posts/post-detail/post-detail?id='+postId + '&page=0', //动态2，search 1, 主页0,
     })
   },
   /**

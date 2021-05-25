@@ -17,7 +17,12 @@ Page({
     like_num: 0,
     collect_num: 0,
     comment_i: 1,
-    page_num: 0
+    page_num: 0,
+    focusInput: false,
+    height: '',
+    isInput: false,
+    commentOrreply: 0, //发表评论还是回复评论
+    comments: ''
   },
 
   ellipsis: function () {
@@ -118,6 +123,21 @@ Page({
     })
     console.log(this.data.collection)
   },
+  view_comment_person: function(event) {
+    let that = this
+    var param = event.currentTarget.dataset
+    console.log(param)
+    if (param.userid == app.globalData.userid) {
+      wx.showToast({
+        title: '这是我自己',
+      })
+    }
+    else {
+    wx.navigateTo({
+      url: '/pages/Otherspage/Otherspage?id=' + param.userid,
+    })
+    }
+  },
   view_others:function(){
     wx.navigateTo({
       url: '/pages/Otherspage/Otherspage?id=' + this.data.detailData.paper.created_by.id,
@@ -130,12 +150,22 @@ Page({
   onLoad: function (options) {
     //后期需要后端传
     let that = this
-    var postId = options.id;
+    var postId = options.id
+    var type = options.page
+    console.log(type)
     this.data.post_id = postId;
-    //console.log(postId)
+    console.log(postId)
     // 拿到数据文件对应id的数据元素
-    postsData = wx.getStorageSync('paper')
-    //console.log(postsData)
+    if (type == 0) {    
+      postsData = wx.getStorageSync('paper')
+    }
+    else {
+      var list = 'paper' + type.toString()
+      console.log(list)
+      postsData = wx.getStorageSync(list)
+    }
+    console.log('getdata!!!!!!!!!!!!!!1')
+    console.log(postsData)
     for(var i = 0; i < postsData.length; i++){
       if(postsData[i].id == postId){
         var likk = 0
@@ -156,8 +186,14 @@ Page({
         break;
       }
     }
+    this.load_comments()
+    // 数据绑定
+  },
+
+  load_comments: function() {
+    let that = this
     wx.request({
-      url: 'https://pap2.zixfy.com/api/comment?micro_knowledge_id=' + postId + '&pindex=' + that.data.comment_i + '&psize=20',
+      url: 'https://pap2.zixfy.com/api/comment?micro_knowledge_id=' + that.data.post_id + '&pindex=' + that.data.comment_i + '&psize=20',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
@@ -176,6 +212,8 @@ Page({
           item.hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
           item.minute =  date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
           if (item.parent_comment_id == undefined) {
+            item.fold = true
+            item.fold_word = '展开'
             father_comments.push(item)
           }
           else {
@@ -202,7 +240,6 @@ Page({
         
       }
     })
-    // 数据绑定
   },
 
   loadmore: function() {
@@ -215,7 +252,7 @@ Page({
     }
     else {
       wx.request({
-        url: 'https://pap2.zixfy.com/api/comment?micro_knowledge_id=' + postId + '&pindex=' + that.data.comment_i + '&psize=20',
+        url: 'https://pap2.zixfy.com/api/comment?micro_knowledge_id=' + that.data.post_id + '&pindex=' + that.data.comment_i + '&psize=20',
         header: {
           'Authorization': `Bearer ${ app.globalData.token }`
         },
@@ -234,6 +271,8 @@ Page({
             item.hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
             item.minute =  date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
             if (item.parent_comment_id == undefined) {
+              item.fold = true
+              item.fold_word = '展开'
               father_comments.push(item)
             }
             else {
@@ -256,16 +295,116 @@ Page({
           })
           console.log(father_comments)
           console.log(reply_map)
-          
         }
       })
     }
-
   },
 
-  jump_pinglun: function(e){
-    wx.navigateTo({
-      url: '/pages/Search/Search_detail_command',
+  commentInput: function(e) {
+    this.setData ({
+      comments: e.detail.value
+    })
+  },
+
+  foldorunfold: function(event) {
+    console.log(event.currentTarget.dataset)
+    var id = event.currentTarget.dataset.id
+    var comms = this.data.comments_key
+    console.log(comms)
+    for (var it in comms) {
+      if (comms[it].id == id) {
+        if (comms[it].fold) {
+          comms[it].fold = false
+          comms[it].fold_word = "收起"
+        }
+        else {
+          comms[it].fold = true
+          comms[it].fold_word = "展开"
+        }
+        console.log(comms[it])
+      }
+    }
+    this.setData({
+      comments_key: comms
+    })
+  },
+
+  send_comment: function() {
+    let that = this 
+    console.log(that.data.comments)
+    if (that.data.commentOrreply == 0) { //发表针对该解读的评论 
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/comment/create',
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        data: {
+          content: that.data.comments,
+          micro_knowledge_id: that.data.post_id
+        },
+        method: 'POST',
+        success (res) {
+          that.data.comment_i = 1
+          that.load_comments()
+        }
+      })
+    }
+    else { //发表评论回复
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/comment/create',
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        data: {
+          content: that.data.comments,
+          micro_knowledge_id: that.data.post_id,
+          parent_comment_id: that.data.parent_comment_id,
+          to_user_id: that.data.to_user_id
+        },
+        method: 'POST',
+        success (res) {
+          that.data.comment_i = 1
+          that.load_comments()
+        }
+      })
+      this.setData({
+        focusInput: true,
+        isInput: true,
+        commentOrreply: 0
+      })
+    }
+  },
+
+  inputFocus(e) {
+    this.setData({
+      height: e.detail.height,
+      isInput: true
+    })
+  },
+  inputBlur() {
+    this.setData({
+      isInput: false
+    })
+  },
+ 
+  focusButn: function () {
+    this.setData({
+      focusInput: true,
+      isInput: true,
+      commentOrreply: 0
+    })
+  },
+
+  replyfocus: function(event) {
+    let that = this
+    var param = event.currentTarget.dataset
+    console.log(param)
+    this.setData({
+      focusInput: true,
+      isInput: true,
+      parent_comment_id: param.parentid,
+      to_user_id: param.userid,
+      commentOrreply: 1
     })
   },
 

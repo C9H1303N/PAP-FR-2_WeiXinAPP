@@ -66,8 +66,8 @@
       <text class="what_number">{{collect_num}}</text>
       </view>
       <view class="bg-white padding-sm margin-xs radius" style="text-align: center;" >
-        <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_comment.png' class="nmsl" bindtap="jump_pinglun"></image></button>
-        <text class="what_number">0</text>
+        <button class="cu-btn round" style="background-color: #ffffff"><image src='/images/Mainpage_comment.png' class="nmsl" bindtap="focusButn"></image></button>
+        <text class="what_number">发表评论</text>
       </view>
     </view>
   </view>
@@ -80,7 +80,7 @@
         <view>
           <!-- template -->
         <template is='comment' data="{{...item}}" />
-        <block wx:for="{{reply_map[item.id]}}" wx:for-item='item1'>
+        <block wx:for="{{reply_map[item.id]}}" wx:for-item='item1'  wx:if="{{!item.fold}}">
         <view>
           <!-- template -->
         <template is='reply' data="{{...item1}}" />
@@ -91,4 +91,8 @@
   <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
   </view>
+  <view class='commentInputView' style='bottom:{{height == ""?0:height}}px;' hidden='{{!isInput}}'>
+   <input class='input' placeholder="请输入您的评论" maxlength='-1' bindinput='commentInput' value="{{value}}" bindfocus="inputFocus" focus='{{focusInput}}' bindblur="inputBlur" style='background-color: #ffffff; height: 95%; width: 70%'></input>
+  <button class='send' style="height: 90%; margin-top: 0rpx" bindtap="send_comment">发送</button>
+</view>
 </view>

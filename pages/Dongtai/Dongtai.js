@@ -67,7 +67,7 @@ Page({
     console.log(postId)
     // 跳转到子页面，新闻详情界面
     wx.navigateTo({
-      url: '/pages/Dongtai/Detail/following-detail?id='+postId,
+      url: '/pages/posts/post-detail/post-detail?id='+postId + '&page=2', //动态2，search 1, 主页0
     })
   },
 
@@ -125,7 +125,21 @@ Page({
       }
     })
   },
-
+  view_comment_person: function(event) {
+    let that = this
+    var param = event.currentTarget.dataset
+    console.log(param)
+    if (param.userid == app.globalData.userid) {
+      wx.showToast({
+        title: '这是我自己',
+      })
+    }
+    else {
+    wx.navigateTo({
+      url: '/pages/Otherspage/Otherspage?id=' + param.userid,
+    })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */

@@ -129,3 +129,18 @@
 .what_number {
   align-content: center;
 }
+
+.commentInputView{
+  height: 150rpx;
+  width: 100%;
+  background-color: #E6E6E6;
+  padding: 4%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+}
+
+.bgc {
+  color: white
+}

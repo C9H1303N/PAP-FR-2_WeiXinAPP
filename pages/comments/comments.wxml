@@ -2,16 +2,20 @@
 <template name='comment'>
     <view class="cu-list menu-avatar comment solids-top">
       <view class="cu-item">
-        <view class="cu-avatar round" style="background-image:url(/images/Images_Mine/default.png);"></view>
+        <view class="cu-avatar round" bindtap="view_comment_person" data-userid="{{user_id}}" style="background-image:url(/images/Images_Mine/default.png);"></view>
         <view class="content">
-          <view class="text-grey">{{username}}</view>
-          <view class="text-gray text-content text-df">
-          </view>
-          <view class="text-black text-content text-df">
+          <view class="text-grey" bindtap="view_comment_person" data-userid="{{user_id}}" >{{username}}</view>
+          <view class="text-black text-content text-df" style="word-break：break-all">
             {{text}}
           </view>
           <view class="margin-top-sm flex justify-between">
             <view class="text-gray text-df">{{year}}年{{month}}月{{date}}日 {{hour}}:{{minute}}</view>
+            <view catchtap="foldorunfold" data-id="{{id}}">
+              <text class="cuIcon-unfold text-gray margin-left-sm">{{fold_word}}</text>
+            </view>
+            <view catchtap="replyfocus" data-parentid="{{id}}" data-userid="{{user_id}}">
+              <text class="cuIcon-messagefill text-gray margin-left-sm">回复</text>
+            </view>
           </view>
         </view>
       </view>
