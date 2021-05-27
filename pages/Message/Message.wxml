@@ -39,9 +39,9 @@
     <view class="list-row">
       <view class="list-icon">
         <view class="list-photo">
-          <image src="{{ item.photo }}" style="width: 50px; height: 50px;"></image>
+          <image src="../../images/Images_Mine/default.png" style="width: 50px; height: 50px;"></image>
         </view>
-        <view wx:if="{{ have_unread_message == true }}" class="message-dot"></view>
+        <view wx:if="{{ item.have_unread_message == true }}" class="message-dot"></view>
       </view>
       <view class="list-content">
         <view class="list-content-layout">

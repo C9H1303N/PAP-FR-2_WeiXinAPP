@@ -13,8 +13,19 @@ Page({
   },
   gotoChat(event) {
     const currentUser = event.currentTarget.dataset.user;
+    console.log(currentUser);
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/clear-unread',
+      method: 'POST',
+      data:{
+        user_id: currentUser.id
+      },
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      }
+    })
     wx.navigateTo({
-      url: '../chat/chat?nickname=' + currentUser.name
+      url: '../chat/chat?nickname=' + currentUser.name + '&id=' + currentUser.id
     })
   },
   /**
@@ -33,17 +44,17 @@ Page({
       }
     });
     wx.request({
-      url: 'https://pap2.zixfy.com/api/chat-user-list/',
+      url: 'https://pap2.zixfy.com/api/chat-user-list',
       header: {
         'Authorization': `Bearer ${ app.globalData.token }`
       },
       method: 'GET',
       success (res) {  
-       // console.log(res.data)
+        console.log(res.data)
         that.setData(
           // 替换发现前端的数据
           {
-            friends: res.data
+            friends: res.data.chat_user_list
           }
         );
       }

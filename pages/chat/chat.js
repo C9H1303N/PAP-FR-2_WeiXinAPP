@@ -9,12 +9,49 @@ Page({
     msg: '',              // 当前输入
     scrollTop: 0,         // 页面的滚动值
     socketOpen: false,    // websocket是否打开
-    lastId: 0,           // 最后一条消息的ID
-    isFirstSend: true     // 是否第一次发送消息(区分历史和新加)
+    lastId: '',           // 最后一条消息的ID
+    isFirstSend: true,     // 是否第一次发送消息(区分历史和新加)
+    receiver_id: 0
   },
   onLoad(option) {
     // 设置标题
     this.setNickName(option);
+    this.setData({
+      receiver_id: option.id
+    });
+    var list;
+    let id1 = option.id;
+    let that = this;
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/chat-message',
+      method: 'POST',
+      data:{
+        user_id: id1
+      },
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      success(res){
+        console.log(res.data)
+        list = res.data.message_list;
+        let new_arr = new Array();
+        for(let i = 0; i < list.length; i++){
+          let obj = {id:0,message:'',messageType:0,url:''};
+          obj.id  = 'msg' + i;
+          obj.message = list[i].message;
+          if(list[i].send_id == option.id) obj.messageType = 1;
+          else obj.messageType = 0;
+          obj.url = '../../images/Images_Mine/default.png';
+          //console.log(obj);
+          new_arr.push(obj);
+        }
+        that.setData({
+          messages: new_arr
+        })
+        //console.log(new_arr)
+      }
+    })
+    console.log(this.data.messages);
   },
   //事件处理函数
   onReady() {
@@ -36,7 +73,6 @@ Page({
     });
     wx.onSocketOpen(res => {
       this.setData({ socketOpen: true });
-      this.ingroup(app.globalData.userid);
     });
     console.log(this.data.socketOpen);
     wx.onSocketMessage(res => {
@@ -48,10 +84,10 @@ Page({
       let lastId = messages.length;
       var sdsd = lastId+1
       const data = {
-        id: sdsd,
+        id: 'msg' + sdsd,
         message: msggg,
         messageType: 1,
-        url: '../../images/5.png'
+        url: '../../images/Images_Mine/default.png'
       };
       if (this.data.isFirstSend) {
         messages = messages.concat(data);
@@ -97,17 +133,6 @@ Page({
   onFocus() {
     this.setData({ scrollTop: 9999999 });
   },
-  ingroup(id){
-    console.log(id);
-    let tt = JSON.stringify({
-      user_id: id,
-      chat_list: [3],
-      code: 700
-    })
-     wx.sendSocketMessage({
-      data: tt
-    })
-  },
   // 发送消息
   send() {
     const socketOpen = this.data.socketOpen;
@@ -124,12 +149,13 @@ Page({
       return false;
     }
     if (socketOpen) {
+      var myDate = new Date();
       var tt = JSON.stringify({
         sender_id: app.globalData.userid,
-        receiver_id: 3,
+        receiver_id: this.data.receiver_id,
         msg: {
           message: msg,
-          time: '2021-5-22'
+          time: myDate.toLocaleString()
         },
         code: 600
       })
@@ -143,7 +169,7 @@ Page({
         id: nums,
         message: msg,
         messageType: 0,
-        url: '../../images/5.png'
+        url: '../../images/Images_Mine/default.png'
       };
       if (this.data.isFirstSend) {
         messages = messages.concat(data);
