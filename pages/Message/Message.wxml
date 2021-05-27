@@ -3,28 +3,11 @@
   
   <view class="search_frame">
     <view style="width:600rpx" class="search_word">
-      <input class="search_input" placeholder="当前版本暂未实现此功能，请期待beta版本"></input>
+      <input class="search_input" placeholder="请输入关键词"></input>
     </view>
     <image src="/images/Message_add.png" class="add">
       <button class="plus"></button>
     </image>
-  </view>
-  <view class="message_buttons">
-    <button class="Mbutton">
-      <image src="/images/Message_like.png" class="button_img"></image>
-      <image src="/images/Message_button.png" class="img"></image>
-      <text class="button_text">赞我的</text>
-    </button>
-    <button class="Mbutton">
-      <image src="/images/Message_at.png" class="button_img"></image>
-      <image src="/images/Message_button.png" class="img"></image>
-      <text class="button_text">@我</text>
-    </button>
-    <button class="Mbutton">
-      <image src="/images/Message_reply.png" class="button_img"></image>
-      <image src="/images/Message_button.png" class="img"></image>
-      <text class="button_text">回复我的</text>
-    </button>
   </view>
   
   <view class="list-container">
