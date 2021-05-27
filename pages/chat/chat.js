@@ -32,7 +32,7 @@ Page({
   },
   connect() {
     wx.connectSocket({
-      url: 'ws://pap2.zixfy.com/chat/'
+      url: 'wss://pap2.zixfy.com/chat/'
     });
     wx.onSocketOpen(res => {
       this.setData({ socketOpen: true });
@@ -74,7 +74,7 @@ Page({
   },
   // 设置昵称
   setNickName(option) {
-    const nickname = option.nickname || 'Marry';
+    const nickname = option.nickname || 'Null';
     wx.setNavigationBarTitle({
       title: nickname
     });

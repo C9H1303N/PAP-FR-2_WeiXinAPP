@@ -30,7 +30,7 @@
   <view class="list-container">
   <view 
     wx:for="{{ friends }}" 
-    wx:key="friends{{ index }}" 
+    wx:key="friends{{ id }}" 
     class="list-row-wrapper" 
     hover-class="list-row-hover" 
     hover-stay-time="50"
@@ -41,16 +41,16 @@
         <view class="list-photo">
           <image src="{{ item.photo }}" style="width: 50px; height: 50px;"></image>
         </view>
-        <view wx:if="{{ item.nums > 0 }}" class="message-dot"></view>
+        <view wx:if="{{ have_unread_message == true }}" class="message-dot"></view>
       </view>
       <view class="list-content">
         <view class="list-content-layout">
           <view class="list-content-name">
-            <text class="list-content-title">{{ item.nickname }}</text>
+            <text class="list-content-title">{{ item.name }}</text>
             <text class="list-content-time">{{ item.time }}</text>
           </view>
           <view class="list-content-brief">
-            <text>[{{ item.nums }}条]{{ item.message }}</text>
+            <text>[{{ item.unread_message_num }}条]{{ item.last_message }}</text>
           </view>
         </view>
       </view>

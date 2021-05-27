@@ -1,7 +1,6 @@
 // pages/Message/Message.js
 var app = getApp()
 var postsData = require('../../data/posts-data.js')
-const friends = require('../list/list-mock-data.js')
 
 Page({
 
@@ -10,12 +9,12 @@ Page({
    */
   data: {
     winHeight: "", //窗口高度
-    friends: friends.list
+    friends: ""
   },
   gotoChat(event) {
     const currentUser = event.currentTarget.dataset.user;
     wx.navigateTo({
-      url: '../chat/chat?nickname=' + currentUser.nickname
+      url: '../chat/chat?nickname=' + currentUser.name
     })
   },
   /**
@@ -33,12 +32,22 @@ Page({
         });
       }
     });
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: postsData.postList
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/chat-user-list/',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'GET',
+      success (res) {  
+       // console.log(res.data)
+        that.setData(
+          // 替换发现前端的数据
+          {
+            friends: res.data
+          }
+        );
       }
-    );
+    });
   },
   onPostTap: function(event){
     // 获取新闻的postId
@@ -59,7 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad();
   },
 
   /**

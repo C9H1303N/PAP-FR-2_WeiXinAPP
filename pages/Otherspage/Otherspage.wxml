@@ -22,8 +22,9 @@
         <view class="user_info03">
             <text>{{person_view}}</text>  
         </view>
-        <vlew style="justify-content: center;">
-        <button class="cu-btn round line lg" style="width: 220rpx; height: 80rpx; margin-left: 220rpx" bindtap="follow_action">{{check_work}}</button>
+        <vlew style="justify-content: center;display:flex;">
+        <button class="cu-btn round line lg" style="width: 220rpx; height: 80rpx;margin-right : 20rpx;" bindtap="follow_action">{{check_work}}</button>
+        <button class="cu-btn round line lg" style="width: 220rpx; height: 80rpx;" bindtap="chat_action">私聊</button>
         </vlew>     
     </view>
 </view>

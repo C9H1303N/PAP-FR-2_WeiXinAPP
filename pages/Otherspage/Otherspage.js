@@ -372,7 +372,23 @@ Page({
       });
     }
   },
-
+  chat_action: function(){
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/add-usr-into-chat-list',
+      data:{
+        user_id: this.data.id
+      },
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      method: 'POST',
+      success (res){
+        wx.showToast({
+          title: '加入私聊列表成功！',
+        })
+      }
+    })
+  },
   checkCor: function () {
     let that = this;
     if (that.data.currentTab > 3) {
