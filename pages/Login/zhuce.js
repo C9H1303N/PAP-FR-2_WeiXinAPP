@@ -1,5 +1,7 @@
 // pages/Login/zhuce.js
 const app = getApp()
+var nums = 30;
+var clock;
 Page({
 
   /**
@@ -10,7 +12,9 @@ Page({
     email: '',
     password: '',
     checkpass: '',
-    vertifycode: ''
+    vertifycode: '',
+    send_cd: false,
+    vertify_word: '发送验证码'
   },
 
   /**
@@ -51,6 +55,25 @@ Page({
     })
   },
 
+  doLoop: function() {
+    let that = this
+    if(nums >= 0) {
+      var now_word = nums+'s后可重新发送'
+      that.setData({
+        vertify_word: now_word,
+      })
+      nums--;
+    }
+    else {
+      clearInterval(clock); //清除js定时器
+      that.setData({
+        vertify_word: '发送验证码',
+        send_cd: false,
+      })
+      nums = 30
+    }
+  },
+  
   vertify: function() {
     let that = this
     var myreg=/^(\w|(\.\w+))+@([a-zA-Z0-9_-]+\.)+(com|org|cn|net)+$/;  
@@ -72,6 +95,10 @@ Page({
             wx.showToast({
               title: '确认邮件发送成功',
             })
+            that.setData({
+              send_cd: true,
+            })
+            clock = setInterval(that.doLoop, 1000); //一秒执行一次
           }
           else {
             wx.showToast({
