@@ -11,7 +11,7 @@ Page({
    */
   data: {
     user_id: '',
-    user_photo:'/images/Images_Mine/default.png',
+    user_photo:'',
     user_name: '',
     guanzhu_sum:'',
     fensi_sum:'',
@@ -106,7 +106,8 @@ Page({
             fensi_sum: res.data.total_fan,
             guanzhu_sum: res.data.total_post,
             person_view: res.data.email,
-            check_work: strr
+            check_work: strr,
+            user_photo: res.data.icon
           }
         );
       }

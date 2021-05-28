@@ -11,7 +11,7 @@ Page({
    */
   data: {
     user_id: '',
-    user_photo:'/images/Images_Mine/default.png',
+    user_photo:'',
     user_name: '',
     guanzhu_sum:'',
     fensi_sum:'',
@@ -96,8 +96,9 @@ Page({
       },
       method: 'GET',
       success (res) {  
-     //   console.log(res.data.id)
+        console.log(res.data)
         idd = res.data.id
+        app.globalData.icon = res.data.icon
         that.setData(
           // 替换发现前端的数据
           {
@@ -105,6 +106,7 @@ Page({
             fensi_sum: res.data.total_fan,
             guanzhu_sum: res.data.total_post,
             person_view: res.data.email,
+            user_photo: res.data.icon
           }
         );
       }

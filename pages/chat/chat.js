@@ -83,11 +83,12 @@ Page({
       let messages = this.data.messages;
       let lastId = messages.length;
       var sdsd = lastId+1
+      console.log(app.globalData.icon)
       const data = {
         id: 'msg' + sdsd,
         message: msggg,
         messageType: 1,
-        url: '../../images/Images_Mine/default.png'
+        url: app.globalData.icon
       };
       if (this.data.isFirstSend) {
         messages = messages.concat(data);
@@ -165,11 +166,12 @@ Page({
       })
       console.log(msg)
       console.log(messages)
+      console.log(app.globalData.icon)
       const data = {
         id: nums,
         message: msg,
         messageType: 0,
-        url: '../../images/Images_Mine/default.png'
+        url: app.globalData.icon
       };
       if (this.data.isFirstSend) {
         messages = messages.concat(data);
