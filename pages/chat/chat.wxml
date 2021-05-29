@@ -8,7 +8,7 @@
     scroll-top="{{ scrollTop }}"
     scroll-into-view="msg{{ lastId }}">
     <block wx:for="{{ messages }}" wx:key="messages{{ index }}" >
-      <template id="msg{{ index }}" is="bubble" data="{{ ...item }}" />
+      <template id="msg{{ index }}" is="bubble" data="{{ ...item, ...{url: url1.icon, url2: url2} }}"/>
     </block>
   </scroll-view>
   <form class="chat-input" id="hei">

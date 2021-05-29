@@ -1,7 +1,7 @@
 <template name='post_pinglun_Item'>
   <view class = "dongtai_main">
   <view class = 'touxiang'>
-      <image bindtap="view_comment_person" data-userid="{{created_by.id}}" src = '/images/Images_Mine/default.png' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
+      <image bindtap="view_comment_person" data-userid="{{created_by.id}}" src = '{{icon}}' style="width:100rpx;height:100rpx;border-radius: 50%;justify-content:space-between;"></image>
   </view>
 
   <view>

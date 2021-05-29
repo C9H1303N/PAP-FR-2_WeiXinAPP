@@ -68,6 +68,16 @@ Page({
           app.globalData.token = data.access_token
           console.log(data.code)
           if(data.code == undefined){
+              wx.request({
+                url: 'https://pap2.zixfy.com/api/user/profile',
+                header: {
+                  'Authorization': `Bearer ${ app.globalData.token }`
+                },
+                method: 'GET',
+                success(res){
+                  app.globalData.icon = res.data.icon
+                }
+              })
               wx.switchTab({
               url: '/pages/Mainpage/Mainpage',
             })

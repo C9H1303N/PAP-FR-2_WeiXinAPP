@@ -4,7 +4,7 @@
       <view class="icon">
         <view class="caret-left"></view>
         <view class="photo">
-          <image src="{{ url }}" style="width:36px;height:36px;"></image>
+          <image src="{{url}}" style="width:36px;height:36px;"></image>
         </view>
       </view>
       <view class="content">
@@ -17,7 +17,7 @@
       </view> 
       <view class="icon-right">
         <view class="photo">
-          <image src="{{ url }}" style="width:36px;height:36px;"></image>
+          <image src="{{url2}}" style="width:36px;height:36px;"></image>
         </view>
         <view class="caret-right"></view>
       </view>

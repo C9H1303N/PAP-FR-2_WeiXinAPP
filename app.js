@@ -17,6 +17,6 @@ App({
     userInfo: null,
     token: '',
     userid: '',
-    icon:''
+    icon: ''
   }
 })
