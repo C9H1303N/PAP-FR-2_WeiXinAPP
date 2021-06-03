@@ -60,7 +60,7 @@ Page({
         console.log(res.data)
         postsData = res.data.res
         wx.setStorage({
-          key: 'paper',
+          key: 'paper1',
           data: postsData
         })
         that.setData(
@@ -278,7 +278,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      searchWord: this.data.old_searchword
+    })
+    this.search()
   },
 
   /**
