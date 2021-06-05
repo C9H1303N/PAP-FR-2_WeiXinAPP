@@ -2,7 +2,8 @@ var app = getApp()
 var postsData
 var person = require('../../data/user_sum.js')
 var My_jiedu = require('../../data/my_jiedu.js')
-var My_collection = require('../../data/mu_collection.js')
+var nums = 2
+var clock
 
 Page({
 
@@ -27,6 +28,7 @@ Page({
     mine_collect_num: 1,
     mine_subs_num: 1,
     mine_fans_num: 1,
+    loading: true
   },
 
   /**
@@ -71,6 +73,20 @@ Page({
 
   },
 
+  doLoop: function() {
+    let that = this
+    if(nums >= 0) {
+      nums--;
+    }
+    else {
+      clearInterval(clock); //清除js定时器
+      nums = 2
+      this.setData({
+        loading: false
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -78,7 +94,9 @@ Page({
     let that = this;
     var idd = '';
     //  高度自适应
-  
+    this.setData({
+      loading: true
+    })
     wx.getSystemInfo({
       success: function (res) {
         let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
@@ -199,6 +217,8 @@ Page({
         );
       }
     });
+    
+    clock = setInterval(that.doLoop, 1000); //一秒执行一次
   },
 
   // 会是因为这个函数的原因吗 ？
@@ -241,7 +261,6 @@ Page({
   },
 
   swichNav: function (e) {
-    
     console.log(this.data.posts_key)
     let cur = e.currentTarget.dataset.current;
     console.log(cur)
@@ -249,6 +268,15 @@ Page({
       return false;
     } 
     else {
+      console.log(this.data.loading)
+      if (this.data.loading) {
+        wx.showToast({
+          title: '加载中，请稍候',
+          icon: 'waiting',
+          duration: 2000
+        })
+        return false
+      }
       this.setData({
         currentTab: cur
       })
@@ -269,6 +297,7 @@ Page({
           );
       }
       else if (cur == 2) { //关注列表
+        console.log(this.data.follower_key)
         this.setData(
           {
             posts_key: this.data.follower_key,
@@ -406,7 +435,7 @@ Page({
           // 替换发现前端的数据
               {
                 posts_key: subs,
-                followers_key: subs
+                follower_key: subs
               }
             );
             }
@@ -454,6 +483,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      currentTab: 0, //预设当前项的值
+      posts_key: this.data.fabu_key,
+      now_name: "postItem"
+    })
     this.onLoad();
   },
 

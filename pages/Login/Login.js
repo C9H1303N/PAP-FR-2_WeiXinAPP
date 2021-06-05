@@ -84,12 +84,14 @@ Page({
           }
           else{
             wx.showToast({
+              icon: 'warn',
               title: '用户名或密码错误！',
             })
           }
         },
         fail(res){
           wx.showToast({
+            icon: 'warn',
             title: '连接错误',
           })
         }
