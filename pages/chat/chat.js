@@ -76,8 +76,8 @@ Page({
   //事件处理函数
   onReady() {
     // 连接websocket服务器
-    console.log(this.data.url1)
-    console.log(this.data.url2)
+   // console.log(this.data.url1)
+   // console.log(this.data.url2)
     this.connect();
   },
   onUnload() {
@@ -90,15 +90,16 @@ Page({
     }
   },
   connect() {
-    wx.connectSocket({
+    let task;
+    task = wx.connectSocket({
       url: 'wss://pap2.zixfy.com/chat/'
     });
-    wx.onSocketOpen(res => {
+    task.onOpen(res => {
       this.setData({ socketOpen: true });
     });
     console.log(this.data.socketOpen);
-    wx.onSocketMessage(res => {
-      console.log(res);
+    task.onMessage(res => {
+      console.log(res.data);
       console.log(this.data.messages);
       const isFirstSend = this.data.isFirstSend;
       var msggg = JSON.parse(res.data).message.msg.message;
@@ -125,7 +126,7 @@ Page({
         this.setData({ messages, lastId });
       }
     });
-    wx.onSocketError(res => {
+    task.onError(res => {
       console.log(res);
       console.log('WebSocket连接打开失败，请检查！')
     })
