@@ -28,7 +28,7 @@ Page({
     mine_collect_num: 1,
     mine_subs_num: 1,
     mine_fans_num: 1,
-    loading: true
+    loading: false
   },
 
   /**
@@ -95,7 +95,11 @@ Page({
     var idd = '';
     //  高度自适应
     this.setData({
-      loading: true
+      loading: true,
+      mine_fabu_num: 1,
+      mine_collect_num: 1,
+      mine_subs_num: 1,
+      mine_fans_num: 1,
     })
     wx.getSystemInfo({
       success: function (res) {
@@ -191,7 +195,9 @@ Page({
       },
       method: 'GET',
       success (res) {  
-       // console.log(res.data)
+        console.log('this::::::::')
+        console.log(that.data.mine_subs_num)
+        console.log(res.data)
         that.setData(
           // 替换发现前端的数据
           {
@@ -215,10 +221,11 @@ Page({
             fan_key: res.data.models,
           }
         );
+        
+       nums = 2
+       clock = setInterval(that.doLoop, 1000); //一秒执行一次
       }
     });
-    
-    clock = setInterval(that.doLoop, 1000); //一秒执行一次
   },
 
   // 会是因为这个函数的原因吗 ？
@@ -272,7 +279,7 @@ Page({
       if (this.data.loading) {
         wx.showToast({
           title: '加载中，请稍候',
-          icon: 'waiting',
+          icon: 'loading',
           duration: 2000
         })
         return false
@@ -314,6 +321,32 @@ Page({
         );
       }
     }
+  },
+
+  generate_web: function() {
+    wx.showModal({
+      title: '发表论文解读',
+      content: '论文与解读的发布功能目前实现于web端，点击确定获取web端访问url, 在web端您还可以实现上传头像等更多操作',
+      success: function (res) {
+        if (res.confirm) {  
+          wx.setClipboardData({
+            data: 'https://pap2.zixfy.com/login',
+            success: function (res) {
+              wx.getClipboardData({    //这个api是把拿到的数据放到电脑系统中的
+                success: function (res) {
+                  console.log(res.data) // data        
+                  wx.showToast({
+                    title: '复制成功',
+                   })
+                }
+              })
+            }
+          })
+        } else {   
+          console.log('取消')
+        }
+      }
+    })
   },
 
   checkCor: function () {

@@ -25,6 +25,9 @@
         <view class="user_info03">
             <text>{{person_view}}</text>
         </view>
+        <vlew style="justify-content: center;display:flex;">
+        <button class="cu-btn round line lg" style="width: 220rpx; height: 80rpx;" bindtap="generate_web">发表</button>
+        </vlew> 
     </view>
 </view>
 

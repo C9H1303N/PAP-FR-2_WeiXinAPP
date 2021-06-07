@@ -35,13 +35,13 @@
 }
 
 .user_info{
-    height:200rpx;
-    width: 660rpx;
-    background-color: white;
-    border-radius: 0.3cm;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
+  height:300rpx;
+  width: 660rpx;
+  background-color: white;
+  border-radius: 0.3cm;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
 }
 
 .user_info01{

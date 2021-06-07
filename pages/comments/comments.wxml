@@ -2,11 +2,10 @@
 <template name='comment'>
     <view class="cu-list menu-avatar comment solids-top">
       <view class="cu-item">
-        <view class="cu-avatar round" bindtap="view_comment_person" data-userid="{{user_id}}" style="background-image:url(/images/Images_Mine/default.png);"></view>
-        <view class="content">
+        <view class="content" style="margin-left: -100rpx">
           <view class="text-grey" bindtap="view_comment_person" data-userid="{{user_id}}" >{{username}}</view>
           <view class="text-black text-content text-df" style="word-break：break-all">
-            {{text}}
+            <rich-text>{{text}}</rich-text>
           </view>
           <view class="margin-top-sm flex justify-between">
             <view class="text-gray text-df">{{year}}年{{month}}月{{date}}日 {{hour}}:{{minute}}</view>

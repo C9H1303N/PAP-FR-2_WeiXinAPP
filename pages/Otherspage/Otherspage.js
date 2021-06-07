@@ -3,7 +3,8 @@ var postsData
 var person = require('../../data/user_sum.js')
 var My_jiedu = require('../../data/my_jiedu.js')
 var My_collection = require('../../data/mu_collection.js')
-
+var nums = 2
+var clock
 Page({
 
   /**
@@ -28,7 +29,8 @@ Page({
     mine_subs_num: 1,
     mine_fans_num: 1,
     id:'',
-    check_work: '关注'
+    check_work: '关注',
+    loading: false
   },
 
   /**
@@ -62,6 +64,19 @@ Page({
       }
     });
   },
+  doLoop: function() {
+    let that = this
+    if(nums >= 0) {
+      nums--;
+    }
+    else {
+      clearInterval(clock); //清除js定时器
+      nums = 2
+      this.setData({
+        loading: false
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -83,6 +98,13 @@ Page({
       }
     });
     postsData = wx.getStorageSync('paper')
+    this.setData({
+      loading: true,
+      mine_fabu_num: 1,
+      mine_collect_num: 1,
+      mine_subs_num: 1,
+      mine_fans_num: 1,
+    })
     wx.request({
       url: 'https://pap2.zixfy.com/api/user/profile?user_id=' + this.data.id,
       header: {
@@ -200,6 +222,9 @@ Page({
             fan_key: res.data.models,
           }
         );
+        
+       nums = 2
+       clock = setInterval(that.doLoop, 1000); //一秒执行一次
       }
     });
   },
@@ -252,6 +277,15 @@ Page({
       return false;
     } 
     else {
+      console.log(this.data.loading)
+      if (this.data.loading) {
+        wx.showToast({
+          title: '加载中，请稍候',
+          icon: 'loading',
+          duration: 2000
+        })
+        return false
+      }
       this.setData({
         currentTab: cur
       })
