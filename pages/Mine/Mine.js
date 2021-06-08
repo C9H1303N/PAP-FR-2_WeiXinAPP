@@ -379,6 +379,7 @@ Page({
             }
             else {
               wx.showToast({
+                icon: 'warn',
                 title: '没有更多了！',
               })
             }
