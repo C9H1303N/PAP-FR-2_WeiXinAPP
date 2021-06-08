@@ -1,8 +1,5 @@
 var app = getApp()
 var postsData
-var person = require('../../data/user_sum.js')
-var My_jiedu = require('../../data/my_jiedu.js')
-var My_collection = require('../../data/mu_collection.js')
 var nums = 2
 var clock
 Page({
@@ -40,13 +37,6 @@ Page({
 
 
     // 对用户变量的更新
-    var people = person.postList01;
-    var temp_person;
-    this.setData(
-      {
-        temp_person: people[1]
-      }
-    );
 
 
     let that = this;
@@ -227,6 +217,7 @@ Page({
        clock = setInterval(that.doLoop, 1000); //一秒执行一次
       }
     });
+    
   },
 
   // 会是因为这个函数的原因吗 ？
@@ -366,6 +357,32 @@ Page({
           );
         }
       });
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/fan/'+this.data.id+'?page=' + this.data.mine_fans_num+"&page_size=9",
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+         // console.log(res.data)
+          that.setData(
+            // 替换发现前端的数据
+            {
+              fan_key: res.data.models,
+            }
+          );
+          
+         nums = 2
+         clock = setInterval(that.doLoop, 1000); //一秒执行一次
+        }
+      });
+      this.setData(
+        {
+          posts_key: this.data.fabu_key,
+          now_name: "postItem",
+          currentTab: 0
+        }
+      );
     }
     else {
       wx.request({
@@ -405,6 +422,32 @@ Page({
           );
         }
       });
+      wx.request({
+        url: 'https://pap2.zixfy.com/api/fan/'+this.data.id+'?page=' + this.data.mine_fans_num+"&page_size=9",
+        header: {
+          'Authorization': `Bearer ${ app.globalData.token }`
+        },
+        method: 'GET',
+        success (res) {  
+         // console.log(res.data)
+          that.setData(
+            // 替换发现前端的数据
+            {
+              fan_key: res.data.models,
+            }
+          );
+          
+         nums = 2
+         clock = setInterval(that.doLoop, 1000); //一秒执行一次
+        }
+      });
+      this.setData(
+        {
+          posts_key: this.data.fabu_key,
+          now_name: "postItem",
+          currentTab: 0
+        }
+      );
     }
   },
   chat_action: function(){
@@ -419,7 +462,7 @@ Page({
       method: 'POST',
       success (res){
         wx.showToast({
-          title: '加入私聊列表成功！',
+          title: '已加入私聊列表！',
         })
       }
     })

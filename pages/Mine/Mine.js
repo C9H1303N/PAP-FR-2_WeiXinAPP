@@ -1,7 +1,5 @@
 var app = getApp()
 var postsData
-var person = require('../../data/user_sum.js')
-var My_jiedu = require('../../data/my_jiedu.js')
 var nums = 2
 var clock
 
@@ -35,23 +33,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
-
-    // 对用户变量的更新
-    var people = person.postList01;
-    var temp_person;
-    this.setData(
-      {
-        temp_person: people[1]
-      }
-    );
-
-
     let that = this;
     //  高度自适应
-
-
-
     wx.getSystemInfo({
       success: function (res) {
         let calc = res.windowHeight; //顶部脱离文档流了(- res.windowWidth / 750 * 100);
@@ -61,16 +44,6 @@ Page({
         });
       }
     });
-
-
-    this.setData(
-      // 替换发现前端的数据
-      {
-        posts_key: My_jiedu.postList02,
-        old_searchword: this.data.searchWord
-      }
-    );
-
   },
 
   doLoop: function() {
