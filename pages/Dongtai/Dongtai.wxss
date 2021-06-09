@@ -140,7 +140,7 @@
     border-radius: 20rpx;
     background: #f1eded;
     height: 230rpx;
-    width: 600rpx;
+    width: 650rpx;
     
   }
   .info-container{
