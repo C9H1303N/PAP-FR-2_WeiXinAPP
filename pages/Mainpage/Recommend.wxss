@@ -1,1 +1,15 @@
 /* pages/Mainpage/Recommend.wxss */
+.recommend{
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.loadmore{
+  background-color: #f2f2fa;
+}
+.loadmore::after{
+  border: none;
+}

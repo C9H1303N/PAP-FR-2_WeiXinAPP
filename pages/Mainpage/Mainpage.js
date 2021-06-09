@@ -9,7 +9,7 @@ Page({
    */
 
   data: {
-    tabbar: ['推荐','榜单'],
+    tabbar: ['首页','推荐'],
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置

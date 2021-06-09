@@ -167,12 +167,14 @@ Page({
           else {
             wx.showToast({
               title: '发送失败，请重试',
+              icon: 'none',
             })
           }
         },
         fail(res){
           wx.showToast({
-            title: '连接错误',
+            title: '连接错误',        
+            icon: 'none',
           })
         }
       })
