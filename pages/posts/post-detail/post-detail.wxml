@@ -91,7 +91,7 @@
   <button class="loadmore" bindtap="loadmore">加载更多</button>
   </view>
   </view>
-  <view class='commentInputView' style='bottom:{{height == ""?0:height}}px;' hidden='{{!isInput}}'>
+  <view class='commentInputView' style='bottom:0px;' hidden='{{!isInput}}'>
    <input class='input' placeholder="请输入您的评论" maxlength='-1' bindinput='commentInput' value="{{value}}" bindfocus="inputFocus" focus='{{focusInput}}' bindblur="inputBlur" style='background-color: #ffffff; height: 95%; width: 70%'></input>
   <button class='send' style="height: 90%; margin-top: 0rpx" bindtap="send_comment">发送</button>
 </view>
