@@ -1,8 +1,7 @@
 <!--pages/comments/reply.wxml-->
 <template name='reply'>
-  <view class="cu-list menu-avatar comment solids-top" style="width: 90%; margin-left: 10%; margin-top: 5rpx; ">
+  <view class="cu-list menu-avatar comment solids-top" style="width: 90%; margin-left: 5%; margin-top: 5rpx; ">
       <view class="cu-item">
-        <view class="cu-avatar round" bindtap="view_comment_person" data-userid="{{user_id}}" style="background-image:url(/images/Images_Mine/default.png);"></view>
         <view class="content">
           <view class="text-grey" bindtap="view_comment_person" data-userid="{{user_id}}">{{username}}</view>
           <view class="text-gray text-content text-df">
