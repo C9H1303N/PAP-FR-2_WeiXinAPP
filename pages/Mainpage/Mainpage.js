@@ -215,6 +215,10 @@ Page({
         that.setData({
           recommend: res.data.recommend
         })
+        wx.setStorage({
+          key: 'paper5',
+          data: res.data.recommend
+        })
       }
     })
   },
