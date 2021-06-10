@@ -90,6 +90,15 @@ Page({
     wx.navigateTo({
       url: '/pages/posts/post-detail/post-detail?id='+postId + '&page=0', //动态2，search 1, 主页0,
     })
+  }, 
+  onPostTap1: function(event){
+    // 获取新闻的postId
+    var postId = event.currentTarget.dataset.postid;
+    // 跳转到子页面，新闻详情界面
+    console.log(postId)
+    wx.navigateTo({
+      url: '/pages/posts/post-detail/post-detail?id='+postId + '&page=5', //动态2，search 1, 主页0,推荐5
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -138,7 +147,23 @@ Page({
         });
       }
     });
-    
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/recommend',
+      method: 'GET',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      success(res){
+        console.log(res.data.recommend)
+        that.setData({
+          recommend: res.data.recommend
+        })
+        wx.setStorage({
+          key: 'paper5',
+          data: res.data.recommend
+        })
+      }
+    })
   },
   loadmore: function() {
     this.data.i = this.data.i + 1;
@@ -173,6 +198,22 @@ Page({
       fail(res) {
         wx.showToast({
           title: '网络连接错误！',
+        })
+      }
+    })
+  },
+  refresh: function(){
+    let that = this;
+    wx.request({
+      url: 'https://pap2.zixfy.com/api/recommend',
+      method: 'GET',
+      header: {
+        'Authorization': `Bearer ${ app.globalData.token }`
+      },
+      success(res){
+        console.log(res.data.recommend)
+        that.setData({
+          recommend: res.data.recommend
         })
       }
     })

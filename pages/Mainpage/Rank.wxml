@@ -3,14 +3,14 @@
   <view>
   <import src="/pages/posts/post-item/post-item.wxml" />
   <view>
-  <block wx:for="{{posts_key}}" wx:for-item='item'>
+  <block wx:for="{{recommend}}" wx:for-item='item'>
     <!-- 添加一个view标签，用于附着点击事件 -->
 　　<!-- datapostId为自定义属性，自定义属性以data-开头，后边自己起名，用来储存文章的id -->
-    <view catchtap='onPostTap' data-postId = "{{item.id}}">
+    <view catchtap='onPostTap1' data-postId = "{{item.id}}">
       <!-- template -->
       <template is='postItem' data="{{...item}}" />
     </view>
   </block>
-  <button class="loadmore" bindtap="loadmore">加载更多</button>
+  <button class="loadmore" bindtap="refresh">刷新</button>
   </view>
   </view>
